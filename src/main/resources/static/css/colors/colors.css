@@ -29,8 +29,19 @@ COLOR SCHEME 2
 -------------------------------------------------------------------*/
 
 .forsticky.sticky .post-job-btn{
-	border: 2px solid ##546E7A;
-	background: transparent; color: #546E7A;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #546E7A;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: #546E7A;
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: #546E7A;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #546E7A;
+    background: transparent; color: #546E7A;
 }
 .post-job-btn{
     background-color: #546E7A ; border: 2px solid #546E7A;
