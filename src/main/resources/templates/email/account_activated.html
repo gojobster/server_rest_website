@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Jobster</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="CreativeLayers">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="../css/colors/colors.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	
+	<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/script.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	
+	<script>
+		var url = new URL(window.location.href);
+		var token = url.searchParams.get("activation_token");
+		
+		var urlPost = "http://18.221.163.161:8080/ws/validateEmail",
+		str = {"token":token};
+		var dataPost =$.param(str);
+		
+		function activateUser() {
+			$.ajax({
+				type: "POST",
+				url: urlPost,
+				data: dataPost,
+				contentType: "application/x-www-form-urlencoded",
+				dataType: "json",
+				success: function (data) {
+					if (data.message == "OK") {
+						alert("OK");
+					}
+					else {
+						window.location.replace("http://18.221.163.161/jobster/index.html");
+					}
+				},
+				failure: function (data) {
+					alert("Error: " + data);
+				}
+			});
+		}
+		activateUser();
+	</script>
+	
+</head>
+<body>
+
+<div class="theme-layout" id="scrollup">
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Welcome to Jobster</h3>
+								<span>The networks</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup" style="margin-top: 0px;">
+							<h3>Activate your account</h3>
+							<span>Lorem ipsum dolor sit amet consectetur adipiscing elit odio duis risus at lobortis ullamcorper</span>
+							
+						</div><!-- SIGNUP POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+</body>
+</html>
+

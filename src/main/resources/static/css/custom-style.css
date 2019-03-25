@@ -1,0 +1,25 @@
+
+.bp-linkedin{
+	padding: 10px 30px!important;
+    border-radius: 35px;
+    background: #A2E0E8;
+    height: 48px!important;
+    width: 127px!important;
+    margin: 10px auto;
+    line-height: 20px!important;
+    color: #fff!important;
+    letter-spacing: 0.6px!important;
+	float: none !important;
+}
+.team-detail > span {
+	margin-bottom: 20px;
+}
+
+.team-detail > a > i {
+	position: absolute;
+}
+
+
+.bp-linkedin a:hover{
+	background-color: #606060!important;
+}

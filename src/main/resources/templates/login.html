@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Jobhunt</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="CreativeLayers">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="css/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+		api_key:   77sx2eal8s9cco
+		onLoad:    onLinkedInLoad
+		authorize: true
+	</script>
+
+	<script type="text/javascript">
+		function onLinkedInLoad() {
+		   IN.Event.on(IN, "auth", onLinkedInAuth);
+		}
+		function onLinkedInAuth() {
+		   IN.API.Profile("me").result(displayProfiles);
+		   // IN.API.Profile("me").fields(["industry", "network", "date-of-birth", "educations:(id,school-name)"]).result(displayProfiles);
+		}
+		function displayProfiles(profiles) {
+		   member = profiles.values[0];
+		   document.getElementById("profiles").innerHTML =
+		   "<p id=\"" + member.id + "\">Hello " + member.firstName + " " + member.lastName + "</p>";
+
+		   for(education in profiles.educations) {
+			  var id = education.id;
+			  var name = education.schoolName;
+			  console.log(name);
+		   }
+		}
+	</script>
+	
+</head>
+<body>
+
+<div class="page-loading">
+	<img src="images/loader.gif" alt="" />
+	<span>Skip Loader</span>
+</div>
+
+<div class="theme-layout" id="scrollup">
+	
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Login LinkedIn</h3>
+								<span>the networks</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signin-popup-box static">
+							<div class="account-popup">
+								
+									<button onclick="onLinkedInLoad()">Login</button>
+								
+							</div>
+						</div><!-- LOGIN POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/modernizr.js" type="text/javascript"></script>
+<script src="js/script.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+</html>
+
