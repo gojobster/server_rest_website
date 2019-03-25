@@ -1,4 +1,4 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
 import com.jobster.server.model.tables.records.CompaniesRecord;
 import org.jooq.DSLContext;

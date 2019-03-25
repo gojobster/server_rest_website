@@ -1,8 +1,8 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
-import com.jobster.BLL.DTO.RespuestaWSOffer;
-import com.jobster.BLL.DTO.RespuestaWSOfferCity;
-import com.jobster.BLL.DTO.RespuestaWSOfferFilters;
+import com.jobster.business.DTO.RespuestaWSOffer;
+import com.jobster.business.DTO.RespuestaWSOfferCity;
+import com.jobster.business.DTO.RespuestaWSOfferFilters;
 import com.jobster.server.model.tables.records.CompaniesRecord;
 import com.jobster.server.model.tables.records.OffersRecord;
 import com.jobster.server.util.Fechas;

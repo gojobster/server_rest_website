@@ -1,4 +1,4 @@
-package com.jobster.BLL.types;
+package com.jobster.business.types;
 
 public enum JobsterErrorType {
 

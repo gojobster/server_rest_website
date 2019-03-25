@@ -1,7 +1,7 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
 import com.jobster.server.model.tables.records.IdiomsRecord;
-import com.jobster.BLL.types.JobsterErrorType;
+import com.jobster.business.types.JobsterErrorType;
 
 import static com.jobster.server.model.Tables.IDIOMS;
 

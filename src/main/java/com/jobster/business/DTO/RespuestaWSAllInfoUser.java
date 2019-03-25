@@ -1,4 +1,4 @@
-package com.jobster.BLL.DTO;
+package com.jobster.business.DTO;
 
 import com.jobster.server.model.tables.records.UsersRecord;
 

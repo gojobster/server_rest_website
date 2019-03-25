@@ -1,4 +1,4 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
 public class Constantes {
     public static final String DB_USER = "root";

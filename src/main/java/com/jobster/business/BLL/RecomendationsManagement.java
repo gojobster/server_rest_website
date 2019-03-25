@@ -1,7 +1,7 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
 import com.jobster.server.model.tables.records.ReferralsRecord;
-import com.jobster.BLL.types.JobsterErrorType;
+import com.jobster.business.types.JobsterErrorType;
 import com.jobster.server.util.Email;
 import com.jobster.server.util.RandomString;
 import org.jooq.DSLContext;

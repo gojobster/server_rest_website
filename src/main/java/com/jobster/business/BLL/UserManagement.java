@@ -1,13 +1,13 @@
-package com.jobster.BLL;
+package com.jobster.business.BLL;
 
-import com.jobster.BLL.DTO.RespuestaWSAllInfoUser;
-import com.jobster.BLL.DTO.RespuestaWSLogin;
-import com.jobster.BLL.DTO.RespuestaWSOfferUser;
-import com.jobster.BLL.DTO.RespuestaWSUser;
+import com.jobster.business.DTO.RespuestaWSAllInfoUser;
+import com.jobster.business.DTO.RespuestaWSLogin;
+import com.jobster.business.DTO.RespuestaWSOfferUser;
+import com.jobster.business.DTO.RespuestaWSUser;
 import com.jobster.server.model.tables.records.CompaniesRecord;
 import com.jobster.server.model.tables.records.OffersRecord;
 import com.jobster.server.model.tables.records.UsersRecord;
-import com.jobster.BLL.types.JobsterErrorType;
+import com.jobster.business.types.JobsterErrorType;
 import com.jobster.server.util.*;
 import org.jooq.DSLContext;
 import org.jooq.Record;

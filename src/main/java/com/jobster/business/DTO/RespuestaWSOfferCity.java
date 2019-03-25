@@ -1,4 +1,4 @@
-package com.jobster.BLL.DTO;
+package com.jobster.business.DTO;
 
 public class RespuestaWSOfferCity {
     public String name;

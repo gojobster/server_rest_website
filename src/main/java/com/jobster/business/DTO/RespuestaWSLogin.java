@@ -1,6 +1,6 @@
-package com.jobster.BLL.DTO;
+package com.jobster.business.DTO;
 
-import com.jobster.BLL.types.VerificationStateType;
+import com.jobster.business.types.VerificationStateType;
 
 public class RespuestaWSLogin {
 	public String apiKey;
