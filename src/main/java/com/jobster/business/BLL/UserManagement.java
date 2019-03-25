@@ -128,7 +128,7 @@ public class UserManagement {
         usr.setVerifiedPhoneNumber(0);
         usr.store();
 
-        String url_location = Constantes.EMAIL_VALIDATION_ACCOUNT_URL_ES;
+        String url_location = Constantes.URL_EMAIL_VALIDATION_ACCOUNT_URL_ES;
         String email_subject = Constantes.EMAIL_SUBJECT_USER_ACTIVATION_ES;
 
         String textoEmail = TextoMail(url, url_location);
@@ -387,11 +387,11 @@ public class UserManagement {
         String email_subject;
 
         if(idiom.equals("es")) {
-            url_location = Constantes.EMAIL_VALIDATION_ACCOUNT_URL_ES;
+            url_location = Constantes.URL_EMAIL_VALIDATION_ACCOUNT_URL_ES;
             email_subject = Constantes.EMAIL_SUBJECT_USER_ACTIVATION_ES;
         }
         else {
-            url_location = Constantes.EMAIL_VALIDATION_ACCOUNT_URL_EN;
+            url_location = Constantes.URL_EMAIL_VALIDATION_ACCOUNT_URL_EN;
             email_subject = Constantes.EMAIL_SUBJECT_USER_ACTIVATION_EN;
         }
 

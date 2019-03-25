@@ -1,8 +1,7 @@
 package com.jobster.website.controller;
 
-import com.google.gson.Gson;
-import com.jobster.website.BLL.Constantes;
-import com.jobster.website.DTO.RespuestaWSOffer;
+import com.jobster.business.BLL.Constantes;
+import com.jobster.business.DTO.RespuestaWSOffer;
 import com.jobster.website.util.UtilOkHttp;
 import okhttp3.*;
 import org.json.JSONArray;
