@@ -1,7 +1,7 @@
 package com.jobster.website.controller;
 
-import com.jobster.business.BLL.Constantes;
-import com.jobster.business.DTO.RespuestaWSOffer;
+import com.jobster.server.BLL.Constantes;
+import com.jobster.server.DTO.RespuestaWSOffer;
 import com.jobster.website.util.UtilOkHttp;
 import okhttp3.*;
 import org.json.JSONArray;
@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
