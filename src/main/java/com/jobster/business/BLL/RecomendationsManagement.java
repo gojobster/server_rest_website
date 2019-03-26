@@ -41,7 +41,7 @@ public class RecomendationsManagement {
         }
 
         //String enlace = url + "recuperarpwd.aspx?enlace=" + URLEncoder.encode(UserManagement.EncriptarEnlace("rohnwe5489nw48n9sgpboz5svba9894579"), java.nio.charset.StandardCharsets.UTF_8.toString());
-        String textoEmail2 = UserManagement.TextoMail(url, Constantes.EMAIL_SEND_RECOMMENDATION_URL_ES);
+        String textoEmail2 = UserManagement.TextoMail(url, Constantes.URL_EMAIL_SEND_RECOMMENDATION_URL_ES);
 
         //TODO:Modificar textos para la recomendacion
 

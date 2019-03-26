@@ -19,7 +19,7 @@ import java.util.List;
 public class SearchController {
 
 
-    private List<RespuestaWSOffer> listOffers;
+    public List<RespuestaWSOffer> listOffers;
 
     @GetMapping("/search")
     public String search(@RequestParam("s") String filter_keyword, Model model) {
@@ -57,7 +57,7 @@ public class SearchController {
 
                     listOffers = new ArrayList<>();
                     for(int i=0; i<listOffersJSON.length(); i++) {
-                        JSONObject offerJSON = listOffersJSON.getJSONObject(0);
+                        JSONObject offerJSON = listOffersJSON.getJSONObject(i);
 //                      respuesta = URLDecoder.decode(respuesta, "UTF-8");
 
                         RespuestaWSOffer offer = new RespuestaWSOffer(offerJSON);
