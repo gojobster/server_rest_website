@@ -16,8 +16,6 @@ import java.util.List;
 
 @Controller
 public class SearchController {
-
-
     public List<RespuestaWSOffer> listOffers;
 
     @GetMapping("/search")
@@ -58,7 +56,6 @@ public class SearchController {
                     for(int i=0; i<listOffersJSON.length(); i++) {
                         JSONObject offerJSON = listOffersJSON.getJSONObject(i);
 //                      respuesta = URLDecoder.decode(respuesta, "UTF-8");
-
                         RespuestaWSOffer offer = new RespuestaWSOffer(offerJSON);
                         listOffers.add(offer);
                     }
