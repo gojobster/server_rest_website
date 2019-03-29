@@ -248,7 +248,11 @@
                                 <div th:each="offer: ${listOffers}" th:object="${offer}">
                                     <a th:href="'/offers/' + *{id_offer}" class="job-listing rounded">
                                         <div class='job-title-sec'>
-                                            <div class='c-logo'><img th:src="*{path_image_company}" alt='' /></div>
+                                            <div class='c-logo'>
+												<a th:href="'companyDetails.html?id_company='+*{id_offer}">
+													<img th:src="*{path_image_company}" alt='' />
+												</a>
+											</div>
                                             <h3 th:text="*{nameCompany}"></h3><span th:text="*{position}"></span>
                                         </div>
                                         <span class='job-lctn' th:inline="text"><i class="la la-map-marker"></i>[[*{city}]]</span>

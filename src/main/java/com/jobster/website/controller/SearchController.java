@@ -16,13 +16,14 @@ import java.util.List;
 
 @Controller
 public class SearchController {
-    public List<RespuestaWSOffer> listOffers;
+    public List<RespuestaWSOffer> listOffers = new ArrayList<>();
 
     @GetMapping("/search")
     public String search(@RequestParam("s") String filter_keyword, Model model) {
         String total = "69";
 
         getAllOffers(filter_keyword, "");
+
 
         model.addAttribute("listOffers", listOffers);
         return "search"; //view
