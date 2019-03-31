@@ -28,9 +28,11 @@ public class SearchController {
             listOffers= OffersManagement.getAllWsOffers(filter_keyword, filter_city);
         }
         catch (Exception ex) {
+            int a = 0;
         }
         return listOffers;
     }
+
     private RespuestaWSOfferFilters getAllFilters(String filter_keyword) {
         RespuestaWSOfferFilters listFilters = new RespuestaWSOfferFilters();
         try {
