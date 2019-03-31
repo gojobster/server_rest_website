@@ -25,7 +25,7 @@ public class SearchController {
     private List<RespuestaWSOffer> getAllOffers(String filter_keyword, String filter_city) {
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
-            listOffers= OffersManagement.getAllOffers(filter_keyword, filter_city);
+            listOffers= OffersManagement.getAllWsOffers(filter_keyword, filter_city);
         }
         catch (Exception ex) {
         }
