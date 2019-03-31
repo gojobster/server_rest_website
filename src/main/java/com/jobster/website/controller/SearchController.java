@@ -12,24 +12,21 @@ import java.util.List;
 
 @Controller
 public class SearchController {
-    public List<RespuestaWSOffer> listOffers = new ArrayList<>();
-
     @GetMapping("/search")
     public String search(@RequestParam("keyword") String filter_keyword,
                          @RequestParam("city") String filter_city, Model model) {
 
-        getAllOffers(filter_keyword, filter_city);
-
-        model.addAttribute("listOffers", listOffers);
+        model.addAttribute("listOffers", getAllOffers(filter_keyword, filter_city));
         return "search"; //view
     }
 
-    private void getAllOffers(String filter_keyword, String filter_city) {
+    private List<RespuestaWSOffer> getAllOffers(String filter_keyword, String filter_city) {
+        List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
             listOffers= OffersManagement.getAllOffers(filter_keyword, filter_city);
         }
         catch (Exception ex) {
-            String a = ex.getMessage();
         }
+        return listOffers;
     }
 }
