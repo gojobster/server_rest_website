@@ -6,15 +6,17 @@ import com.jobster.server.model.tables.records.CompaniesRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CompanyDetailsController {
     public Company company;
 
-    @GetMapping("/company")
-    public String home(@RequestParam("id_company") int id_copmany, Model model) {
-        company = CompaniesManagement.getCompany(id_copmany);
+    @GetMapping("/company/{id}")
+//    public String home(@RequestParam("id") int id, Model model) {
+    public String home(@PathVariable int id, Model model) {
+        company = CompaniesManagement.getCompany(id);
 
         model.addAttribute("company", company);
         return "companyDetails"; //view

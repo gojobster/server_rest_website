@@ -70,7 +70,7 @@ function user_registration_temp() {
 
 function search(){
 	var key = encodeURI($("[name='search_key']").val());
-	window.location = "search?s="+key;
+	window.location = "search?keyword="+key+"&city=";
 }
 $(document).ready(function(){
 	getTopJobOffers("","")
