@@ -25,6 +25,6 @@
 hs_err_pid*
 
 .idea/
-jobster_website_server.iml
+*.iml
 out/
 target/
