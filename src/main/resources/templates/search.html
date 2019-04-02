@@ -19,6 +19,66 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
+	<style type="text/css">
+		.range_bar {
+			width: 100%;
+			-webkit-appearance: none;
+			width: 100%;
+			height: 5px;
+			background: #d3d3d3;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+			float:left;
+		}
+
+		.range_bar:hover {
+			opacity: 1;
+		}
+
+		.range_bar::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			background: rgb(162, 224, 232);
+			cursor: pointer;
+			-webkit-border-radius: 100%;
+			-moz-border-radius: 100%;
+			border-radius: 100%;
+		}
+
+		.range_bar::-moz-range-thumb {
+			width: 25px;
+			height: 25px;
+			background: rgb(162, 224, 232);
+			cursor: pointer;
+			-webkit-border-radius: 100%;
+			-moz-border-radius: 100%;
+			border-radius: 100%;
+		}
+		.range_value_bar{
+			width: 100%;
+			position: relative;
+			float: left;
+			display: flex;
+			margin-top: 15px;
+		}
+		.range_min{
+			text-align: left;
+			flex: auto;
+		}
+		.range_max{
+			text-align: right;
+			flex: auto;
+		}
+		.range_value {
+			text-align: center;
+			flex: auto;
+		}
+
+	</style>
 </head>
 <body>
 
@@ -49,10 +109,6 @@
 					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
 				</ul>
 			</div><!-- Btn Extras -->
-			<form class="res-search">
-				<input type="text" placeholder="Job title, keywords or company name" />
-				<button type="submit"><i class="la la-search"></i></button>
-			</form>
 		</div>
 	</div>
 
@@ -60,7 +116,7 @@
 		<div class="menu-sec">
 			<div class="container">
 				<div class="logo">
-					<a href="/index.html" title=""><img src="images/jobster2.png" alt="" /></a>
+					<a href="/jobster" title=""><img src="images/jobster2.png" alt="" /></a>
 				</div><!-- Logo -->
 				<div class="btn-extars">
 					<ul class="account-btns">
@@ -92,135 +148,56 @@
 			<div class="container">
 				 <div class="row no-gape">
 				 	<aside class="col-lg-4 column border-right">
-				 		<div class="widget">
-				 			<div class="search_widget_job">
-				 				<div class="field_w_search">
-				 					<input type="text" placeholder="Search Keywords" />
-				 					<i class="la la-search"></i>
-				 				</div><!-- Search Widget -->
-				 				<div class="field_w_search">
-				 					<input type="text" placeholder="All Locations" />
-				 					<i class="la la-map-marker"></i>
-				 				</div><!-- Search Widget -->
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title open">Date Posted</h3>
-				 			<div class="posted_widget">
-								<input type="radio" name="choose" id="232"><label for="232">Last Hour</label><br />
-								<input type="radio" name="choose" id="wwqe"><label for="wwqe">Last 24 hours</label><br />
-								<input type="radio" name="choose" id="erewr"><label for="erewr">Last 7 days</label><br />
-								<input type="radio" name="choose" id="qwe"><label for="qwe">Last 14 days</label><br />
-								<input type="radio" name="choose" id="wqe"><label for="wqe">Last 30 days</label><br />
-								<input type="radio" name="choose" id="qweqw"><label class="nm" for="qweqw">All</label><br />
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title open">Job Type</h3>
-				 			<div class="type_widget">
-								<p class="flchek"><input type="checkbox" name="choosetype" id="33r"><label for="33r">Freelance (9)</label></p>
-								<p class="ftchek"><input type="checkbox" name="choosetype" id="dsf"><label for="dsf">Full Time (8)</label></p>
-								<p class="ischek"><input type="checkbox" name="choosetype" id="sdd"><label for="sdd">Internship (8)</label></p>
-								<p class="ptchek"><input type="checkbox" name="choosetype" id="sadd"><label for="sadd">Part Time (5)</label></p>
-								<p class="tpchek"><input type="checkbox" name="choosetype" id="assa"><label for="assa">Temporary (5)</label></p>
-								<p class="vtchek"><input type="checkbox" name="choosetype" id="ghgf"><label for="ghgf">Volunteer (8)</label></p>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title open">Specialism</h3>
-				 			<div class="specialism_widget">
-								<div class="field_w_search">
-				 					<input type="text" placeholder="Search Spaecialisms" />
-				 				</div><!-- Search Widget -->
-				 				<div class="simple-checkbox scrollbar">
-									<p><input type="checkbox" name="spealism" id="as"><label for="as">Accountancy (2)</label></p>
-									<p><input type="checkbox" name="spealism" id="asd"><label for="asd">Banking (2)</label></p>
-									<p><input type="checkbox" name="spealism" id="errwe"><label for="errwe">Charity & Voluntary (3)</label></p>
-									<p><input type="checkbox" name="spealism" id="fdg"><label for="fdg">Digital & Creative (4)</label></p>
-									<p><input type="checkbox" name="spealism" id="sc"><label for="sc">Estate Agency (3)</label></p>
-									<p><input type="checkbox" name="spealism" id="aw"><label for="aw">Graduate (2)</label></p>
-									<p><input type="checkbox" name="spealism" id="ui"><label for="ui">IT Contractor (7)</label></p>
-									<p><input type="checkbox" name="spealism" id="saas"><label for="saas">Charity & Voluntary (3)</label></p>
-									<p><input type="checkbox" name="spealism" id="rrrt"><label for="rrrt">Digital & Creative (4)</label></p>
-									<p><input type="checkbox" name="spealism" id="eweew"><label for="eweew">Estate Agency (3)</label></p>
-									<p><input type="checkbox" name="spealism" id="bnbn"><label for="bnbn">Graduate (2)</label></p>
-									<p><input type="checkbox" name="spealism" id="ffd"><label for="ffd">IT Contractor (7)</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Offerd Salary</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="1"><label for="1">10k - 20k</label></p>
-									<p><input type="checkbox" name="smplechk" id="2"><label for="2">20k - 30k</label></p>
-									<p><input type="checkbox" name="smplechk" id="3"><label for="3">30k - 40k</label></p>
-									<p><input type="checkbox" name="smplechk" id="4"><label for="4">40k - 50k</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Career Level</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="5"><label for="5">Intermediate</label></p>
-									<p><input type="checkbox" name="smplechk" id="6"><label for="6">Normal</label></p>
-									<p><input type="checkbox" name="smplechk" id="7"><label for="7">Special</label></p>
-									<p><input type="checkbox" name="smplechk" id="8"><label for="8">Experienced</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Experince</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="9"><label for="9">1Year to 2Year</label></p>
-									<p><input type="checkbox" name="smplechk" id="10"><label for="10">2Year to 3Year</label></p>
-									<p><input type="checkbox" name="smplechk" id="11"><label for="11">3Year to 4Year</label></p>
-									<p><input type="checkbox" name="smplechk" id="12"><label for="12">4Year to 5Year</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Gender</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="13"><label for="13">Male</label></p>
-									<p><input type="checkbox" name="smplechk" id="14"><label for="14">Female</label></p>
-									<p><input type="checkbox" name="smplechk" id="15"><label for="15">Others</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Industry</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="16"><label for="16">Meezan Job</label></p>
-									<p><input type="checkbox" name="smplechk" id="17"><label for="17">Speicalize Jobs</label></p>
-									<p><input type="checkbox" name="smplechk" id="18"><label for="18">Business Jobs</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<h3 class="sb-title closed">Qualification</h3>
-				 			<div class="specialism_widget">
-				 				<div class="simple-checkbox">
-									<p><input type="checkbox" name="smplechk" id="19"><label for="19">Matriculation</label></p>
-									<p><input type="checkbox" name="smplechk" id="20"><label for="20">Intermidiate</label></p>
-									<p><input type="checkbox" name="smplechk" id="21"><label for="21">Gradute</label></p>
-				 				</div>
-				 			</div>
-				 		</div>
-				 		<div class="widget">
-				 			<div class="subscribe_widget">
-				 				<h3>Still Need Help ?</h3>
-								<p>Let us now about your issue and a Professional will reach you out.</p>
-								<form>
-									<input placeholder="Enter Valid Email Address" type="text">
-									<button type="submit"><i class="la la-paper-plane"></i></button>
-								</form>
+						<form action="" enctype="">
+							<div class="widget">
+								<div class="search_widget_job">
+									<div class="field_w_search">
+										<input type="text" placeholder="Search Keywords" th:value="${keyword}"/>
+										<i class="la la-search"></i>
+									</div><!-- Search Widget -->
+								</div>
 							</div>
-				 		</div>
+							<div class="widget">
+								<h3 class="sb-title open">Location</h3>
+								<div class="specialism_widget">
+									<div class="simple-checkbox">
+										<p th:each="city: ${listFilters.list_cities}" th:object="${city}">
+											<input type="checkbox" name="city" th:id="*{id}">
+											<label th:for="*{id}" th:text="*{name} + ' (' + *{num_instances} + ')'"></label>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="widget">
+								<h3 class="sb-title open">Position</h3>
+								<div class="specialism_widget">
+									<div class="simple-checkbox">
+										<p th:each="study: ${listFilters.list_studies}">
+											<input type="checkbox" name="city" th:id="${study}">
+											<label th:for="${study}" th:text="${study}"></label>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="widget">
+								<h3 class="sb-title open">Work Experience</h3>
+								<div class="posted_widget">
+									<input class="range_bar" type="range" name="experience" id="experience" min="0" th:max="${listFilters.max_experience}" step="1">
+									<div class="range_value_bar">
+										<span class="range_min">0</span><span class="range_value"></span><span class="range_max" th:text="${listFilters.max_experience}"></span>
+									</div>
+								</div>
+							</div>
+							<div class="widget">
+								<h3 class="sb-title open">Minimum Gross Annual Salary</h3>
+								<div class="posted_widget">
+									<input class="range_bar" type="range" name="salary" id="salary" th:min="${listFilters.min_salary}" th:max="${listFilters.max_salary}" step="1000">
+									<div class="range_value_bar">
+										<span class="range_min" th:text="${listFilters.min_salary}"></span><span class="range_value"></span><span class="range_max" th:text="${listFilters.max_salary}"></span>
+									</div>
+								</div>
+							</div>
+						</form>
 				 	</aside>
 				 	<div class="col-lg-8 column">
 				 		<div class="modrn-joblist">
@@ -289,6 +266,16 @@
 <script src="/js/select-chosen.js" type="text/javascript"></script>
 <script src="/js/counter.js" type="text/javascript"></script>
 <script src="/js/mouse.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(".range_value").each(function () {
+			$(this).html($(this).parent().siblings("input").val());
+		});
+		$(".range_bar").change(function(){
+			$(this).siblings(".range_value_bar").children(".range_value").html($(this).val());
+		});
+	});
+</script>
 <!--<script th:inline="javascript" src="js/search.js" type="text/javascript"></script>-->
 
 </body>

@@ -14,22 +14,20 @@ import java.util.List;
 @Controller
 public class SearchController {
     @GetMapping("/search")
-    public String search(@RequestParam("keyword") String filter_keyword,
-                         @RequestParam("city") String filter_city, Model model) {
+    public String search(@RequestParam("s") String filter_keyword, Model model) {
 
-        model.addAttribute("listOffers", getAllOffers(filter_keyword, filter_city));
+        model.addAttribute("listOffers", getAllOffers(filter_keyword));
         model.addAttribute("listFilters", getAllFilters(filter_keyword));
+        model.addAttribute("keyword",filter_keyword);
         return "search"; //view
     }
 
-    private List<RespuestaWSOffer> getAllOffers(String filter_keyword, String filter_city) {
+    private List<RespuestaWSOffer> getAllOffers(String filter_keyword) {
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
-            listOffers= OffersManagement.getAllWsOffers(filter_keyword, filter_city);
+            listOffers = OffersManagement.getAllWsOffers(filter_keyword);
         }
-        catch (Exception ex) {
-            int a = 0;
-        }
+        catch (Exception ex) {}
         return listOffers;
     }
 
@@ -41,5 +39,13 @@ public class SearchController {
         catch (Exception ex) {
         }
         return listFilters;
+    }
+    private List<RespuestaWSOffer> getFilteredOffers(String keyword, String salary, String experience, List<String> positions, List<String> cities){
+        List<RespuestaWSOffer> listOffers = new ArrayList<>();
+        try {
+            listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities);
+        }
+        catch (Exception ex) {}
+        return listOffers;
     }
 }

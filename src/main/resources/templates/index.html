@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Jobster. The net works.</title>
@@ -56,18 +56,9 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="find-cand">
-											<form onsubmit="search(); return false;">
+											<form action="/search" type="post" enctype="application/x-www-form-urlencoded">
 												<div class="job-field">
-													<input type="text" placeholder="Search job offer" name="search_key"/>
-												</div>
-												<div class="job-field">
-													<select data-placeholder="City, province or region" class="chosen-city" name="search_city">
-														<option>Barcelona</option>
-														<option>Badalona</option>
-														<option>Hospitalet</option>
-														<option>Sant Cugat</option>
-														<option>Sant Andreu</option>
-													</select>
+													<input type="text" placeholder="Search job offer" name="s"/>
 												</div>
 												<button id="send"><i class="la la-search"></i></button>
 											</form>
@@ -86,7 +77,7 @@
 	</section>
 	<section id="featured-jobs">
 		<div class="block">
-			<div data-velocity="-.1" style="background: url(images/resource/parallax5.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div data-velocity="-.1" style="background: url('images/resource/parallax5.jpg') repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
