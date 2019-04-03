@@ -40,7 +40,7 @@ public class SearchController {
         }
         return listFilters;
     }
-    private List<RespuestaWSOffer> getFilteredOffers(String keyword, String salary, String experience, List<String> positions, List<String> cities){
+    private List<RespuestaWSOffer> getFilteredOffers(String keyword, int salary, int experience, List<String> positions, List<String> cities){
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
             listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities);
