@@ -66,18 +66,124 @@
 			margin-top: 15px;
 		}
 		.range_min{
+            margin-top: 15px;
+            float: left;
+            clear: left;
 			text-align: left;
 			flex: auto;
 		}
 		.range_max{
+            margin-top: 15px;
+            float: right;
+            clear: right;
 			text-align: right;
 			flex: auto;
 		}
 		.range_value {
+            margin-bottom: 15px;
+            float: left;
+            clear: left;
 			text-align: center;
 			flex: auto;
 		}
+        .column {
+            padding: 0 20px;
+        }
+        .job-listing{
+            width: 100%;
+            float: left;
+            clear: both;
+            position: relative;
+            padding: 10px!important;
+            margin: 5px!important;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
 
+        }
+        .job-listing a{
+            width: 100%;
+            color: #1d2124;
+        }
+        .job-listing .job-left{
+            position: relative;
+            width: 100px;
+            float: left;
+            padding: 10px;
+        }
+        .job-listing .job-center{
+            position: relative;
+            width: calc(70% - 100px);
+            float: left;
+            padding: 10px;
+        }
+        .job-listing .job-right{
+            position: relative;
+            width: 25%;
+            float: left;
+            padding: 10px;
+        }
+        .job-data{
+            position: relative;
+            width: 100%;
+            float: left;
+            clear: both;
+            line-height: 32px;
+        }
+        .job-data i{
+            top: 5px;
+            position: relative;
+            margin-right: 10px;
+        }
+        .job-logo{
+            position: relative;
+            float: left;
+            width: 100%;
+            overflow: hidden;
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            -ms-border-radius: 20px !important;
+            -o-border-radius: 20px !important;
+            border-radius: 20px !important;
+        }
+        .job-logo img {
+            width: 100% !important;
+        }
+        .job-position, .job-company, .job-summary{
+            position: relative;
+            float: left;
+            width: calc(100% - 120px);
+        }
+        .job-position{
+            font-size: 1.5em;
+        }
+        .job-company{
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+        .job-summary{
+            font-style: italic;
+            font-size: 1em;
+            font-weight: 300;
+        }
+        .job-listing.rounded:hover {
+            background: #ffffff;
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            -ms-border-radius: 20px !important;
+            -o-border-radius: 20px !important;
+            border-radius: 20px !important
+            margin-top: 0px;
+        }
+        .job-is.ft{
+            width: 100%;
+            float: left;
+            position: relative;
+            clear: both;
+            margin-top: 30px;
+            color: rebeccapurple;
+            border-color: rebeccapurple;
+        }
 	</style>
 </head>
 <body>
@@ -147,7 +253,7 @@
 		<div class="block no-padding">
 			<div class="container">
 				 <div class="row no-gape">
-				 	<aside class="col-lg-4 column border-right">
+				 	<aside class="col-md-3 column border-right">
 						<form action="" enctype="">
 							<div class="widget">
 								<div class="search_widget_job">
@@ -182,59 +288,61 @@
 							<div class="widget">
 								<h3 class="sb-title open">Work Experience</h3>
 								<div class="posted_widget">
+                                    <span class="range_value"></span>
 									<input class="range_bar" type="range" name="experience" id="experience" min="0" th:max="${listFilters.max_experience}" step="1">
-									<div class="range_value_bar">
-										<span class="range_min">0</span><span class="range_value"></span><span class="range_max" th:text="${listFilters.max_experience}"></span>
-									</div>
+                                    <span class="range_min">0</span><span class="range_max" th:text="${listFilters.max_experience}"></span>
 								</div>
 							</div>
 							<div class="widget">
 								<h3 class="sb-title open">Minimum Gross Annual Salary</h3>
 								<div class="posted_widget">
-									<input class="range_bar" type="range" name="salary" id="salary" th:min="${listFilters.min_salary}" th:max="${listFilters.max_salary}" step="1000">
-									<div class="range_value_bar">
-										<span class="range_min" th:text="${listFilters.min_salary}"></span><span class="range_value"></span><span class="range_max" th:text="${listFilters.max_salary}"></span>
-									</div>
+                                    <span class="range_value"></span>
+                                    <input class="range_bar" type="range" name="salary" id="salary" th:min="${listFilters.min_salary}" th:max="${listFilters.max_salary}" step="1000">
+                                    <span class="range_min" th:text="${listFilters.min_salary}"></span><span class="range_max" th:text="${listFilters.max_salary}"></span>
 								</div>
 							</div>
 						</form>
 				 	</aside>
-				 	<div class="col-lg-8 column">
+				 	<div class="col-md-9 column">
 				 		<div class="modrn-joblist">
 					 		<div class="filterbar">
 					 			<div class="sortby-sec">
 					 				<span>Sort by</span>
 					 				<select data-placeholder="Most Recent" class="chosen">
-										<option>Most Recent</option>
-										<option>Most Recent</option>
-										<option>Most Recent</option>
-										<option>Most Recent</option>
+										<option>Newest</option>
+										<option>Latest</option>
 									</select>
 									<select data-placeholder="20 Per Page" class="chosen">
-										<option>30 Per Page</option>
-										<option>40 Per Page</option>
+										<option>10 Per Page</option>
+										<option>20 Per Page</option>
 										<option>50 Per Page</option>
-										<option>60 Per Page</option>
+										<option>All</option>
 									</select>
 					 			</div>
 								<h5 th:text="${listOffers.size()} + ' Jobs'"></h5>
 					 		</div>
-						</div><!-- MOdern Job LIst -->
-						<div class="job-list-modern">
 						 	<div class="job-listings-sec">
-                                <div th:each="offer: ${listOffers}" th:object="${offer}">
-                                    <a th:href="'/offers/' + *{id_offer}" class="job-listing rounded">
-                                        <div class='job-title-sec'>
-                                            <div class='c-logo'>
-												<a th:href="'company/'+*{id_offer}">
-													<img th:src="*{path_image_company}" alt='' />
-												</a>
-											</div>
-                                            <h3 th:text="*{nameCompany}"></h3><span th:text="*{position}"></span>
+                                <div th:each="offer: ${listOffers}" th:object="${offer}" class="job-listing rounded">
+                                    <a th:href="'/offers/' + *{id_offer}">
+                                        <div class="job-left">
+                                            <div class="job-logo">
+                                                <img th:src="*{path_image_company}" alt='' />
+                                            </div>
+                                            <div class='job-is ft' th:text="*{reward}+' €'"></div>
                                         </div>
-                                        <span class='job-lctn' th:inline="text"><i class="la la-map-marker"></i>[[*{city}]]</span>
-                                        <span class='job-dates' th:inline="text"><i class="la la-calendar-o"></i>[[*{date_init} + ' - ' + *{date_end}]]</span>
-                                        <span class='job-is' th:text="*{reward}+' €'"></span>
+                                        <div class="job-center">
+                                            <h2  class="job-position" th:text="*{position}"></h2>
+                                            <h3  class="job-company" th:text="*{nameCompany}"></h3>
+                                            <div class="job-summary" th:text="*{summary}"></div>
+
+                                        </div>
+                                        <div class="job-right">
+                                            <div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
+                                            <div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]]</div>
+                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]]</div>
+
+                                        </div>
                                     </a>
                                 </div>
 							</div>
@@ -269,10 +377,10 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 		$(".range_value").each(function () {
-			$(this).html($(this).parent().siblings("input").val());
+			$(this).html($(this).siblings("input").val());
 		});
-		$(".range_bar").change(function(){
-			$(this).siblings(".range_value_bar").children(".range_value").html($(this).val());
+		$(".range_bar").on("change focus active click dragStart",function(){
+			$(this).siblings(".range_value").html($(this).val());
 		});
 	});
 </script>
