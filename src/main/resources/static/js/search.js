@@ -1,5 +1,5 @@
 function getTopJobOffers(keyword,city){
-	var urlPost = "http://18.221.163.161:8080/ws/getAllOffers",
+	var urlPost = "http://18.191.247.235:8080/ws/getAllOffers",
 	str = {"filter_keyword":keyword,"filter_city":city};
 	var dataPost =$.param(str);
 	$.ajax({

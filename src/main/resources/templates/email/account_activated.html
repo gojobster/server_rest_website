@@ -22,7 +22,7 @@
 		var url = new URL(window.location.href);
 		var token = url.searchParams.get("activation_token");
 		
-		var urlPost = "http://18.221.163.161:8080/ws/validateEmail",
+		var urlPost = "http://18.191.247.235:8080/ws/validateEmail",
 		str = {"token":token};
 		var dataPost =$.param(str);
 		
@@ -38,7 +38,7 @@
 						alert("OK");
 					}
 					else {
-						window.location.replace("http://18.221.163.161/jobster/index.html");
+						window.location.replace("http://18.191.247.235/jobster/index.html");
 					}
 				},
 				failure: function (data) {
