@@ -68,6 +68,14 @@ function user_registration_temp() {
 	}
 }
 
+function linkedin() {
+	const clientID = "77sx2eal8s9cco";
+	const urlRedirect = "http://localhost:8080/login";
+
+	window.location = "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id="
+		+ clientID + "&redirect_uri=" + urlRedirect + "&state=987654321&scope=r_basicprofile";
+}
+
 function search(){
 	var key = encodeURI($("[name='search_key']").val());
 	window.location = "search?keyword="+key+"&city=";

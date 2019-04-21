@@ -5,6 +5,7 @@ import com.jobster.server.DTO.RespuestaWSOffer;
 import com.jobster.website.util.UtilOkHttp;
 import okhttp3.*;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +64,6 @@ public class LoginController {
         catch (Exception ex) {
             String a = ex.getMessage();
         }
-
     }
 
     private void getProfile(String accesToken) {
@@ -82,7 +82,7 @@ public class LoginController {
                 String respuesta = response.body().string();
                 JSONObject json_data = new JSONObject(respuesta);
             }
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
     }
