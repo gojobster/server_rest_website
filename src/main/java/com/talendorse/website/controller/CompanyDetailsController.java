@@ -1,13 +1,11 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
-import com.jobster.server.BLL.CompaniesManagement;
-import com.jobster.server.POCO.Company;
-import com.jobster.server.model.tables.records.CompaniesRecord;
+import com.talendorse.server.BLL.CompaniesManagement;
+import com.talendorse.server.POCO.Company;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CompanyDetailsController {

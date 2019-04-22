@@ -1,4 +1,4 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

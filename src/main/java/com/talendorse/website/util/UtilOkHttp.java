@@ -1,4 +1,4 @@
-package com.jobster.website.util;
+package com.talendorse.website.util;
 
 import okhttp3.OkHttpClient;
 

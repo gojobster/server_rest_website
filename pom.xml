@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jobster.website</groupId>
-    <artifactId>jobster_website</artifactId>
+    <groupId>com.talendorse.website</groupId>
+    <artifactId>talendorse_website</artifactId>
     <version>1.0</version>
     <name>website</name>
     <packaging>war</packaging>
@@ -214,8 +214,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.jobster.server</groupId>
-            <artifactId>jobster_ws</artifactId>
+            <groupId>com.talendorse.server</groupId>
+            <artifactId>talendorse_ws</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
@@ -270,10 +270,10 @@
                             <name>org.jooq.meta.mysql.MySQLDatabase</name>
                             <includes>.*</includes>
                             <excludes></excludes>
-                            <inputSchema>jobster</inputSchema>
+                            <inputSchema>talendorse</inputSchema>
                         </database>
                         <target>
-                            <packageName>com.jobster.server.model</packageName>
+                            <packageName>com.talendorse.server.model</packageName>
                             <directory>src/main/java</directory>
                         </target>
                     </generator>
@@ -290,7 +290,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdbc.user>root</jdbc.user>
         <jdbc.password>1234</jdbc.password>
-        <jdbc.url>jdbc:mysql://127.0.0.1:3306/jobster?serverTimezone=UTC</jdbc.url>
+        <jdbc.url>jdbc:mysql://127.0.0.1:3306/database?serverTimezone=UTC</jdbc.url>
         <jdbc.driver>com.mysql.cj.jdbc.Driver</jdbc.driver>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>

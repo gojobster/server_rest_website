@@ -1,10 +1,8 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
-import com.jobster.server.BLL.Constantes;
-import com.jobster.server.DTO.RespuestaWSOffer;
-import com.jobster.website.util.UtilOkHttp;
+import com.talendorse.server.BLL.Constantes;
+import com.talendorse.website.util.UtilOkHttp;
 import okhttp3.*;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Controller
 public class LoginController {

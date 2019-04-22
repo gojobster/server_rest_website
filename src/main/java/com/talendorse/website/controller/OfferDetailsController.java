@@ -1,7 +1,7 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
-import com.jobster.server.BLL.JobsterException;
-import com.jobster.server.BLL.OffersManagement;
+import com.talendorse.server.BLL.TalendorseException;
+import com.talendorse.server.BLL.OffersManagement;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class OfferDetailsController {
         try {
             model.addAttribute("offer", OffersManagement.getOffer(id));
             model.addAttribute("listOffers", OffersManagement.getAllOffers("",""));
-        } catch (JobsterException e) {
+        } catch (TalendorseException e) {
             e.printStackTrace();
         }
         return "offerDetails"; //view

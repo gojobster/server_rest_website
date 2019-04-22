@@ -1,14 +1,8 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
-import com.jobster.server.BLL.Constantes;
+import com.talendorse.server.BLL.Constantes;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
 
 @Controller
 public class HomeController {

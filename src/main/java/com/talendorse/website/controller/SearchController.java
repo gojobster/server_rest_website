@@ -1,8 +1,8 @@
-package com.jobster.website.controller;
+package com.talendorse.website.controller;
 
-import com.jobster.server.BLL.OffersManagement;
-import com.jobster.server.DTO.RespuestaWSOffer;
-import com.jobster.server.DTO.RespuestaWSOfferFilters;
+import com.talendorse.server.BLL.OffersManagement;
+import com.talendorse.server.DTO.RespuestaWSOffer;
+import com.talendorse.server.DTO.RespuestaWSOfferFilters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
