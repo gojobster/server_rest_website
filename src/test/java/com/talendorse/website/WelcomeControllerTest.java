@@ -1,4 +1,4 @@
-package com.jobster.website;
+package com.talendorse.website;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
