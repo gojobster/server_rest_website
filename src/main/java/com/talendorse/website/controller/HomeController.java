@@ -1,13 +1,16 @@
 package com.talendorse.website.controller;
 
 import com.talendorse.server.BLL.Constantes;
+import com.talendorse.server.BLL.OffersManagement;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String main() {
+    public String main(Model model) {
+        model.addAttribute("url_ws", Constantes.WS_TALENDORSE_URL);
         return "index"; //view
     }
 

@@ -39,7 +39,10 @@ function user_registration_temp() {
 	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
 		alert("Ningún campo puede estar vacio");
 	else {
-		var urlPost = "http://18.191.247.235:8080/ws/register_temp",
+		var url = "http://localhost:8090/ws/register_temp";
+		// var url = "http://18.191.247.235:8080/ws/register_temp";
+
+		var urlPost = url,
 		str = {"name":name,
 			"surname":surname,
 			"password":password,
