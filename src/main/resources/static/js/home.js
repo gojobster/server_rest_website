@@ -18,10 +18,8 @@ function getTopJobOffers(keyword,city){
 }
 
 function listJobs(data){
-
-
 	$.each(data,function(i,d){
-		var html = "<a href='" + d.path_image_company + "' class='job-listing rounded'>";
+		var html = "<a href='/offer/" + d.id_offer + "' class='job-listing rounded'>";
 			html += "<div class='job-title-sec'><div class='c-logo'><img src='"+d.path_image_company+"' alt='' /> </div><h3>"+d.nameCompany+"</h3><span>"+d.position+"</span></div>";
 			html += "<span class='job-lctn'><i class='la la-map-marker'></i>"+d.city+"</span>";
 			html += "<span class='job-dates'><i class='la la-calendar-o'></i>"+d.date_init+" - "+d.date_end+"</span>";

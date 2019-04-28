@@ -1,7 +1,6 @@
 $(document).on('ready', function(){
 
 	//------- Google Maps ---------//
-		  
 	// Creating a LatLng object containing the coordinate for the center of the map
 	var latlng = new google.maps.LatLng(53.385846,-1.471385);
 	  
@@ -15,7 +14,7 @@ $(document).on('ready', function(){
 	var map = new google.maps.Map(document.getElementById('map_div'), options);  
 	
 	// Define Marker properties
-	var image = new google.maps.MarkerImage('images/marker1.png',
+	var image = new google.maps.MarkerImage('/images/marker1.png',
 		new google.maps.Size(100, 100),
 		new google.maps.Point(0,0),
 		new google.maps.Point(18, 42)
@@ -27,6 +26,5 @@ $(document).on('ready', function(){
 		map: map,		
 		icon: image // This path is the custom pin to be shown. Remove this line and the proceeding comma to use default pin
 	});	
-
 });
 

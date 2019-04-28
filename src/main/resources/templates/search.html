@@ -9,14 +9,14 @@
 	<meta name="author" content="CreativeLayers">
 
 	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="css/icons.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
+	<link rel="stylesheet" href="/css/icons.css">
+	<link rel="stylesheet" href="/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 	<style type="text/css">
@@ -189,7 +189,7 @@
 <body>
 
 <div class="page-loading">
-	<img src="images/loader.gif" alt="" />
+	<img src="/images/loader.gif" alt="" />
 	<span>Skip Loader</span>
 </div>
 
@@ -200,10 +200,10 @@
 			<div class="res-logo"><a href="/index.html" title=""><img src="images/jobster2.png" alt="" /></a></div>
 			<div class="menu-resaction">
 				<div class="res-openmenu">
-					<img src="images/icon5.png" alt="" /> Menu
+					<img src="/images/icon5.png" alt="" /> Menu
 				</div>
 				<div class="res-closemenu">
-					<img src="images/icon6.png" alt="" /> Close
+					<img src="/images/icon6.png" alt="" /> Close
 				</div>
 			</div>
 		</div>
@@ -222,7 +222,7 @@
 		<div class="menu-sec">
 			<div class="container">
 				<div class="logo">
-					<a href="/jobster" title=""><img src="images/jobster2.png" alt="" /></a>
+					<a href="/jobster" title=""><img src="/images/jobster2.png" alt="" /></a>
 				</div><!-- Logo -->
 				<div class="btn-extars">
 					<ul class="account-btns">
@@ -323,7 +323,7 @@
 					 		</div>
 						 	<div class="job-listings-sec">
                                 <div th:each="offer: ${listOffers}" th:object="${offer}" class="job-listing rounded">
-                                    <a th:href="'/offers/' + *{id_offer}">
+                                    <a th:href="'offer/' + *{id_offer}">
                                         <div class="job-left">
                                             <div class="job-logo">
                                                 <img th:src="*{path_image_company}" alt='' />
