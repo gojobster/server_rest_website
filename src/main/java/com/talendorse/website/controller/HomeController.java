@@ -1,58 +1,31 @@
 package com.talendorse.website.controller;
 
+import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import com.talendorse.server.BLL.Constantes;
 import com.talendorse.server.BLL.OffersManagement;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String main(Model model) {
+    public String main(Model model, HttpServletRequest request) {
+        request.getCookies();
+        boolean logged = false;
+        for (Cookie c: request.getCookies()) {
+            if (c.getName().equals("token"))
+                logged = true;
+        }
+        model.addAttribute("logged",logged);
         model.addAttribute("url_ws", Constantes.WS_TALENDORSE_URL);
         return "index"; //view
     }
-
-    private void connectToLinkedIn() {
-//        String profileUrl = "https://api.linkedin.com/v2/me/";
-        String profileUrl = getAuthorizationUrl();
-
-        // Access token for the r_liteprofile permission
-        String accessToken = "JjQyf7QOjHERNgFj";
-
-//        try {
-//            JsonObject profileData = sendGetRequest(profileUrl, accessToken);
-//            System.out.println(profileData.toString());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-
-    }
-
-//    private static JsonObject sendGetRequest(String urlString, String accessToken) throws Exception {
-//        URL url = new URL(urlString);
-//        HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
-//
-//        con.setRequestMethod("GET");
-////        con.setRequestProperty("Authorization", "Bearer " + accessToken);
-//        con.setRequestProperty("cache-control", "no-cache");
-//        con.setRequestProperty("X-Restli-Protocol-Version", "2.0.0");
-//
-//        BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//        StringBuilder jsonString = new StringBuilder();
-//        String line;
-//        while ((line = br.readLine()) != null) {
-//            jsonString.append(line);
-//        }
-//        br.close();
-//
-//        JsonReader jsonReader = Json.createReader(new StringReader(jsonString.toString()));
-//        JsonObject jsonObject = jsonReader.readObject();
-//
-//        return jsonObject;
-//    }
 
     /**
      * Method that generates the url for get the authorization token from the Service

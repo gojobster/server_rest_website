@@ -29,66 +29,47 @@ function listJobs(data){
 	});
 }
 
-function user_registration_temp() {
-	var name = document.getElementById("name").value;
-	var surname = document.getElementById("surname").value;
-	var password = document.getElementById("password").value;
-	var gender = document.getElementById("gender").value;
-	var email = document.getElementById("email").value;
-	
-	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
-		alert("Ningún campo puede estar vacio");
-	else {
-		var url = "http://localhost:8090/ws/register_temp";
-		// var url = "http://18.191.247.235:8080/ws/register_temp";
 
-		var urlPost = url,
-		str = {"name":name,
-			"surname":surname,
-			"password":password,
-			"gender":gender,
-			"email":email};
-			
-		var dataPost =$.param(str);
-		$.ajax({
-				type: "POST",
-				url: urlPost,
-				data: dataPost,
-				contentType: "application/x-www-form-urlencoded",
-				dataType: "json",
-				success: function (data) {
-					if(data.message == "OK")
-						location.reload();
-					else
-						alert("Error al crear usuario: " + data.error);
-				},
-				failure: function (data) {
-					alert("Error al crear el usuario");
-				}
-		});
-	}
-}
-
-function linkedin() {
-	const clientID = "77sx2eal8s9cco";
-	const urlRedirect = "http://localhost:8080/login";//?destination="+encodeURI(window.location.href);
-	const state = "9876544561238qwerty";
-	const scope= "r_liteprofile%20r_emailaddress";
-	// const scope= "r_emailaddress";
-
-	const url = "https://www.linkedin.com/oauth/v2/authorization?response_type=code"
-		+ "&client_id=" + clientID
-		+ "&redirect_uri=" + urlRedirect
-		+ "&state=" + state
-		+ "&scope=" + scope;
-
-	window.location = url;
-}
-
-function search(){
-	var key = encodeURI($("[name='search_key']").val());
-	window.location = "search?keyword="+key+"&city=";
-}
 $(document).ready(function(){
 	getTopJobOffers("","")
 });
+
+// function user_registration_temp() {
+// 	var name = document.getElementById("name").value;
+// 	var surname = document.getElementById("surname").value;
+// 	var password = document.getElementById("password").value;
+// 	var gender = document.getElementById("gender").value;
+// 	var email = document.getElementById("email").value;
+//
+// 	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
+// 		alert("Ningún campo puede estar vacio");
+// 	else {
+// 		var url = "http://localhost:8090/ws/register_temp";
+// 		// var url = "http://18.191.247.235:8080/ws/register_temp";
+//
+// 		var urlPost = url,
+// 		str = {"name":name,
+// 			"surname":surname,
+// 			"password":password,
+// 			"gender":gender,
+// 			"email":email};
+//
+// 		var dataPost =$.param(str);
+// 		$.ajax({
+// 				type: "POST",
+// 				url: urlPost,
+// 				data: dataPost,
+// 				contentType: "application/x-www-form-urlencoded",
+// 				dataType: "json",
+// 				success: function (data) {
+// 					if(data.message == "OK")
+// 						location.reload();
+// 					else
+// 						alert("Error al crear usuario: " + data.error);
+// 				},
+// 				failure: function (data) {
+// 					alert("Error al crear el usuario");
+// 				}
+// 		});
+// 	}
+// }

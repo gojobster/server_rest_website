@@ -1,9 +1,8 @@
 package com.talendorse.website.controller;
 
-import com.talendorse.server.BLL.ConnectionBDManager;
-import com.talendorse.server.BLL.Constantes;
-import com.talendorse.server.BLL.TalendorseException;
+import com.talendorse.server.BLL.*;
 import com.talendorse.server.model.Tables;
+import com.talendorse.server.model.tables.records.TokensRecord;
 import com.talendorse.server.model.tables.records.UsersRecord;
 import com.talendorse.server.types.TalendorseErrorType;
 import com.talendorse.website.util.UtilOkHttp;
@@ -15,28 +14,48 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 @Controller
 public class LoginController {
+
     @GetMapping("/login")
-    public String email_activation(
+    public String main(
             HttpServletResponse response,
-//            @RequestParam("destination") String url,
             @RequestParam("code") String code,
-            @RequestParam("state") String state,
-            Model model) {
+            @RequestParam("state") String state) {
+
         try {
-            getAccesToken(code);
-//            String decodeUrl = java.net.URLDecoder.decode(url, StandardCharsets.UTF_8.name());
-//            response.sendRedirect(decodeUrl);
-        } catch (TalendorseException e) {
+            Cookie loginData = createCookie(code);
+
+            if (loginData != null) {
+                ConnectionBDManager connection = new ConnectionBDManager();
+
+                UsersRecord linkedinUser = createLinkedInUserProfile(loginData.getValue());
+
+                UsersRecord usr = UserManagement.getUserbyIdLinkedIn(connection, linkedinUser.getIdLinkedin());
+
+                if(usr == null)
+                    usr = connection.create.newRecord(Tables.USERS);
+
+
+                UserManagement.copyUserFromLinkedInUSer(linkedinUser, usr);
+                usr.store();
+                connection.closeConnection();
+
+                TokensRecord token = TokenManagement.addToken(usr.getIdUser());
+                loginData.setValue(token.getToken());
+                response.addCookie(loginData);
+            }
+
+            response.sendRedirect("/");
+        } catch (TalendorseException | IOException e) {
             e.printStackTrace();
         }
-        return "error";
+
+        return "error"; //TODO: crear un html generico para errores;
     }
 
     @GetMapping("/linkedInAccesToken")
@@ -47,7 +66,8 @@ public class LoginController {
         return "email/email_activation_es"; //view
     }
 
-    private void getAccesToken(String authCode) throws TalendorseException {
+    private Cookie createCookie (String authCode) throws TalendorseException {
+        Cookie loginData = null;
         try {
             String getUrl = "https://www.linkedin.com/oauth/v2/accessToken";
 
@@ -69,27 +89,22 @@ public class LoginController {
             Response response = client.newCall(request).execute();
             if (response.code() == 200 && response.body() != null) {
                 String respuesta = response.body().string();
-
                 JSONObject json_data = new JSONObject(respuesta);
-                String accesToken = json_data.getString("access_token");
 
-
-                ConnectionBDManager connection = new ConnectionBDManager();
-                UsersRecord usr = connection.create.newRecord(Tables.USERS);
-
-                getUserProfile(accesToken, usr);
-                usr.setEmail(getEmail(accesToken));
-                usr.store();
-
+                loginData = new Cookie("token",json_data.getString("access_token"));
+                loginData.setMaxAge(json_data.getInt("expires_in"));
             }
         }
         catch (Exception ex) {
             throw new TalendorseException(TalendorseErrorType.LINKEDIM_EXECPTION);
         }
+        return loginData;
     }
 
-    private void getUserProfile(String accesToken, UsersRecord user) {
+    private UsersRecord createLinkedInUserProfile(String accesToken) {
         String getUrl = "https://api.linkedin.com/v2/me?projection=(id,email-address,localizedLastName,localizedFirstName,firstName,profilePicture(displayImage~:playableStreams))";
+
+        UsersRecord user = null;
 
         try {
             OkHttpClient client = UtilOkHttp.getClientHTTP();
@@ -112,25 +127,41 @@ public class LoginController {
                 String name = json_data.getString("localizedFirstName");
                 String surname = json_data.getString("localizedLastName");
 
-                String thumbPictureUrl = json_data.getJSONObject("profilePicture").getJSONObject("displayImage~").getJSONArray("elements")
-                        .getJSONObject(0).getJSONArray("identifiers").getJSONObject(0).getString("identifier");
+                //TODO: crear una imagen por defecto para los usuarios que no tienen una imagen.
+                String thumbPictureUrl = null;
+                try {
+                    thumbPictureUrl = json_data.getJSONObject("profilePicture").getJSONObject("displayImage~").getJSONArray("elements")
+                            .getJSONObject(0).getJSONArray("identifiers").getJSONObject(0).getString("identifier");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                String profilePictureUrl = json_data.getJSONObject("profilePicture").getJSONObject("displayImage~").getJSONArray("elements")
-                        .getJSONObject(2).getJSONArray("identifiers").getJSONObject(0).getString("identifier");
+                String profilePictureUrl = null;
+                try {
+                    profilePictureUrl = json_data.getJSONObject("profilePicture").getJSONObject("displayImage~").getJSONArray("elements")
+                            .getJSONObject(2).getJSONArray("identifiers").getJSONObject(0).getString("identifier");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
+                user = new UsersRecord();
+                user.setTokenLinkedin(accesToken);
                 user.setIdLinkedin(idLinkedIn);
                 user.setName(name);
                 user.setSurrname(surname);
+                user.setLanguage(language);
                 user.setPictureUrl(profilePictureUrl);
                 user.setThumbUrl(thumbPictureUrl);
-                user.setLanguage(language);
+
+                user.setEmail(getEmailFromLinkedIn(accesToken));
             }
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+        return user;
     }
 
-    private String getEmail(String accesToken) {
+    private String getEmailFromLinkedIn(String accesToken) {
         String getUrl = "https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))";
 
         try {

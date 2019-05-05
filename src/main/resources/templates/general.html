@@ -41,8 +41,9 @@
                     </div><!-- Logo -->
                     <div class="btn-extars">
                         <ul class="account-btns">
-                            <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-                            <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+<!--                            <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>-->
+                            <li th:if="${logged == false}"><a href="#" id="login"><i class="la la-external-link-square"></i> Login</a></li>
+                            <li th:if="${logged == true}"><a href="#" id="logout"><i class="la la-external-link-square"></i> Logout</a></li>
                         </ul>
                     </div><!-- Btn Extras -->
                 </div>
@@ -51,66 +52,10 @@
 
 
         <!-- LOGIN POPUP -->
-        <div class="account-popup-area signin-popup-box" th:fragment="login_popup">>
+        <div class="account-popup-area signin-popup-box" th:fragment="login_popup">
             <div class="account-popup">
                 <span class="close-popup"><i class="la la-close"></i></span>
-                <h3>User Login</h3>
-                <span>Click To Login With Demo User</span>
-                <form action="/ws/login">
-                    <div class="cfield">
-                        <input type="text" placeholder="Username" />
-                        <i class="la la-user"></i>
-                    </div>
-                    <div class="cfield">
-                        <input type="password" placeholder="********" />
-                        <i class="la la-key"></i>
-                    </div>
-                    <p class="remember-label">
-                        <input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>
-                    </p>
-                    <a href="#" title="">Forgot Password?</a>
-                    <button type="submit">Login</button>
-                </form>
-<!--                <div class="extra-login">-->
-<!--                    <span>Or</span>-->
-<!--                    <div class="login-social">-->
-<!--                        <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>-->
-<!--                        <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
-        </div>
-
-        <!-- SIGNUP POPUP -->
-        <div class="account-popup-area signup-popup-box" th:fragment="signup_popup">>
-            <div class="account-popup">
-                <span class="close-popup"><i class="la la-close"></i></span>
-                <h3>Sign Up</h3>
-                <form>
-                    <div class="cfield">
-                        <input id="name" type="text" placeholder="name" />
-                        <i class="la la-user"></i>
-                    </div>
-                    <div class="cfield">
-                        <input id="surname" type="text" placeholder="Surname" />
-                        <i class="la la-user"></i>
-                    </div>
-                    <div class="cfield">
-                        <input id="password" type="password" placeholder="********" />
-                        <i class="la la-key"></i>
-                    </div>
-                    <div class="cfield">
-                        <input id="email" type="text" placeholder="Email" />
-                        <i class="la la-envelope-o"></i>
-                    </div>
-                    <div class="dropdown-field">
-                        <select id="gender" data-placeholder="Please Select Specialism" class="chosen">
-                            <option>Female</option>
-                            <option>Male</option>
-                        </select>
-                    </div>
-                    <button type="button" onclick="user_registration_temp()" >Signup</button>
-                </form>
+                <iframe src="" id="login-iframe"></iframe>
             </div>
         </div>
 
@@ -199,6 +144,7 @@
             <script src="/js/counter.js" type="text/javascript"></script>
             <script src="/js/mouse.js" type="text/javascript"></script>
             <script src="/js/script.js" type="text/javascript"></script>
-        </section>/
+            <script src="/js/login.js" type="text/javascript"></script>
+        </section>
     </body>
 </html>
