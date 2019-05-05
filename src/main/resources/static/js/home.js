@@ -39,7 +39,10 @@ function user_registration_temp() {
 	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
 		alert("Ningún campo puede estar vacio");
 	else {
-		var urlPost = "http://18.191.247.235:8080/ws/register_temp",
+		var url = "http://localhost:8090/ws/register_temp";
+		// var url = "http://18.191.247.235:8080/ws/register_temp";
+
+		var urlPost = url,
 		str = {"name":name,
 			"surname":surname,
 			"password":password,
@@ -68,10 +71,18 @@ function user_registration_temp() {
 
 function linkedin() {
 	const clientID = "77sx2eal8s9cco";
-	const urlRedirect = "http://localhost:8080/login";
+	const urlRedirect = "http://localhost:8080/login";//?destination="+encodeURI(window.location.href);
+	const state = "9876544561238qwerty";
+	const scope= "r_liteprofile%20r_emailaddress";
+	// const scope= "r_emailaddress";
 
-	window.location = "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id="
-		+ clientID + "&redirect_uri=" + urlRedirect + "&state=987654321&scope=r_basicprofile";
+	const url = "https://www.linkedin.com/oauth/v2/authorization?response_type=code"
+		+ "&client_id=" + clientID
+		+ "&redirect_uri=" + urlRedirect
+		+ "&state=" + state
+		+ "&scope=" + scope;
+
+	window.location = url;
 }
 
 function search(){
