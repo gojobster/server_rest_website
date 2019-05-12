@@ -1,12 +1,8 @@
 package com.talendorse.website.controller;
 
-import com.talendorse.server.BLL.RecomendationsManagement;
-import com.talendorse.server.BLL.TalendorseException;
-import com.talendorse.server.model.tables.records.UsersRecord;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class EmailController {
@@ -27,8 +23,8 @@ public class EmailController {
     @GetMapping("/email/recommendation_en")
     public String account_recomandation_en(Model model) {
 //        try {
-//            UsersRecord endorser = RecomendationsManagement.getEndorser(referral_code);
-//            UsersRecord candidate = RecomendationsManagement.getCandidate(referral_code);
+//            UsersRecord endorser = EndorsementManagement.getEndorser(referral_code);
+//            UsersRecord candidate = EndorsementManagement.getCandidate(referral_code);
 //
 //            model.addAttribute("endorser", endorser);
 //            model.addAttribute("candidate", candidate);
