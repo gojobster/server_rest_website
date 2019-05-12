@@ -80,8 +80,11 @@
 							 			</div><!-- Job Head -->
 				 					</div>
 				 					<div class="col-lg-4">
-				 						<a th:if="${logged == true}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-				 					</div>
+										<a th:if="${logged == true && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>
+										<a th:if="${logged == true && codeRef != null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+										<a th:if="${logged == false && codeRef == null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to endorse</a>
+										<a th:if="${logged == false && codeRef != null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to apply</a>
+									</div>
 				 				</div>
 				 			</div>
 				 			<div class="job-wide-devider">
