@@ -1,5 +1,6 @@
 package com.talendorse.website.controller;
 
+import com.talendorse.server.BLL.CookiesManagement;
 import com.talendorse.server.BLL.OffersManagement;
 import com.talendorse.server.BLL.TalendorseException;
 import com.talendorse.server.BLL.UserManagement;
@@ -11,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,18 +28,21 @@ import javax.ws.rs.core.MediaType;
 @Controller
 public class MyProfileController {
     @GetMapping("/myProfile/{id}")
-    public String myProfile(@Context HttpHeaders httpheaders,Model model){
-
+    public String myProfile(@PathVariable int id, @Context HttpHeaders httpheaders, HttpServletRequest request, HttpServletResponse response, Model model){
         String token = null;
-
-        try {
-            token = httpheaders.getHeaderString("Authorization");
-            if (token.isEmpty())
-                throw new TalendorseException(TalendorseErrorType.OFFER_NOT_EXISTS);
-        } catch (TalendorseException e) {
+        int userId = -1;
+        try{
+            userId = CookiesManagement.getIdFromCookie(request);
+            token = CookiesManagement.getTokenFromCookie(request);
+            if(token == null || (userId != id)){
+                CookiesManagement.deleteTokenCookie(response);
+            }
+        } catch (TalendorseException | IOException e) {
             e.printStackTrace();
         }
 
+        model.addAttribute("userId", userId);
+        model.addAttribute("token", token);
         model.addAttribute("listMyOffers", getUserOffers(token));
         model.addAttribute("listMyEndorsements", getUserEndorsements(token));
         model.addAttribute("myProfile",UserInformation(token));
@@ -47,7 +54,9 @@ public class MyProfileController {
         try {
             listOffers = OffersManagement.getUserOffers(token);
         }
-        catch (Exception ex) {}
+        catch (Exception ex) {
+            return listOffers;
+        }
         return listOffers;
     }
 
@@ -56,17 +65,19 @@ public class MyProfileController {
         try {
             listOffers = OffersManagement.getUserOffers(token);
         }
-        catch (Exception ex) {}
+        catch (Exception ex) {
+            return listOffers;
+        }
         return listOffers;
     }
 
     private RespuestaWSUser UserInformation(String token) {
         RespuestaWSUser userProfile = null;
-
         try {
             userProfile = UserManagement.UserInformation(token);
         }
         catch (Exception ex) {
+            return userProfile;
         }
         return userProfile;
     }

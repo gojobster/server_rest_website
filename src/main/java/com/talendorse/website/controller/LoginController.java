@@ -40,7 +40,6 @@ public class LoginController {
                 if(usr == null)
                     usr = connection.create.newRecord(Tables.USERS);
 
-
                 UserManagement.copyUserFromLinkedInUSer(linkedinUser, usr);
                 usr.store();
                 connection.closeConnection();
