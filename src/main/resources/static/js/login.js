@@ -10,6 +10,7 @@ $(document).ready(function(){
 
 function loginLinkedin() {
 	const clientID = "77sx2eal8s9cco";
+	// const urlRedirect = local_url +"login";
 	const urlRedirect = "http://localhost:8080/login";
 	const state = "9876544561238qwerty";
 	const scope= "r_liteprofile%20r_emailaddress";

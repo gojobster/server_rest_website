@@ -34,7 +34,7 @@
         </div>
 
         <!-- HEADER -->
-        <header class="stick-top style3" th:fragment="header">
+        <header class="stick-top style3" th:fragment="header (isLogged, profileUrl)">
             <div class="menu-sec">
                 <div class="container">
                     <div class="logo">
@@ -42,24 +42,24 @@
                     </div><!-- Logo -->
                     <div class="btn-extars">
                         <ul class="account-btns">
-                            <li th:if="${logged == false}"><a href="#" id="login"><i class="la la-external-link-square"></i> Login</a></li>
+                            <li th:if="${isLogged == false}"><a href="#" id="login"><i class="la la-external-link-square"></i> Login</a></li>
                         </ul>
                     </div><!-- Btn Extras -->
-                    <div th:if="${logged == true}" class="my-profiles-sec">
-                        <span><img th:src="${profile.urlAvatar}" alt="" width="50"/></span>
+                    <div th:if="${isLogged == true}" class="my-profiles-sec">
+                        <span><img th:src="${profileUrl}" alt="" width="50"/></span>
                     </div>
                 </div>
             </div>
         </header>
 
         <!-- SIDEBAR -->
-        <section th:fragment="sidebar">
-            <div th:if="${logged == true}" class="profile-sidebar">
+        <section th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail)">
+            <div th:if="${islogged2 == true}" class="profile-sidebar">
                 <span class="close-profile"><i class="la la-close"></i></span>
                 <div class="can-detail-s">
-                    <div class="cst"><img th:src="${profile.urlAvatar}" alt="" /></div>
-                    <h3 th:text="${profile.name} + ' ' + ${profile.surname}"></h3>
-                    <p th:text="${profile.email}"></p>
+                    <div class="cst"><img th:src="${profileUrl2}" alt="" /></div>
+                    <h3 th:text="${userName} + ' ' + ${userSurname}"></h3>
+                    <p th:text="${userEmail}"></p>
                     <!--<p><i class="la la-map-marker"></i>Istanbul / Turkey</p>-->
                 </div>
                 <div class="tree_widget-sec">
@@ -67,7 +67,7 @@
                         <li class="inner-child active">
                             <a href="#" title=""><i class="la la-file-text"></i>My Profile</a>
                             <ul style="display: block;">
-                                <li><a th:href="'/myProfile/'+${profile.userId}+'/'" title="">My Profile</a></li>
+                                <li><a th:href="'/myProfile/'+${usrId}+'/'" title="">My Profile</a></li>
                                 <!--                                <li><a href="#" title="">My Offers</a></li>-->
                                 <!--                                <li><a href="#" title="">My Endrosements</a></li>-->
                             </ul>
@@ -164,6 +164,13 @@
             <script src="/js/mouse.js" type="text/javascript"></script>
             <script src="/js/script.js" type="text/javascript"></script>
             <script src="/js/login.js" type="text/javascript"></script>
+
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                var ws_local_url = /*[[${ws_local_url}]]*/;
+                var local_url = /*[[${local_url}]]*/;
+                /*]]>*/
+            </script>
         </section>
 
 

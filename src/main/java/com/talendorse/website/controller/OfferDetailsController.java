@@ -4,6 +4,7 @@ import com.talendorse.server.BLL.*;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.POCO.Offer;
 import com.talendorse.server.model.tables.records.UsersRecord;
+import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,35 +33,31 @@ public class OfferDetailsController {
     }
 
     private void loadOfferDetails (int id, Model model, HttpServletRequest request) {
-        boolean logged = false;
-        RespuestaWSUser profile = null;
+        boolean userApplied = false;
         UsersRecord endorser = null;
         Offer offer = null;
-        String token = null;
         List<Offer> listOffers = null;
-        Integer userId = null;
         try {
-            userId = CookiesManagement.getIdFromCookie(request);
+            int userId = CookiesManagement.getIdFromCookie(request);
             if(userId != -1)
                 endorser = UserManagement.getUser(userId);
 
             offer = OffersManagement.getOffer(id);
-            token = CookiesManagement.getTokenFromCookie(request);
-            if (token != null)
-                profile = UserManagement.UserInformation(token);
 
-            logged = CookiesManagement.cookieHasToken(request);
+            userApplied = OffersManagement.userApplied(id, userId);
             listOffers =OffersManagement.getAllOffers("","");
 
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
-        model.addAttribute("profile", profile);
+
+        String token = UtilModel.addSession(request, model);
+        UtilModel.addHeaderModel(request, model, token);
+        UtilModel.addInfoUserModel(request,model,token);
+
+        model.addAttribute("userApplied", userApplied);
         model.addAttribute("codeRef", codeRef);
-        model.addAttribute("ws_local_url", Constantes.WS_TALENDORSE_URL);
         model.addAttribute("endorser", endorser);
-        model.addAttribute("userId",userId);
-        model.addAttribute("logged",logged);
         model.addAttribute("offer", offer);
         model.addAttribute("listOffers",listOffers);
     }

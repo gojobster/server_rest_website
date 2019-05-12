@@ -32,10 +32,10 @@
 <div class="theme-layout" id="scrollup">
 
 	<!-- RESPONSIVE HEADER -->
-	<div th:replace="general :: responsive_header"></div>
-
+	<div th:replace="general.html :: responsive_header"></div>
+	</div>
 	<!-- HEADER -->
-	<div th:replace="general :: header"></div>
+	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
 
 	<section class="overlape">
 		<div class="block no-padding">
@@ -80,10 +80,11 @@
 							 			</div><!-- Job Head -->
 				 					</div>
 				 					<div class="col-lg-4">
-										<a th:if="${logged == true && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>
-										<a th:if="${logged == true && codeRef != null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-										<a th:if="${logged == false && codeRef == null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to endorse</a>
-										<a th:if="${logged == false && codeRef != null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to apply</a>
+										<a id="applyTo" th:if="${logged == true && userApplied == false && codeRef != null}" class="apply-thisjob"   th:data-iduser="${endorser.getIdUser()}" th:data-code="${codeRef}" th:data-token="${token}" th:onclick="apply('#applyTo')" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>
+										<a th:if="${logged == false && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to endorse</a>
+										<a th:if="${logged == false && userApplied == false && codeRef != null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to apply</a>
+										<a th:if="${userApplied == true}" class="apply-thisjob"  title=""><i class="la la-check-circle"></i>Applied</a>
 									</div>
 				 				</div>
 				 			</div>
@@ -107,12 +108,12 @@
 								 			<span><i class="la la-search-plus"></i><strong th:text="*{offer.displayed}"></strong> Displayed</span>
 								 		</div>
 								 		<div class="recent-jobs">
-							 				<h3>Recent Jobs</h3>
-							 				<div class="job-list-modern">
-												<div th:each="recomend_offer: ${listOffers}" th:object="${recomend_offer}">
-													<div class="job-listing wtabs">
-														<div class="job-title-sec">
-															<div class="c-logo"> <img th:src="*{path_image_company}" alt="" /> </div>
+												<h3>Recent Jobs</h3>
+												<div class="job-list-modern">
+													<div th:each="recomend_offer: ${listOffers}" th:object="${recomend_offer}">
+														<div class="job-listing wtabs">
+															<div class="job-title-sec">
+																<div class="c-logo"> <img th:src="*{path_image_company}" alt="" /> </div>
 																<h3><a href="#" title="">[[*{position}]]</a></h3>
 																<span>[[*{nameCompany}]]</span>
 																<div class="job-lctn"><i class="la la-map-marker"></i>[[*{city} + ', '+ *{city}]]</div>
@@ -125,8 +126,8 @@
 														</div>
 													</div>
 												</div>
-											 </div>
-							 			</div>
+										</div>
+									</div>
 							 		<div class="col-lg-4 column">
 							 			<div class="job-overview">
 								 			<h3>Job Overview</h3>
@@ -140,7 +141,7 @@
 								 		</div><!-- Job Overview -->
 							 		</div>
 							 	</div>
-							 </div>
+							</div>
 					 	</div>
 				 	</div>
 				</div>
@@ -149,20 +150,14 @@
 	</section>
 
 	<!-- FOOTER -->
-	<div th:replace="general :: footer"></div>
+	<div th:replace="general.html :: footer"></div>
 </div>
 
 <!-- SIDEBAR -->
-<div th:replace="general :: sidebar"></div>
-
+<div th:replace="general.html :: sidebar(islogged2=${logged}, usrId=${userId}, profileUrl2=${urlAvatar}, userName=${name}, userSurname=${surname}, userEmail=${email})"></div>
 <!-- SCRIPTS -->
-<div th:replace="general :: scripts"></div>
+<div th:replace="general.html :: scripts"></div>
 
-<script th:inline="javascript">
-	/*<![CDATA[*/
-	var ws_local_url = /*[[${ws_local_url}]]*/;
-	/*]]>*/
-</script>
 <script src="/js/offer.js" type="text/javascript"></script>
 
 </body>

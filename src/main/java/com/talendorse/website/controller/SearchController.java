@@ -1,10 +1,9 @@
 package com.talendorse.website.controller;
 
-import com.talendorse.server.BLL.CookiesManagement;
 import com.talendorse.server.BLL.OffersManagement;
-import com.talendorse.server.BLL.TalendorseException;
 import com.talendorse.server.DTO.RespuestaWSOffer;
 import com.talendorse.server.DTO.RespuestaWSOfferFilters;
+import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +17,10 @@ import java.util.List;
 public class SearchController {
     @GetMapping("/search")
     public String search(@RequestParam("s") String filter_keyword, Model model, HttpServletRequest request) {
-        boolean logged = false;
-        Integer userId = null;
-        try {
-            logged = CookiesManagement.cookieHasToken(request);
-            userId = CookiesManagement.getIdFromCookie(request);
+        String token = UtilModel.addSession(request, model);
+        UtilModel.addHeaderModel(request, model, token);
+        UtilModel.addInfoUserModel(request,model,token);
 
-        } catch (TalendorseException e) {
-            e.printStackTrace();
-        }
-        model.addAttribute("userId",userId);
-        model.addAttribute("logged",logged);
         model.addAttribute("listOffers", getAllOffers(filter_keyword));
         model.addAttribute("listFilters", getAllFilters(filter_keyword));
         model.addAttribute("keyword",filter_keyword);

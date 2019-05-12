@@ -360,7 +360,7 @@
 </div>
 
 <!-- SIDEBAR -->
-<div th:replace="general :: sidebar"></div>
+<div th:replace="general.html :: sidebar(islogged2=${logged}, usrId=${userId}, profileUrl2=${urlAvatar}, userName=${name}, userSurname=${surname}, userEmail=${email})"></div>
 
 <!-- SCRIPTS -->
 <div th:replace="general :: scripts"></div>

@@ -7,6 +7,7 @@ import com.talendorse.server.BLL.UserManagement;
 import com.talendorse.server.DTO.RespuestaWSOffer;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.types.TalendorseErrorType;
+import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +30,10 @@ import javax.ws.rs.core.MediaType;
 public class MyProfileController {
     @GetMapping("/myProfile/{id}")
     public String myProfile(@PathVariable int id, @Context HttpHeaders httpheaders, HttpServletRequest request, HttpServletResponse response, Model model){
-        String token = null;
-        int userId = -1;
+        String token = UtilModel.addSession(request, model);
+
         try{
-            userId = CookiesManagement.getIdFromCookie(request);
+            int userId = CookiesManagement.getIdFromCookie(request);
             token = CookiesManagement.getTokenFromCookie(request);
             if(token == null || (userId != id)){
                 CookiesManagement.deleteTokenCookie(response);
@@ -41,8 +42,9 @@ public class MyProfileController {
             e.printStackTrace();
         }
 
-        model.addAttribute("userId", userId);
-        model.addAttribute("token", token);
+        UtilModel.addHeaderModel(request, model, token);
+        UtilModel.addInfoUserModel(request,model,token);
+
         model.addAttribute("listMyOffers", getUserOffers(token));
         model.addAttribute("listMyEndorsements", getUserEndorsements(token));
         model.addAttribute("myProfile",UserInformation(token));
