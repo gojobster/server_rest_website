@@ -15,8 +15,22 @@ import java.util.List;
 
 @Controller
 public class OfferDetailsController {
+    private String codeRef;
+
     @GetMapping("/offer/{id}")
-    public String home(@PathVariable int id, Model model, HttpServletRequest request) {
+    public String offerDetails(@PathVariable int id, Model model, HttpServletRequest request) {
+        loadOfferDetails(id, model, request);
+        return "offerDetails"; //view
+    }
+
+    @GetMapping("/offer/{id}/{code}")
+    public String offerRecomended(@PathVariable int id, @PathVariable String code, Model model, HttpServletRequest request) {
+        this.codeRef = code;
+        loadOfferDetails(id, model, request);
+        return "offerDetails"; //view
+    }
+
+    private void loadOfferDetails (int id, Model model, HttpServletRequest request) {
         boolean logged = false;
         UsersRecord endorser = null;
         Offer offer = null;
@@ -34,12 +48,12 @@ public class OfferDetailsController {
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
+        model.addAttribute("codeRef", codeRef);
         model.addAttribute("ws_local_url", Constantes.WS_TALENDORSE_URL);
         model.addAttribute("endorser", endorser);
         model.addAttribute("userId",userId);
         model.addAttribute("logged",logged);
         model.addAttribute("offer", offer);
         model.addAttribute("listOffers",listOffers);
-        return "offerDetails"; //view
     }
 }
