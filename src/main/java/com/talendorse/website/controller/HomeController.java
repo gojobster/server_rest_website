@@ -15,21 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
     @GetMapping("/")
     public String main(Model model, HttpServletRequest request) {
-        RespuestaWSUser userProfile = null;
+        RespuestaWSUser profile = null;
         boolean logged = false;
         String token = null;
         Integer userId = null;
         try {
             logged = CookiesManagement.cookieHasToken(request);
             token = CookiesManagement.getTokenFromCookie(request);
-             userId = CookiesManagement.getIdFromCookie(request);
+            userId = CookiesManagement.getIdFromCookie(request);
             if (token != null)
-                userProfile = UserManagement.UserInformation(token);
+                profile = UserManagement.UserInformation(token);
 
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
-        model.addAttribute("profile",userProfile);
+        model.addAttribute("profile",profile);
         model.addAttribute("token",token);
         model.addAttribute("userId",userId);
         model.addAttribute("logged",logged);

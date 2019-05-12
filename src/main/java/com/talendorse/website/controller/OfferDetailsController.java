@@ -1,6 +1,7 @@
 package com.talendorse.website.controller;
 
 import com.talendorse.server.BLL.*;
+import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.POCO.Offer;
 import com.talendorse.server.model.tables.records.UsersRecord;
 import org.springframework.stereotype.Controller;
@@ -32,8 +33,10 @@ public class OfferDetailsController {
 
     private void loadOfferDetails (int id, Model model, HttpServletRequest request) {
         boolean logged = false;
+        RespuestaWSUser profile = null;
         UsersRecord endorser = null;
         Offer offer = null;
+        String token = null;
         List<Offer> listOffers = null;
         Integer userId = null;
         try {
@@ -42,12 +45,17 @@ public class OfferDetailsController {
                 endorser = UserManagement.getUser(userId);
 
             offer = OffersManagement.getOffer(id);
+            token = CookiesManagement.getTokenFromCookie(request);
+            if (token != null)
+                profile = UserManagement.UserInformation(token);
+
             logged = CookiesManagement.cookieHasToken(request);
             listOffers =OffersManagement.getAllOffers("","");
 
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
+        model.addAttribute("profile", profile);
         model.addAttribute("codeRef", codeRef);
         model.addAttribute("ws_local_url", Constantes.WS_TALENDORSE_URL);
         model.addAttribute("endorser", endorser);
