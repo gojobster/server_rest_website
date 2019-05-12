@@ -1,7 +1,5 @@
 package com.talendorse.website.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.talendorse.server.BLL.Constantes;
 import com.talendorse.server.BLL.CookiesManagement;
 import com.talendorse.server.BLL.OffersManagement;
 import com.talendorse.server.BLL.TalendorseException;

@@ -18,7 +18,9 @@
 	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	
+
+
+
 </head>
 <body>
 
@@ -78,7 +80,7 @@
 							 			</div><!-- Job Head -->
 				 					</div>
 				 					<div class="col-lg-4">
-				 						<a class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+				 						<a th:if="${logged == true}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Apply for job</a>
 				 					</div>
 				 				</div>
 				 			</div>
@@ -149,11 +151,15 @@
 
 <!-- LOGIN POPUP -->
 <div th:replace="general :: login_popup"></div>
-<!-- SIGNUP POPUP -->
-<div th:replace="general :: signup_popup"></div>
 
 <!-- SCRIPTS -->
 <div th:replace="general :: scripts"></div>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var ws_local_url = /*[[${ws_local_url}]]*/;
+	/*]]>*/
+</script>
+<script src="/js/offer.js" type="text/javascript"></script>
 
 </body>
 </html>
