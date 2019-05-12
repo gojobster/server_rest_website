@@ -20,7 +20,15 @@ import java.io.IOException;
 
 @Controller
 public class LoginController {
-
+    @GetMapping("/logout")
+    public String main(HttpServletResponse response){
+        try {
+            CookiesManagement.deleteTokenCookie(response);
+        } catch (TalendorseException | IOException e) {
+            e.printStackTrace();
+        }
+        return "index";
+    }
     @GetMapping("/login")
     public String main(
             HttpServletResponse response,
@@ -147,7 +155,7 @@ public class LoginController {
                 user.setTokenLinkedin(accesToken);
                 user.setIdLinkedin(idLinkedIn);
                 user.setName(name);
-                user.setSurrname(surname);
+                user.setSurname(surname);
                 user.setLanguage(language);
                 user.setPictureUrl(profilePictureUrl);
                 user.setThumbUrl(thumbPictureUrl);

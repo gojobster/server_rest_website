@@ -3,6 +3,8 @@ package com.talendorse.website.controller;
 import com.talendorse.server.BLL.Constantes;
 import com.talendorse.server.BLL.CookiesManagement;
 import com.talendorse.server.BLL.TalendorseException;
+import com.talendorse.server.BLL.UserManagement;
+import com.talendorse.server.DTO.RespuestaWSUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
     @GetMapping("/")
     public String main(Model model, HttpServletRequest request) {
+        RespuestaWSUser userProfile = null;
         boolean logged = false;
         String token = null;
         Integer userId = null;
         try {
             logged = CookiesManagement.cookieHasToken(request);
             token = CookiesManagement.getTokenFromCookie(request);
-            userId = CookiesManagement.getIdFromCookie(request);
+             userId = CookiesManagement.getIdFromCookie(request);
+            if (token != null)
+                userProfile = UserManagement.UserInformation(token);
 
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
+        model.addAttribute("profile",userProfile);
         model.addAttribute("token",token);
         model.addAttribute("userId",userId);
         model.addAttribute("logged",logged);
