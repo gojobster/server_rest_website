@@ -147,7 +147,7 @@ public class LoginController {
                 user.setTokenLinkedin(accesToken);
                 user.setIdLinkedin(idLinkedIn);
                 user.setName(name);
-                user.setSurrname(surname);
+                user.setSurname(surname);
                 user.setLanguage(language);
                 user.setPictureUrl(profilePictureUrl);
                 user.setThumbUrl(thumbPictureUrl);
