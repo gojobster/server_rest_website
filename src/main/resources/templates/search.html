@@ -172,8 +172,8 @@
             -moz-border-radius: 20px !important;
             -ms-border-radius: 20px !important;
             -o-border-radius: 20px !important;
-            border-radius: 20px !important
-            margin-top: 0px;
+            border-radius: 20px !important;
+            margin-top: 0;
         }
         .job-is.ft{
             width: 100%;
@@ -195,44 +195,13 @@
 
 <div class="theme-layout" id="scrollup">
 
-	<div class="responsive-header three">
-		<div class="responsive-menubar">
-			<div class="res-logo"><a href="/index.html" title=""><img src="images/jobster2.png" alt="" /></a></div>
-			<div class="menu-resaction">
-				<div class="res-openmenu">
-					<img src="/images/icon5.png" alt="" /> Menu
-				</div>
-				<div class="res-closemenu">
-					<img src="/images/icon6.png" alt="" /> Close
-				</div>
-			</div>
-		</div>
-		<div class="responsive-opensec">
-			<div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
-			</div><!-- Btn Extras -->
-		</div>
-	</div>
 
-	<header class="stick-top style3">
-		<div class="menu-sec">
-			<div class="container">
-				<div class="logo">
-					<a href="/jobster" title=""><img src="/images/jobster2.png" alt="" /></a>
-				</div><!-- Logo -->
-				<div class="btn-extars">
-					<ul class="account-btns">
-						<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-						<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-					</ul>
-				</div><!-- Btn Extras -->
-			</div>
-		</div>
-	</header>
+	<!-- RESPONSIVE HEADER -->
+	<div th:replace="general :: responsive_header"></div>
+
+	<!-- HEADER -->
+	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
+
 
 	<section class="overlape">
 		<div class="block no-padding">
@@ -339,9 +308,8 @@
                                         <div class="job-right">
                                             <div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
                                             <div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
-                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]]</div>
-                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]]</div>
-
+                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
+                                            <div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
                                         </div>
                                     </a>
                                 </div>

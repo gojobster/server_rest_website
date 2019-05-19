@@ -21,7 +21,6 @@
                 <div class="btn-extars">
                     <a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
                     <ul class="account-btns">
-                        <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
                         <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
                         <i class="la la-bars"></i>
                     </ul>
@@ -64,13 +63,8 @@
                 </div>
                 <div class="tree_widget-sec">
                     <ul>
-                        <li class="inner-child active">
-                            <a href="#" title=""><i class="la la-file-text"></i>My Profile</a>
-                            <ul style="display: block;">
-                                <li><a th:href="'/myProfile/'+${usrId}+'/'" title="">My Profile</a></li>
-                                <!--                                <li><a href="#" title="">My Offers</a></li>-->
-                                <!--                                <li><a href="#" title="">My Endrosements</a></li>-->
-                            </ul>
+                        <li id="myProfile">
+                            <a th:href="'/myProfile/'+${usrId}+'/'" title=""><i class="la la-file-text"></i>My Profile</a>
                         </li>
                         <li><a href="/logout" title=""><i class="la la-unlink"></i>Logout</a></li>
                     </ul>

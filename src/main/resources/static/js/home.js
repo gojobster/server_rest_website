@@ -30,46 +30,6 @@ function listJobs(data){
 }
 
 
-$(document).ready(function(){
-	getTopJobOffers("","")
-});
-
-// function user_registration_temp() {
-// 	var name = document.getElementById("name").value;
-// 	var surname = document.getElementById("surname").value;
-// 	var password = document.getElementById("password").value;
-// 	var gender = document.getElementById("gender").value;
-// 	var email = document.getElementById("email").value;
-//
-// 	if (name == "" || surname == "" || password == "" || gender == "" || email == "")
-// 		alert("Ningún campo puede estar vacio");
-// 	else {
-// 		var url = "http://localhost:8090/ws/register_temp";
-// 		// var url = "http://18.191.247.235:8080/ws/register_temp";
-//
-// 		var urlPost = url,
-// 		str = {"name":name,
-// 			"surname":surname,
-// 			"password":password,
-// 			"gender":gender,
-// 			"email":email};
-//
-// 		var dataPost =$.param(str);
-// 		$.ajax({
-// 				type: "POST",
-// 				url: urlPost,
-// 				data: dataPost,
-// 				contentType: "application/x-www-form-urlencoded",
-// 				dataType: "json",
-// 				success: function (data) {
-// 					if(data.message == "OK")
-// 						location.reload();
-// 					else
-// 						alert("Error al crear usuario: " + data.error);
-// 				},
-// 				failure: function (data) {
-// 					alert("Error al crear el usuario");
-// 				}
-// 		});
-// 	}
-// }
+// $(document).ready(function(){
+// 	getTopJobOffers("","")
+// });

@@ -22,7 +22,120 @@
 	<!-- lINKEDIN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+<style>
+	.job-listing{
+		width: 100%;
+		float: left;
+		clear: both;
+		position: relative;
+		padding: 10px!important;
+		margin: 5px!important;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
 
+	}
+	.job-listing a{
+		width: 100%;
+		color: #1d2124;
+	}
+	.job-listing .job-left{
+		position: relative;
+		width: 100px;
+		float: left;
+		padding: 10px;
+	}
+	.job-listing .job-center{
+		position: relative;
+		width: calc(80% - 100px);
+		float: left;
+		padding: 10px;
+	}
+	.job-listing .job-right{
+		position: relative;
+		width: 20%;
+		float: left;
+		padding: 10px;
+	}
+	.job-listing .job-bottom{
+		position: relative;
+		width: 100%;
+		float: left;
+		padding: 10px;
+		clear: both;
+	}
+	.job-data{
+		position: relative;
+		width: auto;
+		float: left;
+		display:block;
+		line-height: 32px;
+		margin-right: 32px;
+	}
+	.job-data i{
+		top: 5px;
+		position: relative;
+		margin-right: 10px;
+	}
+	.job-logo{
+		position: relative;
+		float: left;
+		width: 100%;
+		overflow: hidden;
+		-webkit-border-radius: 20px !important;
+		-moz-border-radius: 20px !important;
+		-ms-border-radius: 20px !important;
+		-o-border-radius: 20px !important;
+		border-radius: 20px !important;
+	}
+	.job-logo img {
+		width: 100% !important;
+	}
+	.job-position, .job-company, .job-summary{
+		position: relative;
+		float: left;
+		width: calc(100% - 120px);
+	}
+	.job-position{
+		font-size: 1.5em;
+	}
+	.job-company{
+		font-size: 1.1em;
+		font-weight: 300;
+	}
+	.job-summary{
+		font-style: italic;
+		font-size: 1em;
+		font-weight: 300;
+	}
+	.job-listing.rounded:hover {
+		background: #ffffff;
+		-webkit-border-radius: 20px !important;
+		-moz-border-radius: 20px !important;
+		-ms-border-radius: 20px !important;
+		-o-border-radius: 20px !important;
+		border-radius: 20px !important
+		margin-top: 0;
+	}
+	.job-reward{
+		width: auto;
+		float: right;
+		position: relative;
+		clear: both;
+		font-family: 'Raleway', sans-serif !important;
+		text-align: right;
+	}
+	.job-reward p.reward{
+		color: black;
+		font-size: 2em;
+		letter-spacing: 2px;
+		float: right;
+		text-align: right;
+		margin-bottom: 0;
+	}
+
+
+</style>
 </head>
 <body>
 
@@ -89,6 +202,30 @@
 							<h2>Featured Jobs</h2>
 						</div><!-- Heading -->
 						<div class="job-listings-sec">
+							<div th:each="offer: ${listOffers}" th:object="${offer}" class="job-listing rounded">
+								<a th:href="'offer/' + *{id_offer}">
+									<div class="job-left">
+										<div class="job-logo">
+											<img th:src="*{path_image_company}" alt='' />
+										</div>
+									</div>
+									<div class="job-center">
+										<h2  class="job-position" th:text="*{position}"></h2>
+										<h3  class="job-company" th:text="*{nameCompany}"></h3>
+										<div class="job-summary" th:text="*{summary}"></div>
+
+									</div>
+									<div class="job-right">
+										<div class='job-reward'><p th:text="*{reward}+' €'" class="reward"></p><p>Recompensa</p></div>
+									</div>
+									<div class="job-bottom">
+										<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
+										<div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+										<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
+										<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -107,6 +244,6 @@
 <div th:replace="general :: scripts"></div>
 <!--<script src="/js/jquery.scrollbar.min.js" type="text/javascript"></script>-->
 <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
-<script src="/js/home.js" type="text/javascript"></script>
+<!--<script src="/js/home.js" type="text/javascript"></script>-->
 </body>
 </html>
