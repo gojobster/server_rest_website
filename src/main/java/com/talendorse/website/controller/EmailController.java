@@ -15,7 +15,9 @@ public class EmailController {
     public String account_activated(Model model) {
         return "email/account_activated"; //view
 
-    }@GetMapping("/email/recommendation_es")
+    }
+
+    @GetMapping("/email/recommendation_es")
     public String email_recomandation(Model model) {
         return "email/email_activation_es"; //view
     }
@@ -34,5 +36,10 @@ public class EmailController {
 //        }
 
         return "email/email_recomendation_en"; //view
+    }
+
+    @GetMapping("/email/new_user_es")
+    public String email_new_user(Model model) {
+        return "email/new_user_es"; //view
     }
 }

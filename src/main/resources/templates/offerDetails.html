@@ -19,8 +19,6 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-
-
 </head>
 <body>
 
@@ -81,7 +79,8 @@
 				 					</div>
 				 					<div class="col-lg-4">
 										<a id="applyTo" th:if="${logged == true && userApplied == false && codeRef != null}" class="apply-thisjob"   th:data-iduser="${endorser.getIdUser()}" th:data-code="${codeRef}" th:data-token="${token}" th:onclick="apply('#applyTo')" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>
+<!--										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>-->
+										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  href="/referral" title=""><i class="la la-paper-plane"></i>Endorse</a>
 										<a th:if="${logged == false && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to endorse</a>
 										<a th:if="${logged == false && userApplied == false && codeRef != null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to apply</a>
 										<a th:if="${userApplied == true}" class="apply-thisjob"  title=""><i class="la la-check-circle"></i>Applied</a>

@@ -1,6 +1,5 @@
 function user_registration_temp(id_endorser, id_offer, email_candidate) {
     var url = ws_local_url + "recomend";
-    // var url = "http://18.191.247.235:8080/ws/register_temp";
 
     var urlPost = url,
         str = {"id_endorser":id_endorser,
@@ -34,7 +33,6 @@ function apply (id) {
     token = applyTo.attr("data-token");
 
     var url = ws_local_url + "apply";
-    // var url = "http://18.191.247.235:8080/ws/register_temp";
 
     var urlPost = url,
         str = {"token":token,
