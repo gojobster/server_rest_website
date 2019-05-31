@@ -279,3 +279,17 @@ function GetURLParameter(sParam){
 		}
 	}
 }
+
+function SmoothScrollTo(obj, offset) {
+    if ($.type(obj) === "string") {
+        var step1 = obj.split("?");
+        var id = $.isArray(step1) ? step1[0] : step1;
+    }
+    else {
+        var step1 = obj.href.split("#");
+        var step2 = $.isArray(step1) ? step1[1].split("?") : step1.split("?");
+        var id = $.isArray(step2) ? "#" + step2[0] : "#" + step2;
+    }
+    var _scroll = Math.round($(id).offset().top) + offset;
+    $('html, body').animate({ scrollTop: _scroll }, '800', 'swing');
+}

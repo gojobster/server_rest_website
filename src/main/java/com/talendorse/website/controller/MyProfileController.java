@@ -5,6 +5,8 @@ import com.talendorse.server.BLL.OffersManagement;
 import com.talendorse.server.BLL.TalendorseException;
 import com.talendorse.server.BLL.UserManagement;
 import com.talendorse.server.DTO.RespuestaWSOffer;
+import com.talendorse.server.DTO.RespuestaWSMyOffer;
+import com.talendorse.server.DTO.RespuestaWSMyEndorse;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.types.TalendorseErrorType;
 import com.talendorse.website.util.UtilModel;
@@ -19,17 +21,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
 
 @Controller
 public class MyProfileController {
     @GetMapping("/myProfile/{id}")
-    public String myProfile(@PathVariable int id, @Context HttpHeaders httpheaders, HttpServletRequest request, HttpServletResponse response, Model model){
+    public String main(@PathVariable int id, HttpServletRequest request, HttpServletResponse response, Model model){
         String token = UtilModel.addSession(request, model);
 
         try{
@@ -51,10 +47,10 @@ public class MyProfileController {
         return "myProfile"; //view
     }
 
-    private List<RespuestaWSOffer> getUserOffers(String token) {
-        List<RespuestaWSOffer> listOffers = new ArrayList<>();
+    private List<RespuestaWSMyOffer> getUserOffers(String token) {
+        List<RespuestaWSMyOffer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getUserOffers(token);
+            listOffers = OffersManagement.getUserMyOffers(token);
         }
         catch (Exception ex) {
             return listOffers;
@@ -62,10 +58,10 @@ public class MyProfileController {
         return listOffers;
     }
 
-    private List<RespuestaWSOffer> getUserEndorsements(String token) {
-        List<RespuestaWSOffer> listOffers = new ArrayList<>();
+    private List<RespuestaWSMyEndorse> getUserEndorsements(String token) {
+        List<RespuestaWSMyEndorse> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getUserOffers(token);
+            listOffers = OffersManagement.getUserMyEndorse(token);
         }
         catch (Exception ex) {
             return listOffers;
@@ -78,9 +74,7 @@ public class MyProfileController {
         try {
             userProfile = UserManagement.UserInformation(token);
         }
-        catch (Exception ex) {
-            return userProfile;
-        }
+        catch (Exception e){}
         return userProfile;
     }
 }
