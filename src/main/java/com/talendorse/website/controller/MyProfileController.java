@@ -4,11 +4,9 @@ import com.talendorse.server.BLL.CookiesManagement;
 import com.talendorse.server.BLL.OffersManagement;
 import com.talendorse.server.BLL.TalendorseException;
 import com.talendorse.server.BLL.UserManagement;
-import com.talendorse.server.DTO.RespuestaWSOffer;
 import com.talendorse.server.DTO.RespuestaWSMyOffer;
 import com.talendorse.server.DTO.RespuestaWSMyEndorse;
 import com.talendorse.server.DTO.RespuestaWSUser;
-import com.talendorse.server.types.TalendorseErrorType;
 import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,13 +42,14 @@ public class MyProfileController {
         model.addAttribute("listMyOffers", getUserOffers(token));
         model.addAttribute("listMyEndorsements", getUserEndorsements(token));
         model.addAttribute("myProfile",UserInformation(token));
+        //return "myProfile"; //view
         return "myProfile"; //view
     }
 
     private List<RespuestaWSMyOffer> getUserOffers(String token) {
         List<RespuestaWSMyOffer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getUserMyOffers(token);
+            listOffers = OffersManagement.getMyOffers(token);
         }
         catch (Exception ex) {
             return listOffers;

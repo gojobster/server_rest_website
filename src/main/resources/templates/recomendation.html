@@ -91,7 +91,7 @@
 				 						</div>
 				 					</div>
 				 					<div class="col-lg-12">
-				 						<button type="submit">Send</button>
+				 						<button id="endorse_btn" th:data-iduser="${userId}" th:data-token="${token}" th:data-name="${name}" th:data-email="${email}" th:onclick="endorse('#endorse_btn')">Send</button>
 				 					</div>
 				 				</div>
 				 			</form>
@@ -112,6 +112,8 @@
 
 <!-- SCRIPTS -->
 <div th:replace="general :: scripts"></div>
+
+<script th:inline="javascript" src="js/referral.js" type="text/javascript"></script>
 
 </body>
 </html>

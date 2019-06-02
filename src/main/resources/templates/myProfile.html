@@ -10,6 +10,7 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jobs.css" />
 	<link rel="stylesheet" href="/css/icons.css">
 	<link rel="stylesheet" href="/css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -72,76 +73,109 @@
 						</aside>
 						<div class="col-lg-9 column">
 							<div class="padding-left">
-								<div class="row">
-									<div class="col-md-12">
-										<h3 id="#MisDatos">Mis Datos</h3>
+								<!-- profile -->
+								<div class="profile-title">
+									<h3 id="#MisDatos">Mis Datos</h3>
+									<div class="col-lg-6 upload-img-bar">
+										<span class="round"><img th:src="${myProfile.urlAvatar}" alt="" /></span>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="profile-image"><img th:src="${myProfile.urlAvatar}"  alt="" /></div>
+								<div class="profile-form-edit">
+									<form>
+										<div class="row">
+											<div class="col-lg-6">
+												<span class="pf-title">Name</span>
+												<div class="pf-field">
+													<input type="text" th:value="${myProfile.name}" disabled/>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<span class="pf-title">Surname</span>
+												<div class="pf-field">
+													<input type="text" th:value="${myProfile.surname}" disabled/>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<span class="pf-title">Email</span>
+												<div class="pf-field">
+													<input type="text" th:value="${myProfile.email}" />
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<button type="submit">Actualizar</button><!--TODO: connectar con linkedin para actualizar los datos.-->
+											</div>
+										</div>
+									</form>
+								</div>
+
+								<!-- profile -->
+								<div class="social-edit">
+									<h3 id="ofertas" >Mis Ofertas</h3>
+									<div class="job-listings-sec">
+										<div th:each="offer: ${listMyOffers}" th:object="${offer}" class="job-listing rounded">
+											<a th:href="'offer/' + *{id_offer}">
+												<div class="job-left">
+													<div class="job-logo">
+														<img th:src="*{path_image_company}" alt='' />
+													</div>
+												</div>
+												<div class="job-center">
+													<h2  class="job-position" th:text="*{position}"></h2>
+													<h3  class="job-company" th:text="*{nameCompany}"></h3>
+													<div class="job-summary" th:text="*{summary}"></div>
+
+												</div>
+												<div class="job-right-endorser">
+													<div class="job-endorse">
+														<img th:src="*{path_image_endorser}" alt='' />
+													</div>
+													<h3  class="job-company" th:text="*{endorser}"></h3>
+												</div>
+												<div class="job-bottom">
+													<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
+													<div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+													<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
+													<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
+												</div>
+											</a>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-8">
-									<table class="profile-info">
-										<tr>
-											<td>Nombre</td>
-											<td th:text="${myProfile.name}"></td>
-											<td>Apellidos</td>
-											<td th:text="${myProfile.surname}"></td>
-										</tr>
-										<tr>
-											<td th:if="${myProfile.phone.length()>0}">Teléfono</td>
-											<td th:if="${myProfile.phone.length()>0}"th:text="${myProfile.phone}"></td>
-											<td>Email</td>
-											<td th:text="${myProfile.email}"></td>
-										</tr>
-									</table>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<h3 id="#MisOfertas">Mis Ofertas</h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<form name="MisOfertas">
-											<table id="ofertas">
-												<tr><th>Compañía</th><th>Posición</th><th>Salario</th><th>Fechas</th><th>Endorser</th><th>Estado</th><th></th></tr>
-												<tr th:each="offer: ${listMyOffers}" th:object="${offer}" class="job-listing rounded">
-													<td th:text="*{nameCompany}"></td>
-													<td th:text="*{position}"></td>
-													<td th:text="*{salary_min} + ' - ' + *{salary_max}"></td>
-													<td th:text="*{date_start} + ' - ' + *{date_end}"></td>
-													<td th:text="*{endorser}"></td>
-													<td th:text="*{status}"></td>
-													<td th:id="'offer_'+*{id_offer}"><i class="fas fa-times"></i><i class="fas fa-check"></i></td>
-												</tr>
-											</table>
-										</form>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<h3 id="#MisRecomendaciones">Mis Recomendaciones</h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<form name="MisOfertas">
-											<table id="recomendaciones">
-												<tr><th>Compañía</th><th>Posición</th><th>Recompensa</th><th>Fecha</th><th>Candidato</th><th>Estado</th><th></th></tr>
-												<tr th:each="end: ${listMyEndorsements}" th:object="${end}" class="job-listing rounded">
-													<td th:text="*{nameCompany}"></td>
-													<td th:text="*{position}"></td>
-													<td th:text="*{reward}"></td>
-													<td th:text="*{date_start} + ' - ' + *{date_end}"></td>
-													<td th:text="*{candidate}"></td>
-													<td th:text="*{status}"></td>
-													<td th:id="'endorse_'+*{id_offer}"><i class="fas fa-times"></i></td>
-												</tr>
-											</table>
-										</form>
+								<div class="social-edit">
+									<h3 id="#MisRecomendaciones">Mis Recomendaciones</h3>
+									<div class="job-listings-sec">
+										<div th:each="endorse: ${listMyEndorsements}" th:object="${endorse}" class="job-listing rounded">
+											<a th:href="'offer/' + *{id_offer}">
+												<div class="job-left">
+													<div class="job-logo">
+														<img th:src="*{path_image_company}" alt='' />
+													</div>
+												</div>
+												<div class="job-center">
+													<h2  class="job-position" th:text="*{position}"></h2>
+													<h3  class="job-company" th:text="*{nameCompany}"></h3>
+													<div class="job-summary" th:text="*{summary}"></div>
+
+												</div>
+												<div class="job-right">
+													<div class='job-reward'><p th:text="*{reward}+' €'" class="reward"></p><p>Recompensa</p></div>
+												</div>
+												<div class="job-left" style="float: none!important;">
+													<div class="job-logo">
+														<img th:src="*{path_image_candidate}" alt='' />
+													</div>
+												</div>
+												<div class="job-center">
+													<h3  class="job-company" th:text="*{candidate}"></h3>
+												</div>
+												<div class="job-bottom">
+													<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
+													<div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+													<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
+													<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
+												</div>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
