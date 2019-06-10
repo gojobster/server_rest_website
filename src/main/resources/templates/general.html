@@ -39,13 +39,14 @@
                     <div class="logo">
                         <a href="/" title=""><img src="/images/logo.png" alt="" /></a>
                     </div><!-- Logo -->
-                    <div class="btn-extars">
+                    <div th:if="${isLogged == false}" class="btn-extars">
                         <ul class="account-btns">
-                            <li th:if="${isLogged == false}"><a href="#" id="login"><i class="la la-external-link-square"></i> Login</a></li>
+                            <li ><a href="#" id="login"><i class="la la-external-link-square"></i> Login</a></li>
                         </ul>
                     </div><!-- Btn Extras -->
                     <div th:if="${isLogged == true}" class="my-profiles-sec">
-                        <span><img th:src="${profileUrl}" alt="" width="50"/></span>
+                        <span th:if="${profileUrl != null && profileUrl != ''}"><img th:src="${profileUrl}" alt="" width="50"/></span>
+                        <div th:unless="${profileUrl != null && profileUrl != ''}" class="empty-profile-picture"><i class="la la-user"></i></div>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,8 @@
             <div th:if="${islogged2 == true}" class="profile-sidebar">
                 <span class="close-profile"><i class="la la-close"></i></span>
                 <div class="can-detail-s">
-                    <div class="cst"><img th:src="${profileUrl2}" alt="" /></div>
+                    <div class="cst" th:if="${profileUrl2 != null && profileUrl2 != ''}"><img th:src="${profileUrl2}" alt="" /></div>
+                    <div class="cst" th:unless="${profileUrl2 != null && profileUrl2 != ''}"><i class="la la-user"></i></div>
                     <h3 th:text="${userName} + ' ' + ${userSurname}"></h3>
                     <p th:text="${userEmail}"></p>
                     <!--<p><i class="la la-map-marker"></i>Istanbul / Turkey</p>-->

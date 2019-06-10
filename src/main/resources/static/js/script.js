@@ -1,6 +1,11 @@
 $(document).on('ready',function(){
     "use strict";
 
+    $(".my-profiles-sec, .my-profiles-sec img").unbind();
+    $(".my-profiles-sec, .my-profiles-sec img").click(function(e){
+        e.stopPropagation();
+        $(".profile-sidebar").toggleClass("active");
+    });
 
     /* =============== Ajax Contact Form ===================== */
     $('#contactform').submit(function(){
@@ -290,6 +295,6 @@ function SmoothScrollTo(obj, offset) {
         var step2 = $.isArray(step1) ? step1[1].split("?") : step1.split("?");
         var id = $.isArray(step2) ? "#" + step2[0] : "#" + step2;
     }
-    var _scroll = Math.round($(id).offset().top) + offset;
+    var _scroll = Math.round($(id).offset() .top) + offset;
     $('html, body').animate({ scrollTop: _scroll }, '800', 'swing');
 }
