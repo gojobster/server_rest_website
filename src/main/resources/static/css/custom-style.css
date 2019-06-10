@@ -7,7 +7,7 @@
     width: 127px!important;
     margin: 10px auto;
     line-height: 20px!important;
-    color: #fff!important;
+    border-radius: 35px;
     letter-spacing: 0.6px!important;
 	float: none !important;
 }
@@ -22,4 +22,41 @@
 
 .bp-linkedin a:hover{
 	background-color: #606060!important;
+}
+.social-group {
+    display: table-cell;
+    vertical-align: middle;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+}
+.social-group span {
+    margin: 0 20px;
+}
+[class^='social-icon']{
+    -webkit-transition: color 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+.social-group .social-icon-facebook {
+    color: #aaaaaa;
+    font-size: 2em;
+}
+.social-group .social-icon-facebook:hover{
+    color: #0077b5;
+}
+.social-group .social-icon-twitter {
+    color: #aaaaaa;
+    font-size: 2em;
+}
+.social-group .social-icon-twitter:hover{
+    color: #1da1f2;
+}
+.social-group .social-icon-linkedin {
+    color: #aaaaaa;
+    font-size: 2em;
+}
+.social-group .social-icon-linkedin:hover{
+    color: #1e73be;
 }

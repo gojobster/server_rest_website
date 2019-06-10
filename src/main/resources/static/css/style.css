@@ -853,7 +853,10 @@ label::after {
     margin: 0;
         margin-bottom: 0px;
     margin-bottom: 12px;
-    line-height: 10px;
+    line-height: 1.5em;
+}
+.account-popup-area button{
+    float: none !important;
 }
 .account-popup > span {
     float: left;
@@ -1311,7 +1314,7 @@ label::after {
     font-family: Quicksand;
     font-weight: bold;
     font-size: 30px;
-    color: #202020;
+    color: rgb(69, 69, 69);
     line-height: 23px;
 }
 .heading span {
@@ -1550,7 +1553,7 @@ label::after {
     background: #8b91dd;
 }
 .fill.pt {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
 }
 .fill.fl {
     background: rgb(69, 69, 69);
@@ -1565,8 +1568,8 @@ label::after {
 }
 .job-is.pt,
 .job-list-modern .job-is.pt{
-    color: rgb(162, 224, 232);
-    border-color: rgb(162, 224, 232);
+    color: rgb(249, 139, 111);
+    border-color: rgb(249, 139, 111);
 }
 .job-is.fl,
 .job-list-modern .job-is.fl{
@@ -1958,9 +1961,9 @@ footer {
 }
 .link_widgets1 a::before {
     position: absolute;
-    left: 0;
-    top: 8px;
-    width: 15px;
+    right: 0;
+    top: 20px;
+    width: 0px;
     height: 1px;
     content: "";
     background: #8a99b3;
@@ -1973,12 +1976,12 @@ footer {
 
 }
 .link_widgets1 a:hover {
-    color: rgb(162, 224, 232) !important;
+    color: rgb(249, 139, 111) !important;
     padding-left: 36px !important;
 }
 .link_widgets1 a:hover::before {
-    background: rgb(162, 224, 232);
-    width: 27px;
+    background: rgb(249, 139, 111);
+    width: 62px;
 }
 
 
@@ -2922,7 +2925,7 @@ header.style3 .menu-sec nav {
     float: left;
     width: 100%;
     font-weight: bold;
-    color: rgb(162, 224, 232);
+    color: rgb(69, 69, 69);
     /* letter-spacing: -1px; */
 }
 .find-cand h1 {
@@ -3028,7 +3031,7 @@ header.style3 .menu-sec nav {
     width: 50px;
     height: 50px;
     font-size: 23px;
-    background-color: rgb(162, 224, 232);
+    background-color: rgb(249, 139, 111);
 }
 .mockup-bottom {
     position: absolute;
@@ -3049,7 +3052,7 @@ header.style3 .menu-sec nav {
 
 }
 .layer.color.green::before {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
     opacity: 0.9;
 }
 .job-listing.rounded {
@@ -3080,7 +3083,7 @@ header.style3 .menu-sec nav {
     background-image: url(../images/line4.png);
 }
 .how-to-sec.style2 .how-icon {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
     border: none;
     color: #ffffff;
 }
@@ -3318,7 +3321,7 @@ header.style3 .menu-sec nav {
     background: #647585;
 }
 .pricetable.style2 .pricetable-head h2 {
-    color: rgb(162, 224, 232);
+    color: rgb(249, 139, 111);
 }
 .pricetable.style2 .pricetable-head h2 i {
     color: #A3A3A3;
@@ -3329,7 +3332,7 @@ header.style3 .menu-sec nav {
 }
 
 .pricetable.style2 > a:hover {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
     color: #ffffff;
 }
 
@@ -3338,7 +3341,7 @@ header.style3 .menu-sec nav {
     background: #647585;
 }
 .pricetable.active.style2 > a {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
     color: #FFF;
 }
 .pricetable.style2.active .pricetable-head h2 {
@@ -3353,7 +3356,7 @@ header.style3 .menu-sec nav {
     color: #333333;
 }
 .ft .link_widgets a:hover {
-    color: rgb(162, 224, 232);
+    color: rgb(249, 139, 111);
 }
 .ft .bottom-line {
     background: #ffffff;
@@ -4691,7 +4694,7 @@ aside .widget:first-child {
     border-color: #f831e3 !important;
 }
 .ptchek label::before {
-    border-color: rgb(162, 224, 232) !important;
+    border-color: rgb(249, 139, 111) !important;
 }
 .tpchek label::before {
     border-color: #26ae61 !important;
@@ -6948,7 +6951,7 @@ aside .widget.border:first-child {
     border-bottom: 1px solid #e8ecec;
 }
 .status {
-    color: rgb(162, 224, 232) !important;
+    color: rgb(249, 139, 111) !important;
 }
 .status.active {
     color: #8b91dd !important;
@@ -10716,8 +10719,8 @@ header.style3 .post-job-btn:hover {
     background: rgb(69, 69, 69);
 }
 .download-text ul li a:hover {
-    background: rgb(162, 224, 232);
-    border-color: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
+    border-color: rgb(249, 139, 111);
 }
 .team-detail > a:hover {
     color: #000000;
@@ -11041,8 +11044,8 @@ footer.ft .scrollup:hover{border-color: #647585; color: #647585;}
     bottom: 8px;
 }
 footer.ft .scrollup {
-    border-color: rgb(162, 224, 232);
-    color: rgb(162, 224, 232);
+    border-color: rgb(249, 139, 111);
+    color: rgb(249, 139, 111);
     bottom: 190px;
     z-index: 6;
 }
@@ -11116,13 +11119,13 @@ footer.ft .scrollup {
     color: #647585;
 }
 .p-category.green:hover a i {
-    color: rgb(162, 224, 232);
+    color: rgb(249, 139, 111);
 }
 .browse-all-cat.green a {
-    border-color: rgb(162, 224, 232);
+    border-color: rgb(249, 139, 111);
 }
 .browse-all-cat.green a:hover {
-    background: rgb(162, 224, 232);
+    background: rgb(249, 139, 111);
 }
 .job-field.with-icon.nolbel input {
     margin: 41px 0;
@@ -11317,11 +11320,11 @@ footer.ft .scrollup {
 }
 
 
-.responsive-header.three .res-openmenu{color: rgb(162, 224, 232);}
-.responsive-header.three .res-closemenu{color: rgb(162, 224, 232);}
+.responsive-header.three .res-openmenu{color: rgb(249, 139, 111);}
+.responsive-header.three .res-closemenu{color: rgb(249, 139, 111);}
 
-.responsive-header.four .res-openmenu{color: rgb(162, 224, 232);}
-.responsive-header.four .res-closemenu{color: rgb(162, 224, 232);}
+.responsive-header.four .res-openmenu{color: rgb(249, 139, 111);}
+.responsive-header.four .res-closemenu{color: rgb(249, 139, 111);}
 
 .responsive-menubar {
     float: left;

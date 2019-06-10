@@ -4,19 +4,19 @@ import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class ReferralController {
-    // final static String TAG = ReferralController.class.getName();
-    @GetMapping("/referral/{id}")
-    public String main(@PathVariable int id, HttpServletRequest request, Model model){
-        model.addAttribute("idOffer",id);
+public class PrivacyPolicyController {
+    @GetMapping("/privacy")
+    public String error(Model model, HttpServletRequest request) {
         String token = UtilModel.addSession(request, model);
         UtilModel.addHeaderModel(request, model, token);
+        UtilModel.addInfoUserModel(request,model,token);
 
-        return "recommendation"; //view
+
+
+        return "privacy_policy";
     }
 }

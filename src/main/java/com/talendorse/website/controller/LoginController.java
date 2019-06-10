@@ -1,6 +1,12 @@
 package com.talendorse.website.controller;
 
-import com.talendorse.server.BLL.*;
+import com.talendorse.server.BLL.ConnectionBDManager;
+import com.talendorse.server.BLL.UserManagement;
+import com.talendorse.server.BLL.TokenManagement;
+import com.talendorse.server.BLL.CookiesManagement;
+import com.talendorse.server.BLL.LogManagement;
+import com.talendorse.server.BLL.TalendorseException;
+import com.talendorse.server.BLL.Constantes;
 import com.talendorse.server.model.Tables;
 import com.talendorse.server.model.tables.records.TokensRecord;
 import com.talendorse.server.model.tables.records.UsersRecord;
@@ -167,7 +173,6 @@ public class LoginController {
         Cookie loginData = null;
         try {
             String getUrl = "https://www.linkedin.com/oauth/v2/accessToken";
-
             OkHttpClient client = UtilOkHttp.getClientHTTP();
       RequestBody formBody =
           new FormBody.Builder()

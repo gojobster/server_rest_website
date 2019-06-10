@@ -2,17 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="/images/te_icon.png">
 	<title>Talendorse. The net works.</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<meta name="author" content="CreativeLayers">
+	<meta name="author" content="Talendorse">
 
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
 	<link rel="stylesheet" href="/css/icons.css">
 	<link rel="stylesheet" href="/css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/custom-style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
 	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
 	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
@@ -125,75 +127,8 @@
 		</div>
 	</section>
 
-	<footer class="ft">
-		<div class="block">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 column">
-						<div class="widget">
-							<div class="about_widget">
-								<div class="logo">
-									<a href="#" title=""><img src="/images/logo.png" alt="" /></a>
-								</div>
-								<span>Calle sin numero, 123, Barcelona, España.</span>
-								<span>+34 6XX-XXX-XXX</span>
-								<span>info@jobhunt.com</span>
-								<div class="social">
-									<a href="#" title=""><i class="fa fa-twitter"></i></a>
-									<a href="#" title=""><i class="fa fa-facebook"></i></a>
-									<a href="#" title=""><i class="la la-linkedin"></i></a>
-								</div>
-							</div><!-- About Widget -->
-						</div>
-					</div>
-					<div class="col-lg-5 column">
-						<div class="widget">
-							<h3 class="footer-title">Frequently Asked Questions</h3>
-							<div class="link_widgets1">
-								<div class="row">
-									<div class="col-lg-6">
-										<a href="#" title="">Privacy & Security </a>
-										<a href="#" title="">Terms of Serice</a>
-										<a href="#" title="">Referral Terms </a>
-									</div>
-									<div class="col-lg-6">
-										<a href="#" title="">Support </a>
-										<a href="#" title="">How It Works </a>
-										<a href="#" title="">For Employers </a>
-										<a href="#" title="">For Companies </a>
-										<a href="#" title="">Contact Us</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 column">
-						<div class="widget">
-							<h3 class="footer-title">Find Jobs</h3>
-							<div class="link_widgets1">
-								<div class="row">
-									<div class="col-lg-12">
-										<a href="#" title="">US Jobs</a>
-										<a href="#" title="">Canada Jobs</a>
-										<a href="#" title="">UK Jobs</a>
-										<a href="#" title="">Emplois en Fnce</a>
-										<a href="#" title="">Jobs in Deuts</a>
-										<a href="#" title="">Vacatures China</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="bottom-line">
-			<div class="container">
-				<span>© 2019 Talendorse All rights reserved.</span>
-				<a href="#scrollup" class="scrollup" title=""><i class="la la-arrow-up"></i></a>
-			</div>
-		</div>
-	</footer>
+	<!-- FOOTER -->
+	<div th:replace="general :: footer"></div>
 
 </div>
 
