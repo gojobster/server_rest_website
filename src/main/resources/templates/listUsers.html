@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="/images/te_icon.png">
+	<title>Talendorse. The net works.</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="talent">
+	<meta name="author" content="Talendorse">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jobs.css" />
+	<link rel="stylesheet" href="/css/icons.css">
+	<link rel="stylesheet" href="/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/custom-style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+</head>
+<body>
+
+<div class="page-loading">
+	<img src="/images/loader.gif" alt="" />
+	<span>Skip Loader</span>
+</div>
+
+<div class="theme-layout" id="scrollup">
+
+	<!-- RESPONSIVE HEADER -->
+	<div th:replace="general :: responsive_header"></div>
+
+	<!-- HEADER -->
+	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="find-cand-sec">
+							<div class="iconmove"><img class="animute" src="/images/home_background.jpg" alt="" /></div>
+							<!-- <div class="mockup-top"><img class="animute" src="http://placehold.it/770x600" alt="" /></div> -->
+							<!-- <div class="mockup-bottom"><img src="http://placehold.it/689x528" alt="" /></div> -->
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-8">
+										<div class="find-cand">
+											<h1>Talendorse</h1>
+											<h3>the net works</h3>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="find-cand">
+											<form action="search" type="post" enctype="application/x-www-form-urlencoded">
+												<div class="job-field">
+													<input type="text" placeholder="Search job offer" name="s"/>
+												</div>
+												<button id="send"><i class="la la-search"></i></button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="scroll-to style2">
+							<a href="#featured-jobs" title=""><i class="la la-arrow-down"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="featured-jobs">
+		<div class="block">
+			<div data-velocity="-.1" style="background: url('images/resource/parallax5.jpg') repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="heading">
+							<h2>Lista de Usuarios</h2>
+						</div><!-- Heading -->
+						<div class="job-listings-sec">
+							<div th:each="user: ${listUsers}" th:object="${user}" class="job-listing rounded">
+								<a>
+									<div class="job-left">
+										<div class="job-logo">
+											<img th:src="*{urlAvatar}" alt='' />
+										</div>
+									</div>
+									<div class="job-center">
+										<h2  class="job-position" th:text="*{name}+' '+*{surname}"></h2>
+									</div>
+									<div class="job-bottom">
+										<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i> -- </div>
+										<div class='job-data' th:inline="text"><i class="la la-globe la-2x"></i> [[*{language}]]</div>
+										<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Created: [[*{date_created}]] </div>
+										<div class='job-data' th:inline="text"><i class="la la-calendar la-2x"></i>  Last Connection: [[*{last_connection}]]</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FOOTER -->
+	<div th:replace="general :: footer"></div>
+
+</div>
+<!-- SIDEBAR -->
+<div th:replace="general.html :: sidebar(islogged2=${logged}, usrId=${userId}, profileUrl2=${urlAvatar}, userName=${name}, userSurname=${surname}, userEmail=${email}, isAdmin=${isAdmin})"></div>
+<!-- SCRIPTS -->
+<div th:replace="general :: scripts"></div>
+<!--<script src="/js/jquery.scrollbar.min.js" type="text/javascript"></script>-->
+<script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+<!--<script src="/js/home.js" type="text/javascript"></script>-->
+</body>
+</html>

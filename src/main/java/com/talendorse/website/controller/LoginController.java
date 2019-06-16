@@ -98,7 +98,7 @@ public class LoginController {
             @RequestParam(value = "error", required=false) String error,
             @RequestParam(value = "error_description", required=false) String error_description) {
 
-        if (error.equalsIgnoreCase("user_cancelled_login")) {
+        if (error != null && error.equalsIgnoreCase("user_cancelled_login")) {
             LogManagement.addLog(TAG, "Usuario ha cancelado el login con linkedin");
             try {
                 response.sendRedirect("/"); ///TODO: redirigir donde estaba antes el usuario

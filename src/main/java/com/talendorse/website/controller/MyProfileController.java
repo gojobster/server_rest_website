@@ -28,9 +28,9 @@ public class MyProfileController {
 
         try{
             int userId = CookiesManagement.getIdFromCookie(request);
-            token = CookiesManagement.getTokenFromCookie(request);
             if(token == null || (userId != id)){
-                CookiesManagement.deleteTokenCookie(response);
+                response.sendRedirect("/");
+                return "index";
             }
         } catch (TalendorseException | IOException e) {
             e.printStackTrace();

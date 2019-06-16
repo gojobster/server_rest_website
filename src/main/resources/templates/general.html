@@ -69,7 +69,7 @@
                             <a th:href="'/myProfile/'+${usrId}" title=""><i class="la la-file-text"></i>Mi Perfil</a>
                         </li>
                         <li id="myProfile" th:if="${isAdmin == true}">
-                            <a th:href="'/myProfile/'+${usrId}" title=""><i class="la la-file-text"></i>Lista de usuarios</a>
+                            <a href="/listUsers" title=""><i class="la la-file-text"></i>Lista de usuarios</a>
                         </li>
                         <li><a href="/logout" title=""><i class="la la-unlink"></i>Desconectar</a></li>
                     </ul>
