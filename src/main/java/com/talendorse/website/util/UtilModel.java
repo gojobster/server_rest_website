@@ -6,6 +6,7 @@ import com.talendorse.server.BLL.TalendorseException;
 import com.talendorse.server.BLL.UserManagement;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.model.tables.records.UsersRecord;
+import com.talendorse.server.types.RoleType;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ public class UtilModel {
 
     public static void addInfoUserModel(HttpServletRequest request, Model model, String token){
         int userId = -1;
+        boolean isAdmin = false;
         String name = "";
         String surname = "";
         String email = "";
@@ -44,6 +46,7 @@ public class UtilModel {
                 surname = user.getSurname();
                 email = user.getEmail();
                 pictureUrl = user.getPictureUrl();
+                isAdmin = user.getRole() == RoleType.ADMIN.toInt();
             }
         }
 
@@ -58,6 +61,7 @@ public class UtilModel {
         model.addAttribute("name",name);
         model.addAttribute("surname",surname);
         model.addAttribute("email",email);
+        model.addAttribute("isAdmin",isAdmin);
     }
 
 

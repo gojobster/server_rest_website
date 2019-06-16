@@ -53,7 +53,7 @@
         </header>
 
         <!-- SIDEBAR -->
-        <section th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail)">
+        <section th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail, isAdmin)">
             <div th:if="${islogged2 == true}" class="profile-sidebar">
                 <span class="close-profile"><i class="la la-close"></i></span>
                 <div class="can-detail-s">
@@ -67,6 +67,9 @@
                     <ul>
                         <li id="myProfile">
                             <a th:href="'/myProfile/'+${usrId}" title=""><i class="la la-file-text"></i>Mi Perfil</a>
+                        </li>
+                        <li id="myProfile" th:if="${isAdmin == true}">
+                            <a th:href="'/myProfile/'+${usrId}" title=""><i class="la la-file-text"></i>Lista de usuarios</a>
                         </li>
                         <li><a href="/logout" title=""><i class="la la-unlink"></i>Desconectar</a></li>
                     </ul>

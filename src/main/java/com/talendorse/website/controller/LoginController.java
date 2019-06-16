@@ -90,12 +90,24 @@ public class LoginController {
         return "error"; //TODO: crear un html generico para errores;
     }
 
-
     @GetMapping("/login")
     public String main(
             HttpServletResponse response,
-            @RequestParam("code") String code,
-            @RequestParam("state") String state) {
+            @RequestParam(value = "code", required=false) String code,
+            @RequestParam("state") String state,
+            @RequestParam(value = "error", required=false) String error,
+            @RequestParam(value = "error_description", required=false) String error_description) {
+
+        if (error.equalsIgnoreCase("user_cancelled_login")) {
+            LogManagement.addLog(TAG, "Usuario ha cancelado el login con linkedin");
+            try {
+                response.sendRedirect("/"); ///TODO: redirigir donde estaba antes el usuario
+                return "error";
+            } catch (IOException e) {
+                LogManagement.addLog(TAG, e.getMessage());
+                return "error";
+            }
+        }
 
         try {
             LogManagement.addLog(TAG, "Login: LinkedIn" + code);
@@ -142,7 +154,6 @@ public class LoginController {
             LogManagement.addLog(TAG, "Error:" + e.getMessage());
             e.printStackTrace();
         }
-
         return "error"; //TODO: crear un html generico para errores;
     }
 
