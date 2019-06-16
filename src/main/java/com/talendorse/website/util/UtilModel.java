@@ -94,20 +94,10 @@ public class UtilModel {
     }
 
     public static void track_url(HttpServletResponse response, HttpServletRequest request) {
-
         String url = request.getRequestURL().toString();
         Cookie cookie = new Cookie("last_url", url);
-            if (request.getCookies() != null) {
-            for (Cookie c : request.getCookies()) {
-                if (c.getName().equals("last_url")){
-                    c.setValue(url);
-                    cookie = c;
-                }
-            }
-        }else{
-            cookie.setMaxAge(3600);
-        }
-
+        cookie.setPath("/");
+        cookie.setMaxAge(3600);
         response.addCookie(cookie);
     }
 }
