@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -20,19 +21,20 @@ public class OfferDetailsController {
     private String codeRef;
 
     @GetMapping("/offer/{id}")
-    public String offerDetails(@PathVariable int id, Model model, HttpServletRequest request) {
-        loadOfferDetails(id, model, request);
+    public String offerDetails(@PathVariable int id, Model model, HttpServletRequest request, HttpServletResponse response) {
+        loadOfferDetails(id, model, request, response);
         return "offerDetails"; //view
     }
 
     @GetMapping("/offer/{id}/{code}")
-    public String offerRecomended(@PathVariable int id, @PathVariable String code, Model model, HttpServletRequest request) {
+    public String offerRecomended(@PathVariable int id, @PathVariable String code, Model model, HttpServletRequest request, HttpServletResponse response) {
         this.codeRef = code;
-        loadOfferDetails(id, model, request);
+        loadOfferDetails(id, model, request, response);
         return "offerDetails"; //view
     }
 
-    private void loadOfferDetails (int id, Model model, HttpServletRequest request) {
+    private void loadOfferDetails (int id, Model model, HttpServletRequest request, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
         boolean userApplied = false;
         UsersRecord endorser = null;
         Offer offer = null;

@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class CompanyDetailsController {
     @GetMapping("/company/{id}")
 //    public String home(@RequestParam("id") int id, Model model) {
-    public String home(@PathVariable int id, HttpServletRequest request, Model model) {
+    public String home(@PathVariable int id, HttpServletRequest request, Model model, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
         String token = UtilModel.addSession(request, model);
         UtilModel.addHeaderModel(request, model, token);
         UtilModel.addInfoUserModel(request,model,token);

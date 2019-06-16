@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -93,6 +94,7 @@ public class LoginController {
     @GetMapping("/login")
     public String main(
             HttpServletResponse response,
+            HttpServletRequest request,
             @RequestParam(value = "code", required=false) String code,
             @RequestParam("state") String state,
             @RequestParam(value = "error", required=false) String error,
@@ -110,6 +112,9 @@ public class LoginController {
         }
 
         try {
+            String url = CookiesManagement.getLastUrlFromCookie(request);
+            if (url == null)
+                url = "/";
             LogManagement.addLog(TAG, "Login: LinkedIn" + code);
             Cookie loginData = createCookie(code);
             LogManagement.addLog(TAG, "Cookie creada!" + loginData);
@@ -149,7 +154,7 @@ public class LoginController {
             }
 
             LogManagement.addLog(TAG, "Redirigiendo...");
-            response.sendRedirect("/");
+            response.sendRedirect(url);
         } catch (TalendorseException | IOException e) {
             LogManagement.addLog(TAG, "Error:" + e.getMessage());
             e.printStackTrace();

@@ -9,7 +9,9 @@ import com.talendorse.server.model.tables.records.UsersRecord;
 import com.talendorse.server.types.RoleType;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class UtilModel {
 
@@ -89,5 +91,23 @@ public class UtilModel {
         model.addAttribute("local_url", Constantes.TALENDORSE_URL);
 
         return token;
+    }
+
+    public static void track_url(HttpServletResponse response, HttpServletRequest request) {
+
+        String url = request.getRequestURL().toString();
+        Cookie cookie = new Cookie("last_url", url);
+            if (request.getCookies() != null) {
+            for (Cookie c : request.getCookies()) {
+                if (c.getName().equals("last_url")){
+                    c.setValue(url);
+                    cookie = c;
+                }
+            }
+        }else{
+            cookie.setMaxAge(3600);
+        }
+
+        response.addCookie(cookie);
     }
 }

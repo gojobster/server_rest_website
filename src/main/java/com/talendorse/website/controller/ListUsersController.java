@@ -23,6 +23,7 @@ import static com.talendorse.server.BLL.UserManagement.getAllUsers;
 public class ListUsersController {
     @GetMapping("/listUsers")
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
         String token = UtilModel.addSession(request, model);
         UtilModel.addHeaderModel(request, model, token);
         UtilModel.addInfoUserModel(request,model,token);

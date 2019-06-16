@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MyProfileController {
     @GetMapping("/myProfile/{id}")
     public String main(@PathVariable int id, HttpServletRequest request, HttpServletResponse response, Model model){
+        UtilModel.track_url(response,request);
         String token = UtilModel.addSession(request, model);
 
         try{

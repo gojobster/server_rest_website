@@ -9,13 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class LinkedInController {
     @GetMapping("/login_linkin")
-    public String main(Model model, HttpServletRequest request) {
+    public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
         return "index"; //view
     }
 

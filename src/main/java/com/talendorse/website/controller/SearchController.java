@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SearchController {
+public class SearchController{
+
     @GetMapping("/search")
-    public String search(@RequestParam("s") String filter_keyword, Model model, HttpServletRequest request) {
+    public String main(Model model, HttpServletRequest request, HttpServletResponse response){
+        return main("",model, request, response);
+    }
+    public String main(@RequestParam("s") String filter_keyword, Model model, HttpServletRequest request, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
         String token = UtilModel.addSession(request, model);
         UtilModel.addHeaderModel(request, model, token);
         UtilModel.addInfoUserModel(request,model,token);
