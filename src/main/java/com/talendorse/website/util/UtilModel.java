@@ -76,9 +76,7 @@ public class UtilModel {
             isLogged = CookiesManagement.cookieHasToken(request);
         } catch (TalendorseException ignored) { }
 
-        try {
-            token = CookiesManagement.getTokenFromCookie(request);
-        } catch (TalendorseException ignored) { }
+        token = CookiesManagement.getTokenFromCookie(request);
 
         try {
             userId = CookiesManagement.getIdFromCookie(request);
