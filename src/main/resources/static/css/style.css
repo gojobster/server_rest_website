@@ -12047,3 +12047,25 @@ header.style4 .account-btns > li a,
     }
 
 }
+#login{
+    position: relative;
+    float: left;
+    z-index: 1;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    background-color: rgb(249, 139, 111);
+    line-height: 20px;
+    -webkit-transition: 400ms all ease;
+    -moz-transition: 400ms all ease;
+    transition: 400ms all ease;
+}
+#login:hover{
+    background-color: rgb(69, 69, 69);
+}
