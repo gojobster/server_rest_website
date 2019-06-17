@@ -35,7 +35,7 @@ public class LoginController {
     public String main(HttpServletResponse response){
         try {
             CookiesManagement.deleteTokenCookie(response);
-        } catch (TalendorseException | IOException e) {
+        } catch (TalendorseException e) {
             e.printStackTrace();
         }
         return "index";
