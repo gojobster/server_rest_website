@@ -94,7 +94,7 @@
 							 		<div class="col-lg-8 column">		
 							 			<div class="job-details">
 							 				<h3>Job Description</h3>
-							 				<p th:text="*{offer.summary}"></p>
+							 				<p th:utext="*{offer.summary}"></p>
 							 				<h3>Required Knowledge, Skills, and Abilities</h3>
 							 				<ul>
 							 					<li th:text="*{offer.job_functions}"></li>

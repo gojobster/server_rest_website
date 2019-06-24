@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="/images/te_icon.png">
+	<title>Talendorse. The net works.</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Talendorse">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
+	<link rel="stylesheet" href="/css/icons.css">
+	<link rel="stylesheet" href="/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/custom-style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
+	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+</head>
+<body>
+
+<div class="page-loading">
+	<img src="/images/loader.gif" alt="" />
+	<span>Skip Loader</span>
+</div>
+
+<div class="theme-layout" id="scrollup">
+
+	<!-- RESPONSIVE HEADER -->
+	<div th:replace="general.html :: responsive_header"></div>
+	</div>
+	<!-- HEADER -->
+	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3 th:text="*{offer.position}">"</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block">
+			<div class="container">
+				<div class="row">
+				 	<div class="col-lg-12 column">
+				 		<div class="job-single-sec style3">
+				 			<div class="job-head-wide">
+				 				<div class="row">
+				 					<div class="col-lg-8">
+				 						<div class="job-single-head3">
+							 				<div class="job-thumb">
+												<a th:href="'/company/' + *{offer.idCompany}">
+													<img th:src="*{offer.path_image_company}" alt="" />
+												</a>
+											</div>
+							 				<div class="job-single-info3 row">
+												<div class="col-lg-4" >
+													<span class="pf-title">Estado de la Oferta</span>
+													<div class="dropdown-field">
+														<select id="stateOffer" data-placeholder="Selecciona el estado de la oferta" class="chosen">
+															<option value="0">Inactiva</option>
+															<option value="1">Abierta</option>
+															<option value="2">Cerrada</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-lg-4">
+													<span class="pf-title">Tipo de contrato</span>
+													<div class="dropdown-field">
+														<select id="contractType" data-placeholder="Selecciona el tipo de contrat" class="chosen">
+															<option value="0">Indefinido</option>
+															<option value="1">Temporal</option>
+															<option value="2">Practicas</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-lg-4">
+													<span class="pf-title">Tipo de jornada</span>
+													<div class="dropdown-field">
+														<select id="workingDayType" data-placeholder="Selecciona el tipo de jornada" class="chosen">
+															<option value="0">Completa</option>
+															<option value="1">Parcial</option>
+															<option value="2">Mañana</option>
+															<option value="2">Tarde</option>
+															<option value="2">Por horas</option>
+														</select>
+													</div>
+												</div>
+							 				</div>
+							 			</div><!-- Job Head -->
+				 					</div>
+				 					<div class="col-lg-4">
+										<a id="applyTo" class="apply-thisjob" title="" th:data-idOffer="${offer.idOffer}" th:data-token="${token}" th:onclick="saveOffer('#applyTo')" ><i class="la la-save"></i>Guardar</a>
+									</div>
+				 				</div>
+				 			</div>
+				 			<div class="job-wide-devider">
+							 	<div class="row">
+
+									<div class="col-lg-12 column">
+										<span class="pf-title">Nombre Compañia</span>
+										<div class="pf-field">
+											<input id="position" type="text" th:value="*{offer.position}" />
+										</div>
+									</div>
+
+							 		<div class="col-lg-12 column">
+										<h6>Descripción oferta</h6>
+										<textarea id="area_editor" th:text="*{offer.summary}"  name="editor"></textarea>
+									</div>
+
+									<div class="col-lg-12 column">
+										<span class="pf-title">Funciones</span>
+										<div class="pf-field">
+											<input id="jobFunctions" type="text" th:value="*{offer.job_functions}" />
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<span class="pf-title">País</span>
+										<div class="pf-field">
+											<input id="country" type="text" th:value="*{offer.country}" />
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<span class="pf-title">Ciudad</span>
+										<div class="pf-field">
+											<input id="city" type="text" th:value="*{offer.city}" />
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<span class="pf-title">Años de experiencia</span>
+										<div class="dropdown-field">
+											<select id="experience" data-placeholder="Selecciona los años de experiencia" class="chosen">
+												<option value="0">Sin experiencia</option>
+												<option value="1">1 año</option>
+												<option value="2">2 años</option>
+												<option value="3">3 años</option>
+												<option value="4">4 años</option>
+												<option value="5">5 años</option>
+												<option value="6">+10 años</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<span class="pf-title">Tipo de jornada</span>
+										<div class="dropdown-field">
+											<select id="jornada" data-placeholder="Selecciona el numero de personal al cargo" class="chosen">
+												<option value="0">1 - 5</option>
+												<option value="1">1 - 10</option>
+												<option value="2">10 - 20</option>
+												<option value="3">+20</option>
+												<option value="4">+50</option>
+												<option value="5">+100</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<span class="pf-title">Tipo de prioridad (solo para filtrar)</span>
+										<div class="dropdown-field">
+											<select id="priority" data-placeholder="Selecciona la prioridad" class="chosen">
+												<option value="0">Baja</option>
+												<option value="1">Media</option>
+												<option value="2">Alta</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<span class="pf-title">Salario Minimo (€)</span>
+										<div class="pf-field">
+											<input id="minSalary" type="number" th:value="*{offer.salary_min}" />
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<span class="pf-title">Salario Maximo (€)</span>
+										<div class="pf-field">
+											<input id="maxSalary" type="number"th:value="*{offer.salary_max}" />
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<span class="pf-title">Recompensa (€)</span>
+										<div class="pf-field">
+											<input id="reward" type="number" th:value="*{offer.reward}" />
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<span class="pf-title">Fecha inicio</span>
+										<div class="pf-field">
+											<input id="dateIni" type="text" th:value="*{offer.getDate_ini()}" />
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<span class="pf-title">Fecha fin</span>
+										<div class="pf-field">
+											<input id="dateEnd" type="text" th:value="*{offer.getDate_end()}" />
+										</div>
+									</div>
+							 	</div>
+							</div>
+					 	</div>
+				 	</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FOOTER -->
+	<div th:replace="general.html :: footer"></div>
+</div>
+
+<!-- SIDEBAR -->
+<div th:replace="general.html :: sidebar(islogged2=${logged}, usrId=${userId}, profileUrl2=${urlAvatar}, userName=${name}, userSurname=${surname}, userEmail=${email}, isAdmin=${isAdmin})"></div>
+
+<!-- SCRIPTS -->
+<div th:replace="general.html :: scripts"></div>
+<link rel="stylesheet" href="/css/jodit.css"/>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+<script src="/js/offer.js" type="text/javascript"></script>
+<script src="/js/jodit.js" type="text/javascript"></script>
+
+<script th:inline="javascript">
+	var editor = new Jodit('#area_editor', {
+		textIcons: false,
+		iframe: false,
+		iframeStyle: '*,.jodit_wysiwyg {color:red;}',
+		height: 300,
+		defaultMode: Jodit.MODE_WYSIWYG,
+		observer: {
+			timeout: 100
+		},
+		commandToHotkeys: {
+			'openreplacedialog': 'ctrl+p'
+		}
+	});
+
+	function saveOffer (id) {
+		var token, idOffer, position, summary, jobFunctions, country, city, experience,
+				stateOffer, contractType, workingDayType, priority,
+				maxSalary, minSalary, reward, dateIni, dateEnd;
+
+		var applyTo = $(id);
+		token = applyTo.attr("data-token");
+		idOffer = applyTo.attr("data-idOffer");
+
+		position = $("#position").val();
+		jobFunctions = $("#jobFunctions").val();
+		country = $("#country").val();
+		city = $("#city").val();
+		maxSalary = $("#maxSalary").val();
+		minSalary = $("#minSalary").val();
+		reward = $("#reward").val();
+		stateOffer = $("#stateOffer").val();
+		contractType = $("#contractType").val();
+		workingDayType = $("#workingDayType").val();
+		experience = $("#experience").val();
+		priority = $("#priority").val();
+		summary = $("#area_editor").val();
+		dateIni = $("#dateIni").val();
+		dateEnd = $("#dateEnd").val();
+
+		var url = ws_local_url + "saveOffer";
+
+		if (dateIni == "" || dateIni == "" || position == "")
+			return false;
+
+		var urlPost = url,
+				str = {"idOffer":idOffer,
+					"position":position,
+					"summary": summary,
+					"jobFunctions": jobFunctions,
+					"country": country,
+					"city": city,
+					"experience": experience,
+					"stateOffer": stateOffer,
+					"contractType": contractType,
+					"workingDayType": workingDayType,
+					"priority": priority,
+					"maxSalary": maxSalary,
+					"minSalary": minSalary,
+					"reward": reward,
+					"dateIni": dateIni,
+					"dateEnd": dateEnd};
+
+		var dataPost =$.param(str);
+		$(".page-loading").show();
+		$.ajax({
+			type: "POST",
+			url: urlPost,
+			data: dataPost,
+			headers: { 'Authorization': token },
+			contentType: "application/x-www-form-urlencoded",
+			dataType: "json",
+			success: function (data) {
+				$(".page-loading").hide();
+				if(data == null) {
+					$(".page-loading").hide();
+					$(".account-popup-area").show();
+					var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
+					$(".account-popup-area .account-popup").html(str);
+				}
+
+				else if(data.message == "OK"){
+					$(".page-loading").hide();
+					$(".account-popup-area").show();
+					var str = "<h3>La oferta ha sido guardada</h3><a><button onclick='window.history.back()' id='popupResultSaveOffer'>OK</button></a>";
+					$(".account-popup-area .account-popup").html(str);
+				}
+				else {
+					$(".page-loading").hide();
+					$(".account-popup-area").show();
+					var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
+					$(".account-popup-area .account-popup").html(str);
+				}
+			},
+			failure: function (data) {
+				$(".page-loading").hide();
+				$(".account-popup-area").show();
+				var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
+				$(".account-popup-area .account-popup").html(str);
+			}
+		});
+	}
+
+	$(document).ready(function(){
+		$("#applyTo").click(function(){
+			//saveOffer();
+		});
+	});
+
+	$(document).ajaxComplete(function(){
+		$("#popupResultSaveOffer").click(function() {
+			$(".account-popup-area").hide();
+
+		});
+	});
+	</script>
+
+	<div class="account-popup-area">
+		<div class="account-popup">
+		</div>
+	</div>
+
+</body>
+</html>
+
