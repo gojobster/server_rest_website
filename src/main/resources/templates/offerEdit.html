@@ -32,7 +32,7 @@
 <div class="theme-layout" id="scrollup">
 
 	<!-- RESPONSIVE HEADER -->
-	<div th:replace="general.html :: responsive_header"></div>
+	<div th:replace="general.html :: responsive_header(islogged3=${logged}, usrId3=${userId}, profileUrl3=${urlAvatar}, userName3=${name}, userSurname3=${surname}, userEmail3=${email}, isAdmin3=${isAdmin})"></div>
 	</div>
 	<!-- HEADER -->
 	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
@@ -205,13 +205,13 @@
 									<div class="col-lg-6">
 										<span class="pf-title">Fecha inicio</span>
 										<div class="pf-field">
-											<input id="dateIni" type="text" th:value="*{offer.getDate_ini()}" />
+											<input id="dateIni" type="text" th:value="*{offer.date_start_string}" />
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<span class="pf-title">Fecha fin</span>
 										<div class="pf-field">
-											<input id="dateEnd" type="text" th:value="*{offer.getDate_end()}" />
+											<input id="dateEnd" type="text" th:value="*{offer.date_end_string}" />
 										</div>
 									</div>
 							 	</div>

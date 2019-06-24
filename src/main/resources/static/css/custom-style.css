@@ -30,9 +30,9 @@
     width: 100%;
     text-align: center;
 }
-.social-group span {
-    margin: 0 20px;
-}
+/*.social-group span {*/
+/*    margin: 0 20px;*/
+/*}*/
 [class^='social-icon']{
     -webkit-transition: color 0.2s ease-in-out;
     -moz-transition: color 0.2s ease-in-out;
@@ -59,4 +59,542 @@
 }
 .social-group .social-icon-linkedin:hover{
     color: #1e73be;
+}
+
+.responsive-header .can-detail-s{
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.responsive-header .cst{
+    padding: 0;
+    background: white;
+    margin-top: 40px;
+}
+.responsive-header h3 {
+    color: white;
+}
+.responsive-header .responsive-opensec {
+    background-color: #43464f;
+}
+.responsive-header .login{
+    background: #f98b6e;
+    padding: 5px 20px;
+    display: table;
+    width: auto;
+    border-radius: 30px;
+    margin: 50% auto;
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+.responsive-header .login i{
+    color: white;
+}
+
+.empty-profile-picture {
+    background: #f98b6e;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 3px 4px 5px;
+    line-height: 1em;
+    margin: 0;
+    display: block;
+    border: 2px solid #FFFFFF;
+    border-radius: 100%;
+}
+.my-profiles-sec{
+    cursor: pointer;
+}
+.empty-profile-picture i {
+    color: #FFFFFF;
+    font-size: 38px;
+}
+.profile-sidebar .cst .la.la-user{
+    border: 2px solid #ffffff;
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    -ms-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    -o-box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    font-size: 100px;
+    padding-left: 5px;
+    border-radius: 100%;
+    border: 5px solid #ffffff;
+    background: #f98b6e;
+    color: #ffffff;
+}
+.myProfile h3{
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+    border-bottom: 1px solid #edeff7;
+    font-size: 20px;
+    color: #202020;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 0px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 767px) {
+
+    .myProfile .job-listing[data-status='-1']:before{
+        background: #a00000;
+        content:'CANCELADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='4']:before{
+        background: #a00000;
+        content:'RECHAZADO';
+        color: #FFFFFF;}
+    .myProfile .job-listing[data-status='0']:before{
+        background: #a0a0a0;
+        content:'PENDIENTE';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='1']:before{
+        background: #a0a000;
+        content:'EN CURSO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='2']:before{
+        background: #0000a0;
+        content:'PRESELECCIONADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='3']:before{
+        background: #00a000;
+        content:'CONTRATADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing:before{
+        position: absolute;
+        height: 30px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        text-align: center;
+        line-height: 30px;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .myProfile .job-listing{
+        border:0 !important;
+        padding: 30px 0 0 0!important;
+        float: left;
+        clear: both;
+    }
+    .myProfile .job-listing .company,
+    .myProfile .job-listing .candidate,
+    .myProfile .job-listing .details,
+    .myProfile .job-listing .go{
+        width: 100%;
+        height: 60px;
+        opacity: 1;
+        position: relative;
+        float:left;
+        top: 0;
+        left: 0;
+        margin: 0;
+        -webkit-transition: width 0.5s ease-in-out;
+        -moz-transition: width 0.5s ease-in-out;
+        transition: width 0.5s ease-in-out;
+        -webkit-transition-delay: 0.1s;
+        -moz-transition-delay: 0.1s;
+        -ms-transition-delay: 0.1s;
+        -o-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+        overflow: hidden;
+        cursor: default;
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    }
+    .myProfile .job-listing .active{
+        height: auto;
+        padding: 10px;
+    }
+    .myProfile .job-listing .details{
+        background: rgba(255, 255, 255, 1)!important;
+        color: #43464F;
+    }
+    .myProfile .job-listing .company{
+        background: rgba(67, 70, 79, 1)!important;
+        color: #ffffff;
+    }
+    .myProfile .job-listing .candidate{
+        background: rgba(249, 139, 110, 1)!important;
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing .go{
+        background: #a0a0a0 !important;
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing .label{
+        vertical-align: middle;
+        text-align: center;
+        font-size: 20px;
+        line-height: 60px;
+        font-weight: 400;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        float: left;
+        height: 60px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .myProfile .job-listing .label:hover{
+        opacity: 0.6;
+    }
+    .myProfile .job-listing .active .label{
+        display: none;
+    }
+    /*.myProfile .job-listing .active .name,.myProfile .job-listing .active .data,.myProfile .job-listing .active .logo,.myProfile .job-listing .active .summary{*/
+    /*    display: block;*/
+    /*}*/
+    .myProfile .job-listing .active :not(.label):not(i) {
+        display: block !important;
+    }
+    .myProfile .job-listing .name,
+    .myProfile .job-listing .data,
+    .myProfile .job-listing .summary{
+        position: relative;
+        text-align: left;
+        float: left;
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    .myProfile .job-listing .name {
+        font-size: 1.5em;
+        line-height: 1em;
+        margin-bottom: 10px;
+    }
+
+    .myProfile .job-listing .logo{
+        max-width: 128px;
+        max-height: 128px;
+        margin: 0 auto 10px auto;
+        position: relative;
+        display: none;
+    }
+    .myProfile .job-listing .candidate .logo{
+        border-radius: 100%;
+    }
+
+}
+@media (min-width: 768px) {
+    .myProfile h3{
+        float: left;
+        width: 100%;
+        margin-top: 40px;
+        border-bottom: 1px solid #edeff7;
+        font-size: 20px;
+        color: #202020;
+        font-weight: bold;
+        margin: 0;
+        margin-top: 0px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        margin-top: 40px;
+    }
+
+    .myProfile .job-listing[data-status='-1']:before{
+        background: #a00000;
+        content:'CANCELADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='4']:before{
+        background: #a00000;
+        content:'RECHAZADO';
+        color: #FFFFFF;}
+    .myProfile .job-listing[data-status='0']:before{
+        background: #a0a0a0;
+        content:'PENDIENTE';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='1']:before{
+        background: #a0a000;
+        content:'EN CURSO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='2']:before{
+        background: #0000a0;
+        content:'PRESELECCIONADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing[data-status='3']:before{
+        background: #00a000;
+        content:'CONTRATADO';
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing:before{
+        position: absolute;
+        height: 100%;
+        width: 30px;
+        top: 0;
+        left: 0;
+        writing-mode: vertical-rl;
+        text-align: center;
+        line-height: 30px;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transform: rotate(180deg);
+    }
+
+    .myProfile .job-listing{
+        border:0 !important;
+        padding: 0 0 0 30px!important;
+        min-height: 168px;
+        float: left;
+        clear: both;
+    }
+    .myProfile .job-listing .company,
+    .myProfile .job-listing .candidate,
+    .myProfile .job-listing .details,
+    .myProfile .job-listing .go{
+        width: 60px;
+        height: 168px;
+        opacity: 1;
+        position: relative;
+        float:left;
+        top: 0;
+        left: 0;
+        margin: 0;
+        -webkit-transition: width 0.5s ease-in-out;
+        -moz-transition: width 0.5s ease-in-out;
+        transition: width 0.5s ease-in-out;
+        -webkit-transition-delay: 0.1s;
+        -moz-transition-delay: 0.1s;
+        -ms-transition-delay: 0.1s;
+        -o-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+        overflow: hidden;
+        cursor: default;
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    }
+    .myProfile .job-listing .active{
+        width: calc(100% - 180px);
+        padding: 20px;
+    }
+    .myProfile .job-listing .details{
+        background: rgba(255, 255, 255, 1)!important;
+        color: #43464F;
+    }
+    .myProfile .job-listing .company{
+        background: rgba(67, 70, 79, 1)!important;
+        color: #ffffff;
+    }
+    .myProfile .job-listing .candidate{
+        background: rgba(249, 139, 110, 1)!important;
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing .go{
+        background: #a0a0a0 !important;
+        color: #FFFFFF;
+    }
+    .myProfile .job-listing .label{
+        writing-mode: vertical-rl;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 20px;
+        line-height: 60px;
+        font-weight: 400;
+        transform: rotate(180deg);
+        width: 60px;
+        overflow: hidden;
+        display: block;
+        float: left;
+        height: 168px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .myProfile .job-listing .label:hover{
+        opacity: 0.6;
+    }
+    .myProfile .job-listing .active .label{
+        display: none;
+    }
+    /*.myProfile .job-listing .active .name,.myProfile .job-listing .active .data,.myProfile .job-listing .active .logo,.myProfile .job-listing .active .summary{*/
+    /*    display: block;*/
+    /*}*/
+    .myProfile .job-listing .active :not(.label):not(i) {
+        display: block !important;
+    }
+    .myProfile .job-listing .company.active .name,
+    .myProfile .job-listing .candidate.active .name,
+    .myProfile .job-listing .active .summary{
+        width: calc(100% - 148px);
+    }
+
+    .myProfile .job-listing .name,
+    .myProfile .job-listing .summary{
+        position: relative;
+        text-align: left;
+        float: left;
+        width: 1000px;
+        height: auto;
+        display: none;
+    }
+    .myProfile .job-listing .name {
+        font-size: 1.5em;
+        line-height: 1em;
+        margin-bottom: 10px;
+    }
+
+    .myProfile .job-listing .details .data,
+    .myProfile .job-listing .details .name{
+        width: 100%;
+        position: relative;
+        float: left;
+        clear: both;
+        display: none;
+    }
+    .myProfile .job-listing .logo{
+        max-width: 128px;
+        max-height: 128px;
+        margin-right: 20px;
+        float: left;
+        position: relative;
+        display: none;
+    }
+    .myProfile .job-listing .candidate .logo{
+        border-radius: 100%;
+    }
+
+}
+.stick-top .login{
+    position: relative;
+    float: left;
+    z-index: 1;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    background-color: rgb(249, 139, 111);
+    line-height: 20px;
+    -webkit-transition: 400ms all ease;
+    -moz-transition: 400ms all ease;
+    transition: 400ms all ease;
+}
+.stick-top .login:hover{
+    background-color: rgb(69, 69, 69);
+}
+footer.ft .faq-footer{
+    text-align: right;
+}
+footer.ft .social-footer{
+    display: table;
+}
+@media (max-width:575px){
+    footer.ft .col-sm-4{
+        text-align: center;
+    }
+    footer.ft .logo a{
+        width: 100%;
+    }
+
+    footer.ft .faq-footer{
+        text-align: center;
+    }
+    footer.ft .scrollup {
+        display: none;
+    }
+    section:first-of-type{
+        margin-top: 100px;
+    }
+    .job-data{
+        width: 100%;
+    }
+}
+
+.responsive-header .res-logo img{
+    max-height: 50px;
+    width: auto!important;
+}
+section {
+    z-index: 1;
+}
+section.footer {
+    z-index: 0;
+}
+
+.home-background {
+    background-image: url('/images/home_background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.offer-image, .offer-company {
+    padding: 10px;
+}
+ .offer-image img {
+     width: 100%;z
+ }
+ .offer-details p {
+
+ }
+.offer{
+    border: 1px solid #e8ecec;
+    /*float: left;*/
+    /*width: 100%;*/
+    /*clear: both;*/
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.offer:hover{
+    -webkit-box-shadow: 10px 10px 20px -5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 10px 10px 20px -5px rgba(0,0,0,0.4);
+    box-shadow: 10px 10px 20px -5px rgba(0,0,0,0.4);
+}
+.offer-reward {
+    border-top: 2px solid #f98b6e;
+    text-align: center;
+    margin-top: 10px;
+}
+.offer-reward p{
+    margin-top: 10px;
+    color: black;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+.offer-reward-lg {
+    border-left: 2px solid #f98b6e;
+    align-items: center;
+}
+.job-data{
+    position: relative;
+    width: auto;
+    float: left;
+    display:block;
+    line-height: 32px;
+    margin-right: 32px;
 }

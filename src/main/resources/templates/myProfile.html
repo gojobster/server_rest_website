@@ -32,7 +32,7 @@
 	<div class="theme-layout" id="scrollup">
 
 		<!-- RESPONSIVE HEADER -->
-		<div th:replace="general.html :: responsive_header"></div>
+		<div th:replace="general.html :: responsive_header(islogged3=${logged}, usrId3=${userId}, profileUrl3=${urlAvatar}, userName3=${name}, userSurname3=${surname}, userEmail3=${email}, isAdmin3=${isAdmin})"></div>
 
 		<!-- HEADER -->
 		<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
@@ -133,7 +133,7 @@
 												<div class="label">Empresa</div>
 												<img class="logo" th:src="*{path_image_company}" />
 												<div class="name" th:text="*{nameCompany}"></div>
-												<div class="summary" th:text="*{summary}"></div>
+												<div class="summary" th:utext="*{summary}"></div>
 											</div>
 											<div class="candidate">
 												<div class="label">Candidato</div>
@@ -166,7 +166,7 @@
 												<div class="label">Empresa</div>
 												<img class="logo" th:src="*{path_image_company}" />
 												<div class="name" th:text="*{nameCompany}"></div>
-												<div class="summary" th:text="*{summary}"></div>
+												<div class="summary" th:utext="*{summary}"></div>
 											</div>
 											<div class="candidate">
 												<div class="label">Endorser</div>

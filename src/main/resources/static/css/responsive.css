@@ -6,7 +6,7 @@
     
 }
 
-@media (max-width:1200px){
+@media (max-width:575px){
 
     
 .error-sec {
@@ -136,12 +136,6 @@ header {
     margin-bottom: 10PX;
 }
 
-
-
-
-}
-
-@media (max-width:980px){
 .column {
     float: left;
     width: 100%;
@@ -170,7 +164,7 @@ header {
 .border-right {
     border: none;
     padding: 0;
-        padding-top: 0px;
+    padding-top: 0px;
     padding-top: 40px;
 }
 .coverletter-sec {
@@ -338,7 +332,8 @@ select {
     margin-top: 30px;
 }
 .find-cand-sec {
-    padding-top: 210px;
+    /*padding-top: 210px;*/
+    padding-top: 0px;
 }
 .job-search-sec.style3 .job-search.style2 > h3 {
     margin-bottom: 13px;
@@ -422,7 +417,7 @@ select {
 
 
 .find-cand form{border-radius: 8px;}
-.find-cand form .job-field{width: 100%; border-bottom: 1px solid #e8ecec; border-radius: 0px;}
+.find-cand form .job-field{width: 100% !important; border-bottom: 1px solid #e8ecec; border-radius: 0px;}
 .find-cand form > button{width: 100%; border-radius: 8px; right: 0px; top: 140px;}
 .find-cand .job-field::before{background-color: #FFF;}
 .find-cand form .job-field input{padding: 17px 20px !important;}
@@ -459,10 +454,6 @@ select {
 
 
 }
-
-
-
-
 
 
 @media (max-width:767px){
@@ -943,13 +934,6 @@ select {
     margin-bottom: 60px;
 }
 
-
-
-
-
-}
-
-@media (max-width:520px){	
  .error-sec form > input {
     float: left;
     width: 100%;
@@ -1267,16 +1251,16 @@ select {
     width: 120px !important;
 }
 
-.res-openmenu {
-    padding: 9px 20px;
+.res-openmenu, .res-closemenu {
+    padding: 9px;
+    color: #43464f;
+    font-size: 1.2em;
+    line-height: 32px;
 }
-.res-openmenu > img {
-    width: 26px;
-}
-.res-closemenu {
-    padding: 8px 10px;
-    font-size: 15px;
-}
+.res-openmenu i, .res-closemenu i{
+     margin-right: 0.5em;
+ }
+
 .responsive-opensec .post-job-btn {
     font-size: 13px;
     padding: 11px 20px;

@@ -32,7 +32,7 @@
 <div class="theme-layout" id="scrollup">
 
 	<!-- RESPONSIVE HEADER -->
-	<div th:replace="general.html :: responsive_header"></div>
+	<div th:replace="general.html :: responsive_header(islogged3=${logged}, usrId3=${userId}, profileUrl3=${urlAvatar}, userName3=${name}, userSurname3=${surname}, userEmail3=${email}, isAdmin3=${isAdmin})"></div>
 	</div>
 	<!-- HEADER -->
 	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
@@ -64,7 +64,7 @@
 				 						<div class="job-single-head3">
 							 				<div class="job-thumb">
 												<a th:href="'/company/' + *{offer.idCompany}">
-													<img th:src="*{offer.path_image_company}" alt="" /><span> Open Position</span>
+													<img th:src="*{offer.path_image_company}" alt="" />
 												</a>
 											</div>
 							 				<div class="job-single-info3">
@@ -104,43 +104,55 @@
 							 				<span>Share</span><a href="#" title="" class="share-fb"><i class="fa fa-facebook"></i></a><a href="#" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
 							 			</div>
 							 			<div class="extra-job-info">
-								 			<span><i class="la la-clock-o"></i><strong>35</strong> Days</span>
-								 			<span><i class="la la-file-text"></i><strong th:text="*{offer.applications}"></strong> Application</span>
-								 			<span><i class="la la-search-plus"></i><strong th:text="*{offer.displayed}"></strong> Displayed</span>
+											<span><i class="la la-clock-o"></i><strong th:text="*{offer.date_end_string}"></strong> fecha fin</span>
+								 			<span><i class="la la-file-text"></i><strong th:text="*{offer.applications}"></strong> candidatos</span>
 								 		</div>
-								 		<div class="recent-jobs">
-												<h3>Recent Jobs</h3>
-												<div class="job-list-modern">
-													<div th:each="recomend_offer: ${listOffers}" th:object="${recomend_offer}">
-														<div class="job-listing wtabs">
-															<div class="job-title-sec">
-																<div class="c-logo"> <img th:src="*{path_image_company}" alt="" /> </div>
-																<h3><a href="#" title="">[[*{position}]]</a></h3>
-																<span>[[*{nameCompany}]]</span>
-																<div class="job-lctn"><i class="la la-map-marker"></i>[[*{city} + ', '+ *{city}]]</div>
-															</div>
-															<div class="job-style-bx">
-																<span class="job-is ft">[[*{tipo_contrato}]]</span>
-																<span class="fav-job"><i class="la la-heart-o"></i></span>
-																<i>[[*{date_ini}]]</i>
-															</div>
-														</div>
-													</div>
-												</div>
-										</div>
 									</div>
 							 		<div class="col-lg-4 column">
 							 			<div class="job-overview">
 								 			<h3>Job Overview</h3>
 								 			<ul>
-								 				<li><i class="la la-money"></i><h3>Offerd Salary</h3><span th:text="*{offer.salary_min} + '€ - '+ *{offer.salary_max} +'€'"></span></li>
-								 				<li><i class="la la-puzzle-piece"></i><h3>Industry</h3><span>Management</span></li>
-								 				<li><i class="la la-shield"></i><h3>Experience</h3><span th:text="*{offer.experience_years}+' Years'"> </span></li>
-								 				<li><i class="la la-line-chart "></i><h3>Qualification</h3><span>Bachelor Degree</span></li>
+								 				<li><i class="la la-money"></i><h3>Salario</h3><span th:text="*{offer.salary_min} + '€ - '+ *{offer.salary_max} +'€'"></span></li>
+												<li><i class="la la-clock-o"></i><h3>Horas</h3><span th:text="*{offer.hours}"></span></li>
+												<li><i class="la la-calendar-o"></i><h3>Tipo de jornada</h3><span th:text="*{offer.tipo_jornada}"></span></li>
+												<li><i class="la la-file-text-o"></i><h3>Tipo de contrato</h3><span th:text="*{offer.tipo_contrato}"></span></li>
+								 				<li><i class="la la-shield"></i><h3>Experiencia</h3><span th:text="*{offer.experience_years}+' años'"></span></li>
+								 				<li><i class="la la-group"></i><h3>Personas al cargo</h3><span th:text="*{offer.people_in_charge}"></span></li>
+
 								 			</ul>
 								 		</div><!-- Job Overview -->
 							 		</div>
 							 	</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="heading">
+											<h3>Más ofertas</h3>
+										</div><!-- Heading -->
+										<a th:each="item: ${listOffers}" th:object="${item}" class="offer row" th:href="'offer/' + *{idOffer}">
+											<div class="col-4 col-md-3 col-lg-2 col-xl-1 offer-image">
+												<img th:src="*{path_image_company}" alt='' />
+											</div>
+											<div class="col-8 col-md-9 col-lg-8 col-xl-9 offer-company">
+												<h2  th:text="*{position}"></h2>
+												<h4  th:text="*{nameCompany}"></h4>
+												<h5 class="d-none d-sm-block" th:utext="*{summary}"></h5>
+
+											</div>
+											<div class="col-lg-2 d-none d-lg-flex offer-reward-lg">
+												<div class='job-reward'><p th:text="*{reward}+' €'" class="reward"></p><p>Recompensa</p></div>
+											</div>
+											<div class="col-12 offer-details">
+												<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
+												<div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+												<div class='job-data d-none d-sm-block' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
+												<div class='job-data d-none d-sm-block' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
+											</div>
+											<div class="col-12 d-block d-lg-none">
+												<div class='offer-reward'><p th:text="*{reward}+' €'"></p>Recompensa</div>
+											</div>
+										</a>
+									</div>
+								</div>
 							</div>
 					 	</div>
 				 	</div>
