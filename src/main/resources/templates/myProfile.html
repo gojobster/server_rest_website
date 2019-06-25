@@ -154,19 +154,19 @@
 								<div class="col-md-12 myProfile" >
 									<h3 id="MisOfertas" >Mis Ofertas</h3>
 									<div class="job-listings-sec">
-										<div th:each="offer: ${listMyOffers}" th:object="${offer}" class="job-listing" th:data-status="*{status}">
+										<div th:each="offerMyProfile: ${listMyOffers}" th:object="${offerMyProfile}" class="job-listing" th:data-status="*{status}">
 											<div class="details active">
 												<div class="label">Detalles</div>
 												<div class="name" th:text="*{position}"></div>
 												<div class="data" th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
 												<div class="data" th:inline="text"><i class="la la-calendar la-2x"></i> [[*{date_start_string}]] - [[*{date_end_string}]]</div>
 												<div class="data" th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
+												<div class="summary" th:utext="*{summary}"></div>
 											</div>
 											<div class="company">
 												<div class="label">Empresa</div>
 												<img class="logo" th:src="*{path_image_company}" />
 												<div class="name" th:text="*{nameCompany}"></div>
-												<div class="summary" th:utext="*{summary}"></div>
 											</div>
 											<div class="candidate">
 												<div class="label">Endorser</div>

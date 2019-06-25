@@ -77,7 +77,7 @@
 								<h5 th:text="${listOffers.size()} + ' Jobs'"></h5>
 					 		</div>
 						 	<div class="job-listings-sec">
-								<a th:each="offer: ${listOffers}" th:object="${offer}" class="offer row" th:href="'offer/' + *{idOffer}">
+								<a th:each="offer: ${listOffers}" th:object="${offer}" class="offer row" th:href="'editOffer/' + *{idOffer}">
 									<div class="col-4 col-md-3 col-lg-2 col-xl-1 offer-image">
 										<img th:src="*{path_image_company}" alt='' />
 									</div>

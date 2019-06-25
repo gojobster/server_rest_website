@@ -64,7 +64,7 @@
         </header>
 
         <!-- SIDEBAR -->
-        <section th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail, isAdmin)">
+        <section class="sidebar" th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail, isAdmin)">
             <div th:if="${islogged2 == true}" class="profile-sidebar">
                 <span class="close-profile"><i class="la la-close"></i></span>
                 <div class="can-detail-s">

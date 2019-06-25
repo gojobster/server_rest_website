@@ -536,6 +536,9 @@ footer.ft .social-footer{
 section {
     z-index: 1;
 }
+section.sidebar{
+    z-index: 99;
+}
 section.footer {
     z-index: 0;
 }
