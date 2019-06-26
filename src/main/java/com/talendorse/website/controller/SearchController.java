@@ -1,5 +1,6 @@
 package com.talendorse.website.controller;
 
+import com.talendorse.server.BLL.Constantes;
 import com.talendorse.server.BLL.OffersManagement;
 import com.talendorse.server.DTO.RespuestaWSOffer;
 import com.talendorse.server.DTO.RespuestaWSOfferFilters;
@@ -18,10 +19,14 @@ import java.util.List;
 public class SearchController{
 
     @GetMapping("/search")
-    public String main(Model model, HttpServletRequest request, HttpServletResponse response){
-        return main("",model, request, response);
-    }
-    public String main(@RequestParam("s") String filter_keyword, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String main(Model model,
+                       HttpServletRequest request,
+                       HttpServletResponse response,
+                       @RequestParam("s") String filter_keyword,
+                       @RequestParam(value = "city", required=false, defaultValue="") String city,
+                       @RequestParam(value = "salary", required=false, defaultValue="0")  int salary,
+                       @RequestParam(value = "experience", required=false, defaultValue="99") int experience) {
+
         UtilModel.track_url(response,request);
         String token = UtilModel.addSession(request, model);
         UtilModel.addHeaderModel(request, model, token);
@@ -57,7 +62,7 @@ public class SearchController{
     private List<RespuestaWSOffer> getFilteredOffers(String keyword, int salary, int experience, List<String> positions, List<String> cities){
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities);
+            listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities, Constantes.PAGE_SIZE_OFFERS , 0);
         }
         catch (Exception ex) {
             return listOffers;

@@ -212,7 +212,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="inner-header">
-							<h3>Job List Modern</h3>
+							<h3>Resultados de la búsqueda</h3>
 						</div>
 					</div>
 				</div>
@@ -225,11 +225,11 @@
 			<div class="container">
 				 <div class="row no-gape">
 				 	<aside class="col-md-3 column border-right">
-						<form action="" enctype="">
+						<form action="" type="post" enctype="application/x-www-form-urlencoded">
 							<div class="widget">
 								<div class="search_widget_job">
 									<div class="field_w_search">
-										<input type="text" placeholder="Search Keywords" th:value="${keyword}"/>
+										<input name="s" type="text" placeholder="Search Keywords" th:value="${keyword}"/>
 										<i class="la la-search"></i>
 									</div><!-- Search Widget -->
 								</div>
@@ -278,7 +278,7 @@
 				 		<div class="modrn-joblist">
 					 		<div class="filterbar">
 					 			<div class="sortby-sec">
-					 				<span>Sort by</span>
+					 				<span>Ordenar por</span>
 					 				<select data-placeholder="Most Recent" class="chosen">
 										<option>Newest</option>
 										<option>Latest</option>

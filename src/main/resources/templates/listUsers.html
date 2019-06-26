@@ -36,55 +36,45 @@
 	<!-- HEADER -->
 	<div th:replace="general.html :: header(isLogged=${logged}, profileUrl=${urlAvatar})"></div>
 
-	<section>
+	<section class="overlape">
 		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
 			<div class="container fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="find-cand-sec">
-							<div class="iconmove"><img class="animute" src="/images/home_background.jpg" alt="" /></div>
-							<!-- <div class="mockup-top"><img class="animute" src="http://placehold.it/770x600" alt="" /></div> -->
-							<!-- <div class="mockup-bottom"><img src="http://placehold.it/689x528" alt="" /></div> -->
-							<div class="container">
-								<div class="row">
-									<div class="col-lg-8">
-										<div class="find-cand">
-											<h1>Talendorse</h1>
-											<h3>the net works</h3>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="find-cand">
-											<form action="search" type="post" enctype="application/x-www-form-urlencoded">
-												<div class="job-field">
-													<input type="text" placeholder="Search job offer" name="s"/>
-												</div>
-												<button id="send"><i class="la la-search"></i></button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="scroll-to style2">
-							<a href="#featured-jobs" title=""><i class="la la-arrow-down"></i></a>
+						<div class="inner-header">
+							<h3>Lista de Usuarios</h3>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<section id="featured-jobs">
 		<div class="block">
 			<div data-velocity="-.1" style="background: url('images/resource/parallax5.jpg') repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="heading">
-							<h2>Lista de Usuarios</h2>
-						</div><!-- Heading -->
+						<div class="filterbar">
+							<div class="sortby-sec">
+								<span>Ordenar por</span>
+								<select data-placeholder="Fecha registro" class="chosen">
+									<option>Nuevos</option>
+									<option>Antigups</option>
+								</select>
+								<select data-placeholder="Ultima conexión" class="chosen">
+									<option>Más reciente</option>
+									<option>Menos reciente</option>
+								</select>
+								<select data-placeholder="Nombre" class="chosen">
+									<option>A - Z</option>
+									<option>Z - A</option>
+								</select>
+							</div>
+							<h5 th:text="${listUsers.size()} + ' Usuarios'"></h5>
+						</div>
 						<div class="job-listings-sec">
 							<div th:each="user: ${listUsers}" th:object="${user}" class="job-listing rounded">
 								<a>

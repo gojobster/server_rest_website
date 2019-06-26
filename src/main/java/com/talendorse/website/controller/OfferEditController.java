@@ -26,20 +26,9 @@ public class OfferEditController {
 
     private void loadOfferDetails (int id, Model model, HttpServletRequest request, HttpServletResponse response) {
         UtilModel.track_url(response,request);
-        boolean userApplied = false;
-        UsersRecord endorser = null;
         Offer offer = null;
-        List<Offer> listOffers = null;
         try {
-            int userId = CookiesManagement.getIdFromCookie(request);
-            if(userId != -1)
-                endorser = UserManagement.getUser(userId);
-
             offer = OffersManagement.getOffer(id);
-
-            userApplied = OffersManagement.userApplied(id, userId);
-            listOffers =OffersManagement.getAllOffers("","");
-
         } catch (TalendorseException e) {
             e.printStackTrace();
         }
@@ -48,9 +37,6 @@ public class OfferEditController {
         UtilModel.addHeaderModel(request, model, token);
         UtilModel.addInfoUserModel(request,model,token);
 
-        model.addAttribute("userApplied", userApplied);
-        model.addAttribute("endorser", endorser);
         model.addAttribute("offer", offer);
-        model.addAttribute("listOffers",listOffers);
     }
 }

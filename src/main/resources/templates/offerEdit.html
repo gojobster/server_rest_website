@@ -216,6 +216,9 @@
 									</div>
 							 	</div>
 							</div>
+							<div class="row col-lg-4">
+								<a id="applyTo2" class="apply-thisjob" title="" th:data-idOffer="${offer.idOffer}" th:data-token="${token}" th:onclick="saveOffer('#applyTo2')" ><i class="la la-save"></i>Guardar</a>
+							</div>
 					 	</div>
 				 	</div>
 				</div>
@@ -311,29 +314,24 @@
 			contentType: "application/x-www-form-urlencoded",
 			dataType: "json",
 			success: function (data) {
-				$(".page-loading").hide();
 				if(data == null) {
-					$(".page-loading").hide();
 					$(".account-popup-area").show();
 					var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
 					$(".account-popup-area .account-popup").html(str);
 				}
 
 				else if(data.message == "OK"){
-					$(".page-loading").hide();
 					$(".account-popup-area").show();
-					var str = "<h3>La oferta ha sido guardada</h3><a><button onclick='window.history.back()' id='popupResultSaveOffer'>OK</button></a>";
+					var str = "<h3>La oferta ha sido guardada</h3><a><button onclick='window.location=\"/listOffers\"' id='popupResultSaveOffer'>OK</button></a>";
 					$(".account-popup-area .account-popup").html(str);
 				}
 				else {
-					$(".page-loading").hide();
 					$(".account-popup-area").show();
 					var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
 					$(".account-popup-area .account-popup").html(str);
 				}
 			},
 			failure: function (data) {
-				$(".page-loading").hide();
 				$(".account-popup-area").show();
 				var str = "<h3>No se ha podido guardar la oferta</h3><a><button id='popupResultSaveOffer'>OK</button></a>";
 				$(".account-popup-area .account-popup").html(str);
@@ -341,17 +339,12 @@
 		});
 	}
 
-	$(document).ready(function(){
-		$("#applyTo").click(function(){
-			//saveOffer();
-		});
-	});
-
 	$(document).ajaxComplete(function(){
 		$("#popupResultSaveOffer").click(function() {
 			$(".account-popup-area").hide();
 
 		});
+		$(".page-loading").hide();
 	});
 	</script>
 

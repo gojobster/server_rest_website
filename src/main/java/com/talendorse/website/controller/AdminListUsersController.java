@@ -20,7 +20,7 @@ import java.util.List;
 import static com.talendorse.server.BLL.UserManagement.getAllUsers;
 
 @Controller
-public class ListUsersController {
+public class AdminListUsersController {
     @GetMapping("/listUsers")
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
         UtilModel.track_url(response,request);
