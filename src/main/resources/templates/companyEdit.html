@@ -72,19 +72,30 @@
 					</aside>
 					<div class="col-lg-9 column">
 						<div class="padding-left">
-							<div class="row profile-title" id="mp">
+							<div class="row profile-title job-head-wide" id="mp">
 								<h3>Profile</h3>
-								<div class="upload-img-bar">
+								<div class="upload-img-bar col-lg-8 ">
 									<span><img th:src="*{company.pathImg}" alt="" style="width:100px; height:80px"/><i>x</i></span>
 									<div class="upload-info">
 									</div>
 								</div>
+								<div class="col-lg-4">
+									<a id="applyTo" class="apply-thisjob" title="" th:data-idCompany="${company.idCompany}" th:data-token="${token}" th:onclick="saveOffer('#applyTo')" ><i class="la la-save"></i>Guardar</a>
+								</div>
+
+								<div class="col-lg-6">
+									<span class="pf-title">Url image Company</span>
+									<div class="pf-field">
+										<input type="text" th:text="*{company.pathImg}" />
+									</div>
+								</div>
 							</div>
+
 							<div class="profile-form-edit">
 								<div class="col-lg-12">
 									<span class="pf-title">Description</span>
 									<div class="pf-field">
-											<input type="text" th:placeholder="*{company.description}" disabled />
+											<input type="text" th:text="*{company.description}" />
 									</div>
 								</div>
 							</div>
@@ -96,19 +107,19 @@
 										<div class="col-lg-6">
 											<span class="pf-title">City</span>
 											<div class="pf-field">
-												<input type="text" th:placeholder="*{company.city}" disabled/>
+												<input type="text" th:text="*{company.city}" />
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<span class="pf-title">Country</span>
 											<div class="pf-field">
-												<input type="text" th:placeholder="*{company.country}" disabled/>
+												<input type="text" th:text="*{company.country}" />
 											</div>
 										</div>
 										<div class="col-lg-12">
 											<span class="pf-title">Website</span>
 											<div class="pf-field">
-												<input type="text" th:placeholder="*{company.website}" disabled/>
+												<input type="text" th:text="*{company.website}" />
 											</div>
 										</div>
 										<div class="col-lg-12">

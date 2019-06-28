@@ -6,6 +6,7 @@ import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.POCO.UserPOCO;
 import com.talendorse.server.model.tables.records.UsersRecord;
 import com.talendorse.server.types.RoleType;
+import com.talendorse.website.util.UtilController;
 import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,21 +29,17 @@ public class AdminListUsersController {
         UtilModel.addHeaderModel(request, model, token);
         UtilModel.addInfoUserModel(request,model,token);
 
-        try{
-            int userId = CookiesManagement.getIdFromCookie(request);
-            UsersRecord user = UserManagement.getUser(userId);
-
-            if(token == null || user.getRole() != RoleType.ADMIN.toInt()){
+        if(!UtilController.isAdmin(request, token)) {
+            try {
                 response.sendRedirect("/");
-                return "index";
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (TalendorseException | IOException e) {
-            e.printStackTrace();
+            return "index";
         }
 
         model.addAttribute("listUsers", getAllUsers());
         model.addAttribute("url_ws", Constantes.WS_TALENDORSE_URL);
-
         return "listUsers"; //view
     }
 

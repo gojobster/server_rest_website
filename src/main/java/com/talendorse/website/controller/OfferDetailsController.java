@@ -4,6 +4,8 @@ import com.talendorse.server.BLL.*;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.POCO.Offer;
 import com.talendorse.server.model.tables.records.UsersRecord;
+import com.talendorse.server.types.TalendorseErrorType;
+import com.talendorse.website.util.UtilController;
 import com.talendorse.website.util.UtilModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -33,7 +36,33 @@ public class OfferDetailsController {
         return "offerDetails"; //view
     }
 
-    private void loadOfferDetails (int id, Model model, HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("/editOffer/{id}")
+    public String offerEdit(@PathVariable int id, Model model, HttpServletRequest request, HttpServletResponse response) {
+        UtilModel.track_url(response,request);
+        String token = UtilModel.addSession(request, model);
+        UtilModel.addHeaderModel(request, model, token);
+        UtilModel.addInfoUserModel(request,model,token);
+
+        Offer offer = null;
+        try {
+            if(!UtilController.isAdmin(request, token)) {
+                response.sendRedirect("/");
+                return "index";
+            }
+            offer = OffersManagement.getOffer(id);
+
+            if(offer == null) throw new TalendorseException(TalendorseErrorType.OFFER_ERROR);
+
+        } catch (TalendorseException | IOException e) {
+            e.printStackTrace();
+            return "error";
+        }
+
+        model.addAttribute("offer", offer);
+        return "offerEdit"; //view
+    }
+
+    private void loadOfferDetails (int idOffer, Model model, HttpServletRequest request, HttpServletResponse response) {
         UtilModel.track_url(response,request);
         boolean userApplied = false;
         UsersRecord endorser = null;
@@ -44,10 +73,10 @@ public class OfferDetailsController {
             if(userId != -1)
                 endorser = UserManagement.getUser(userId);
 
-            offer = OffersManagement.getOffer(id);
+            offer = OffersManagement.getOffer(idOffer);
 
-            userApplied = OffersManagement.userApplied(id, userId);
-            listOffers =OffersManagement.getAllOffers("","");
+            userApplied = OffersManagement.userApplied(idOffer, userId);
+            listOffers =OffersManagement.getRelatedOffers(idOffer);
 
         } catch (TalendorseException e) {
             e.printStackTrace();

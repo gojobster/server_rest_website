@@ -32,7 +32,7 @@ public class HomeController {
     private List<RespuestaWSOffer> getAllOffers() {
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getAllWsOffers("");
+            listOffers = OffersManagement.getAllWsOffers(""); //TODO: Pasar esta llamada a getAllOpenOffers para que el objeto sea un POCO.
         }
         catch (Exception ex) {
             return listOffers;

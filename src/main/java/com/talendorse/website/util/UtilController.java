@@ -33,4 +33,19 @@ public class UtilController {
             return false;
         }
     }
+
+    public static boolean isAdmin(HttpServletRequest request, String token) {
+        try{
+            int userId = CookiesManagement.getIdFromCookie(request);
+            UsersRecord user = UserManagement.getUser(userId);
+
+            if(token == null || user.getRole() != RoleType.ADMIN.toInt()){
+                return false;
+            }
+        } catch (TalendorseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    return true;
+    }
 }

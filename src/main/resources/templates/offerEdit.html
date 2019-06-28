@@ -63,7 +63,7 @@
 				 					<div class="col-lg-8">
 				 						<div class="job-single-head3">
 							 				<div class="job-thumb">
-												<a th:href="'/company/' + *{offer.idCompany}">
+												<a th:href="'/editComany/' + *{offer.idCompany}">
 													<img th:src="*{offer.path_image_company}" alt="" />
 												</a>
 											</div>
@@ -159,15 +159,16 @@
 									</div>
 
 									<div class="col-lg-4">
-										<span class="pf-title">Tipo de jornada</span>
+										<span class="pf-title">Personas al cargo</span>
 										<div class="dropdown-field">
 											<select id="jornada" data-placeholder="Selecciona el numero de personal al cargo" class="chosen">
-												<option value="0">1 - 5</option>
-												<option value="1">1 - 10</option>
-												<option value="2">10 - 20</option>
-												<option value="3">+20</option>
-												<option value="4">+50</option>
-												<option value="5">+100</option>
+												<option value="0">Ninguna</option>
+												<option value="1">1 - 5</option>
+												<option value="2">1 - 10</option>
+												<option value="3">10 - 20</option>
+												<option value="4">+20</option>
+												<option value="5">+50</option>
+												<option value="6">+100</option>
 											</select>
 										</div>
 									</div>

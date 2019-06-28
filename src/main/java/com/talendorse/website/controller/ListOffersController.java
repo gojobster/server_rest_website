@@ -39,7 +39,7 @@ public class ListOffersController {
     private List<Offer> getAllOffers() {
         List<Offer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getAllOffers("","");
+            listOffers = OffersManagement.getAllOffers();
         }
         catch (Exception ex) {
             return listOffers;
