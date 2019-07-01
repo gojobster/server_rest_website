@@ -72,9 +72,9 @@
 													<span class="pf-title">Estado de la Oferta</span>
 													<div class="dropdown-field">
 														<select id="stateOffer" data-placeholder="Selecciona el estado de la oferta" class="chosen">
-															<option value="0">Inactiva</option>
-															<option value="1">Abierta</option>
-															<option value="2">Cerrada</option>
+															<option value="0" th:selected="*{offer.state==0}">Inactiva</option>
+															<option value="1" th:selected="*{offer.state==1}">Abierta</option>
+															<option value="2" th:selected="*{offer.state==2}">Cerrada</option>
 														</select>
 													</div>
 												</div>
@@ -82,9 +82,9 @@
 													<span class="pf-title">Tipo de contrato</span>
 													<div class="dropdown-field">
 														<select id="contractType" data-placeholder="Selecciona el tipo de contrat" class="chosen">
-															<option value="0">Indefinido</option>
-															<option value="1">Temporal</option>
-															<option value="2">Practicas</option>
+															<option value="0" th:selected="*{offer.tipo_contratoInt==0}">Indefinido</option>
+															<option value="1" th:selected="*{offer.tipo_contratoInt==1}">Temporal</option>
+															<option value="2" th:selected="*{offer.tipo_contratoInt==2}">Practicas</option>
 														</select>
 													</div>
 												</div>
@@ -92,11 +92,11 @@
 													<span class="pf-title">Tipo de jornada</span>
 													<div class="dropdown-field">
 														<select id="workingDayType" data-placeholder="Selecciona el tipo de jornada" class="chosen">
-															<option value="0">Completa</option>
-															<option value="1">Parcial</option>
-															<option value="2">Mañana</option>
-															<option value="2">Tarde</option>
-															<option value="2">Por horas</option>
+															<option value="0" th:selected="*{offer.tipo_jornadaInt==0}">Completa</option>
+															<option value="1" th:selected="*{offer.tipo_jornadaInt==1}">Parcial</option>
+															<option value="2" th:selected="*{offer.tipo_jornadaInt==2}">Mañana</option>
+															<option value="3" th:selected="*{offer.tipo_jornadaInt==3}">Tarde</option>
+															<option value="4" th:selected="*{offer.tipo_jornadaInt==4}">Por horas</option>
 														</select>
 													</div>
 												</div>
@@ -147,13 +147,13 @@
 										<span class="pf-title">Años de experiencia</span>
 										<div class="dropdown-field">
 											<select id="experience" data-placeholder="Selecciona los años de experiencia" class="chosen">
-												<option value="0">Sin experiencia</option>
-												<option value="1">1 año</option>
-												<option value="2">2 años</option>
-												<option value="3">3 años</option>
-												<option value="4">4 años</option>
-												<option value="5">5 años</option>
-												<option value="6">+10 años</option>
+												<option value="0" th:selected="*{offer.experience_years==0}">Sin experiencia</option>
+												<option value="1" th:selected="*{offer.experience_years==1}">1 año</option>
+												<option value="2" th:selected="*{offer.experience_years==2}">2 años</option>
+												<option value="3" th:selected="*{offer.experience_years==3}">3 años</option>
+												<option value="4" th:selected="*{offer.experience_years==4}">4 años</option>
+												<option value="5" th:selected="*{offer.experience_years==5}">5 años</option>
+												<option value="6" th:selected="*{offer.experience_years==6}">+10 años</option>
 											</select>
 										</div>
 									</div>
@@ -161,14 +161,14 @@
 									<div class="col-lg-4">
 										<span class="pf-title">Personas al cargo</span>
 										<div class="dropdown-field">
-											<select id="jornada" data-placeholder="Selecciona el numero de personal al cargo" class="chosen">
-												<option value="0">Ninguna</option>
-												<option value="1">1 - 5</option>
-												<option value="2">1 - 10</option>
-												<option value="3">10 - 20</option>
-												<option value="4">+20</option>
-												<option value="5">+50</option>
-												<option value="6">+100</option>
+											<select id="personasACargo" data-placeholder="Selecciona el numero de personal al cargo" class="chosen">
+												<option value="0" th:selected="*{offer.people_in_charge==0}">Ninguna</option>
+												<option value="1" th:selected="*{offer.people_in_charge==1}">1 - 5</option>
+												<option value="2" th:selected="*{offer.people_in_charge==2}">1 - 10</option>
+												<option value="3" th:selected="*{offer.people_in_charge==3}">10 - 20</option>
+												<option value="4" th:selected="*{offer.people_in_charge==4}">+20</option>
+												<option value="5" th:selected="*{offer.people_in_charge==5}">+50</option>
+												<option value="6" th:selected="*{offer.people_in_charge==6}">+100</option>
 											</select>
 										</div>
 									</div>
@@ -177,9 +177,9 @@
 										<span class="pf-title">Tipo de prioridad (solo para filtrar)</span>
 										<div class="dropdown-field">
 											<select id="priority" data-placeholder="Selecciona la prioridad" class="chosen">
-												<option value="0">Baja</option>
-												<option value="1">Media</option>
-												<option value="2">Alta</option>
+												<option value="0" th:selected="*{offer.proprity==0}">Baja</option>
+												<option value="1" th:selected="*{offer.proprity==1}">Media</option>
+												<option value="2" th:selected="*{offer.proprity==2}">Alta</option>
 											</select>
 										</div>
 									</div>
@@ -259,7 +259,7 @@
 
 	function saveOffer (id) {
 		var token, idOffer, position, summary, jobFunctions, country, city, experience,
-				stateOffer, contractType, workingDayType, priority,
+				stateOffer, contractType, personasACargo, workingDayType, priority,
 				maxSalary, minSalary, reward, dateIni, dateEnd;
 
 		var applyTo = $(id);
@@ -275,6 +275,7 @@
 		reward = $("#reward").val();
 		stateOffer = $("#stateOffer").val();
 		contractType = $("#contractType").val();
+		personasACargo = $("#personasACargo").val();
 		workingDayType = $("#workingDayType").val();
 		experience = $("#experience").val();
 		priority = $("#priority").val();
@@ -298,6 +299,7 @@
 					"stateOffer": stateOffer,
 					"contractType": contractType,
 					"workingDayType": workingDayType,
+					"personasACargo": personasACargo,
 					"priority": priority,
 					"maxSalary": maxSalary,
 					"minSalary": minSalary,
