@@ -289,7 +289,7 @@
         <jersey.version>2.25.1</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdbc.user>root</jdbc.user>
-        <jdbc.password>Jobster2018!</jdbc.password>
+        <jdbc.password>1234</jdbc.password>
         <jdbc.url>jdbc:mysql://127.0.0.1:3306/database?serverTimezone=UTC</jdbc.url>
         <jdbc.driver>com.mysql.cj.jdbc.Driver</jdbc.driver>
         <maven.compiler.target>1.8</maven.compiler.target>
