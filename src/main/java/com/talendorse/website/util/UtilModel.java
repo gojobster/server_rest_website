@@ -7,7 +7,6 @@ import com.talendorse.server.BLL.UserManagement;
 import com.talendorse.server.DTO.RespuestaWSUser;
 import com.talendorse.server.model.tables.records.UsersRecord;
 import com.talendorse.server.types.RoleType;
-import com.talendorse.server.types.TalendorseErrorType;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.Cookie;
@@ -22,7 +21,7 @@ public class UtilModel {
         try {
             if (token != null)
                 pictureUrl = UserManagement.UserInformation(token).urlAvatar;
-        } catch (Exception ignored) { }
+        } catch (TalendorseException ignored) { }
 
         model.addAttribute("urlAvatar",pictureUrl);
     }
@@ -40,7 +39,7 @@ public class UtilModel {
         if (token != null) {
             try {
                 user = UserManagement.GetUserfromToken(token);
-            } catch (Exception ignored) {
+            } catch (TalendorseException ignored) {
             }
 
             if (user != null) {
@@ -68,7 +67,7 @@ public class UtilModel {
     }
 
 
-    public static String addSession(HttpServletRequest request, Model model) {
+    public static String addSession(HttpServletRequest request, Model model){
         boolean isLogged = false;
         String token = null;
         Integer userId = null;
@@ -81,13 +80,11 @@ public class UtilModel {
 
         try {
             userId = CookiesManagement.getIdFromCookie(request);
-            model.addAttribute("logged",isLogged);
-            model.addAttribute("token",token);
-            model.addAttribute("userId",userId);
-        } catch (TalendorseException e) {
-            model.addAttribute("logged",false);
-            token = null;
-        }
+        } catch (TalendorseException ignored) { }
+
+        model.addAttribute("logged",isLogged);
+        model.addAttribute("token",token);
+        model.addAttribute("userId",userId);
         model.addAttribute("ws_local_url", Constantes.WS_TALENDORSE_URL);
         model.addAttribute("local_url", Constantes.TALENDORSE_URL);
 
