@@ -593,6 +593,10 @@ section.footer {
     border-left: 2px solid #f98b6e;
     align-items: center;
 }
+.offer-company .description {
+    max-height: 3.6em;
+    overflow: hidden;
+}
 .job-data{
     position: relative;
     width: auto;
