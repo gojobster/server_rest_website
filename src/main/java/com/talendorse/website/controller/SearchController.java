@@ -62,7 +62,7 @@ public class SearchController{
     private List<RespuestaWSOffer> getFilteredOffers(String keyword, int salary, int experience, List<String> positions, List<String> cities){
         List<RespuestaWSOffer> listOffers = new ArrayList<>();
         try {
-            listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities, Constantes.PAGE_SIZE_OFFERS , 0);
+            listOffers = OffersManagement.getAllFilteredOffers(keyword, salary, experience, positions, cities, Constantes.PAGE_SIZE_OFFERS , 0, "DESC");
         }
         catch (Exception ex) {
             return listOffers;

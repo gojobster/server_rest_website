@@ -1,54 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="icon" type="image/png" href="/images/te_icon.png">
-		<link rel="icon" type="image/png" href="/images/te_icon.png">
-		<title>Talendorse. The net works.</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="Talendorse">
+<head>
+	<th:block th:replace="general.html :: headerScripts"></th:block>
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+		api_key:   77sx2eal8s9cco
+		onLoad:    onLinkedInLoad
+		authorize: true
+	</script>
 
-		<!-- Styles -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
-		<link rel="stylesheet" href="css/icons.css">
-		<link rel="stylesheet" href="css/animate.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-		<link rel="stylesheet" type="text/css" href="css/chosen.css" />
-		<link rel="stylesheet" type="text/css" href="css/colors/colors.css" />
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<script type="text/javascript">
+		function onLinkedInLoad() {
+			IN.Event.on(IN, "auth", onLinkedInAuth);
+		}
+		function onLinkedInAuth() {
+			IN.API.Profile("me").result(displayProfiles);
+			// IN.API.Profile("me").fields(["industry", "network", "date-of-birth", "educations:(id,school-name)"]).result(displayProfiles);
+		}
+		function displayProfiles(profiles) {
+			member = profiles.values[0];
+			document.getElementById("profiles").innerHTML =
+					"<p id=\"" + member.id + "\">Hello " + member.firstName + " " + member.lastName + "</p>";
 
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-			api_key:   77sx2eal8s9cco
-			onLoad:    onLinkedInLoad
-			authorize: true
-		</script>
-
-		<script type="text/javascript">
-			function onLinkedInLoad() {
-			   IN.Event.on(IN, "auth", onLinkedInAuth);
+			for(education in profiles.educations) {
+				var id = education.id;
+				var name = education.schoolName;
+				console.log(name);
 			}
-			function onLinkedInAuth() {
-			   IN.API.Profile("me").result(displayProfiles);
-			   // IN.API.Profile("me").fields(["industry", "network", "date-of-birth", "educations:(id,school-name)"]).result(displayProfiles);
-			}
-			function displayProfiles(profiles) {
-			   member = profiles.values[0];
-			   document.getElementById("profiles").innerHTML =
-			   "<p id=\"" + member.id + "\">Hello " + member.firstName + " " + member.lastName + "</p>";
-
-			   for(education in profiles.educations) {
-				  var id = education.id;
-				  var name = education.schoolName;
-				  console.log(name);
-			   }
-			}
-		</script>
-
-	</head>
+		}
+	</script>
+</head>
 	<body>
 
 	<div class="page-loading">

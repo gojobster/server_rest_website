@@ -596,6 +596,7 @@ section.footer {
 .offer-company .description {
     max-height: 3.6em;
     overflow: hidden;
+    font-size: 1.25rem;
 }
 .job-data{
     position: relative;

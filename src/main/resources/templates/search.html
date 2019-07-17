@@ -1,25 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="icon" type="image/png" href="/images/te_icon.png">
-	<title>Talendorse. The net works.</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="Talendorse">
-
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="/css/icons.css">
-	<link rel="stylesheet" href="/css/animate.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="/css/custom-style.css" />
-	<link rel="stylesheet" type="text/css" href="/css/responsive.css" />
-	<link rel="stylesheet" type="text/css" href="/css/chosen.css" />
-	<link rel="stylesheet" type="text/css" href="/css/colors/colors.css" />
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<th:block th:replace="general.html :: headerScripts"></th:block>
 
 	<style type="text/css">
 		.range_bar {
@@ -91,101 +73,7 @@
         .column {
             padding: 0 20px;
         }
-        /*.job-listing{*/
-        /*    width: 100%;*/
-        /*    float: left;*/
-        /*    clear: both;*/
-        /*    position: relative;*/
-        /*    padding: 10px!important;*/
-        /*    margin: 5px!important;*/
-        /*    display: flex;*/
-        /*    flex-direction: row;*/
-        /*    flex-wrap: nowrap;*/
 
-        /*}*/
-        /*.job-listing a{*/
-        /*    width: 100%;*/
-        /*    color: #1d2124;*/
-        /*}*/
-        /*.job-listing .job-left{*/
-        /*    position: relative;*/
-        /*    width: 100px;*/
-        /*    float: left;*/
-        /*    padding: 10px;*/
-        /*}*/
-        /*.job-listing .job-center{*/
-        /*    position: relative;*/
-        /*    width: calc(70% - 100px);*/
-        /*    float: left;*/
-        /*    padding: 10px;*/
-        /*}*/
-        /*.job-listing .job-right{*/
-        /*    position: relative;*/
-        /*    width: 25%;*/
-        /*    float: left;*/
-        /*    padding: 10px;*/
-        /*}*/
-        /*.job-data{*/
-        /*    position: relative;*/
-        /*    width: 100%;*/
-        /*    float: left;*/
-        /*    clear: both;*/
-        /*    line-height: 32px;*/
-        /*}*/
-        /*.job-data i{*/
-        /*    top: 5px;*/
-        /*    position: relative;*/
-        /*    margin-right: 10px;*/
-        /*}*/
-        /*.job-logo{*/
-        /*    position: relative;*/
-        /*    float: left;*/
-        /*    width: 100%;*/
-        /*    overflow: hidden;*/
-        /*    -webkit-border-radius: 20px !important;*/
-        /*    -moz-border-radius: 20px !important;*/
-        /*    -ms-border-radius: 20px !important;*/
-        /*    -o-border-radius: 20px !important;*/
-        /*    border-radius: 20px !important;*/
-        /*}*/
-        /*.job-logo img {*/
-        /*    width: 100% !important;*/
-        /*}*/
-        /*.job-position, .job-company, .job-summary{*/
-        /*    position: relative;*/
-        /*    float: left;*/
-        /*    width: calc(100% - 120px);*/
-        /*}*/
-        /*.job-position{*/
-        /*    font-size: 1.5em;*/
-        /*}*/
-        /*.job-company{*/
-        /*    font-size: 1.1em;*/
-        /*    font-weight: 300;*/
-        /*}*/
-        /*.job-summary{*/
-        /*    font-style: italic;*/
-        /*    font-size: 1em;*/
-        /*    font-weight: 300;*/
-        /*}*/
-        /*.job-listing.rounded:hover {*/
-        /*    background: #ffffff;*/
-        /*    -webkit-border-radius: 20px !important;*/
-        /*    -moz-border-radius: 20px !important;*/
-        /*    -ms-border-radius: 20px !important;*/
-        /*    -o-border-radius: 20px !important;*/
-        /*    border-radius: 20px !important;*/
-        /*    margin-top: 0;*/
-        /*}*/
-        /*.job-is.ft{*/
-        /*    width: 100%;*/
-        /*    float: left;*/
-        /*    position: relative;*/
-        /*    clear: both;*/
-        /*    margin-top: 30px;*/
-        /*    color: rebeccapurple;*/
-        /*    border-color: rebeccapurple;*/
-        /*}*/
 	</style>
 </head>
 <body>
@@ -229,46 +117,46 @@
 							<div class="widget">
 								<div class="search_widget_job">
 									<div class="field_w_search">
-										<input name="s" type="text" placeholder="Search Keywords" th:value="${keyword}"/>
+										<input name="search" id="keywords" type="text" placeholder="Palabras clave" th:value="${keyword}"/>
 										<i class="la la-search"></i>
 									</div><!-- Search Widget -->
 								</div>
 							</div>
 							<div class="widget">
-								<h3 class="sb-title open">Location</h3>
+								<h3 class="sb-title open">Localización</h3>
 								<div class="specialism_widget">
 									<div class="simple-checkbox">
 										<p th:each="city: ${listFilters.list_cities}" th:object="${city}">
-											<input type="checkbox" name="city" th:id="*{id}">
+											<input type="checkbox" name="city" th:id="*{id}" th:value="*{name}">
 											<label th:for="*{id}" th:text="*{name} + ' (' + *{num_instances} + ')'"></label>
 										</p>
 									</div>
 								</div>
 							</div>
-							<div class="widget">
-								<h3 class="sb-title open">Position</h3>
+							<div th:if="${listFilters}" class="widget">
+								<h3 class="sb-title open">Posición</h3>
 								<div class="specialism_widget">
 									<div class="simple-checkbox">
 										<p th:each="study: ${listFilters.list_studies}">
-											<input type="checkbox" name="city" th:id="${study}">
+											<input type="checkbox" name="position" th:id="${study}" th:value="*{study}">
 											<label th:for="${study}" th:text="${study}"></label>
 										</p>
 									</div>
 								</div>
 							</div>
 							<div class="widget">
-								<h3 class="sb-title open">Work Experience</h3>
+								<h3 class="sb-title open">Experiencia</h3>
 								<div class="posted_widget">
                                     <span class="range_value"></span>
-									<input class="range_bar" type="range" name="experience" id="experience" min="0" th:max="${listFilters.max_experience}" step="1">
+									<input class="range_bar" type="range" name="experience" id="experience" min="0" value="0" th:max="${listFilters.max_experience}" step="1">
                                     <span class="range_min">0</span><span class="range_max" th:text="${listFilters.max_experience}"></span>
 								</div>
 							</div>
 							<div class="widget">
-								<h3 class="sb-title open">Minimum Gross Annual Salary</h3>
+								<h3 class="sb-title open">Salario anual bruto</h3>
 								<div class="posted_widget">
                                     <span class="range_value"></span>
-                                    <input class="range_bar" type="range" name="salary" id="salary" th:min="${listFilters.min_salary}" th:max="${listFilters.max_salary}" step="1000">
+                                    <input class="range_bar" type="range" name="salary" id="salary" th:value="${listFilters.min_salary}" th:min="${listFilters.min_salary}" th:max="${listFilters.max_salary}" step="1000">
                                     <span class="range_min" th:text="${listFilters.min_salary}"></span><span class="range_max" th:text="${listFilters.max_salary}"></span>
 								</div>
 							</div>
@@ -279,18 +167,18 @@
 					 		<div class="filterbar">
 					 			<div class="sortby-sec">
 					 				<span>Ordenar por</span>
-					 				<select data-placeholder="Most Recent" class="chosen">
-										<option>Newest</option>
-										<option>Latest</option>
+					 				<select id="order" data-placeholder="Más nuevas" class="chosen">
+										<option value="DESC">Más nuevas</option>
+										<option value="ASC">Más antiguas</option>
 									</select>
-									<select data-placeholder="20 Per Page" class="chosen">
-										<option>10 Per Page</option>
-										<option>20 Per Page</option>
-										<option>50 Per Page</option>
-										<option>All</option>
+									<select id="pagination" data-placeholder="10 por página" class="chosen">
+										<option value="10">10 por página</option>
+										<option value="25">25 por página</option>
+										<option value="50">50 por página</option>
+										<option value="0">Todas</option>
 									</select>
 					 			</div>
-								<h5 th:text="${listOffers.size()} + ' Jobs'"></h5>
+								<h5 th:text="${listOffers.size()} + ' Ofertas'"></h5>
 					 		</div>
 						 	<div class="job-listings-sec">
 								<a th:each="offer: ${listOffers}" th:object="${offer}" class="offer row" th:href="'offer/' + *{id_offer}">
@@ -309,15 +197,15 @@
 									<div class="col-12 offer-details">
 										<div class='job-data' th:inline="text"><i class="la la-map-marker la-2x"></i>  [[*{city}]]</div>
 										<div class='job-data' th:inline="text"><i class="la la-money la-2x"></i>  [[*{salary_min}]]€ - [[*{salary_max}]]€</div>
-										<div class='job-data d-none d-sm-block' th:inline="text"><i class="la la-calendar la-2x"></i>  Started: [[*{time_from_start}]] days ago</div>
-										<div class='job-data d-none d-sm-block' th:inline="text"><i class="la la-calendar la-2x"></i>  Expires: [[*{time_to_end}]] days ago</div>
+										<div class='job-data d-none d-sm-block'><i class="la la-calendar la-2x"></i>  Empezó hace <strong th:text="*{time_from_start}"></strong> días</div>
+										<div class='job-data d-none d-sm-block'><i class="la la-calendar la-2x"></i>  Acaba en <strong th:text="*{time_to_end}"></strong> días</div>
 									</div>
 									<div class="col-12 d-block d-lg-none">
 										<div class='offer-reward'><p th:text="*{reward}+' €'"></p>Recompensa</div>
 									</div>
 								</a>
 							</div>
-							<div class="viewmore"><span><i></i><i></i><i></i>View More</span></div>
+<!--							<div class="viewmore"><span><i></i><i></i><i></i>View More</span></div>-->
 						</div>
 					</div>
 				 </div>
@@ -337,8 +225,85 @@
 
 <!-- SCRIPTS -->
 <div th:replace="general.html :: scripts"></div>
+<!--<script src="js/search.js" type="text/javascript"></script>-->
 
 <script type="text/javascript">
+	var refresh = null;
+
+	function getFilteredOffers(){
+		var urlPost = ws_local_url + "getAllFilteredOffers";
+		var keyword = $("#keywords").val();
+		var salary= $("#salary").val();
+		var experience= $("#experience").val();
+
+		var positions=[];
+		$("input[name='position']:checked").each(function () {
+			positions.push($(this).val());
+		});
+		var cities = [];
+		$("input[name='city']:checked").each(function () {
+			cities.push($(this).val());
+		});
+		var pageSize = $("#pagination").val();
+		var numPage = 0;
+		var order = $("#order").val();
+
+		str = {"keyword":keyword,"salary":salary,"experience":experience,"positions":JSON.stringify(positions),"cities": JSON.stringify(cities) ,"pageSize":pageSize,"numPage":numPage,"order":order};
+		var dataPost =$.param(str);
+
+		$.ajax({
+			type: "POST",
+			url: urlPost,
+			data: dataPost,
+			contentType: "application/x-www-form-urlencoded",
+			dataType: "json",
+			success: function (data) {
+				listJobs(data.message);
+			},
+			failure: function (data) {
+				$(".job-listings-sec").html("<h3>There are no job offers available.</h3>")
+			}
+		});
+	}
+
+	function listJobs(data){
+		$(".job-listings-sec").empty();
+		$.each(data,function(i,d){
+
+			var html = "<a href='" + d.path_image_company + "' class='job-listing rounded'>";
+			html += "<div class='job-title-sec'><div class='c-logo'><img src='"+d.path_image_company+"' alt='' /> </div><h3>"+d.nameCompany+"</h3><span>"+d.position+"</span></div>";
+			html += "<span class='job-lctn'><i class='la la-map-marker'></i>"+d.city+"</span>";
+			html += "<span class='job-dates'><i class='la la-calendar-o'></i>"+d.date_init+" - "+d.date_end+"</span>";
+			html += "<span class='job-is'>"+d.reward+" €</span>";
+			html += "</a>";
+
+			html =  '';
+			html *= '<a class="offer row" href="offer/' + ID_OFFER + '" >';
+			html += '<div class="col-4 col-md-3 col-lg-2 col-xl-1 offer-image">';
+			html += '<img src="'+PATH_IMAGE+'" alt="'+COMPANY_NAME+'" />';
+			html += '</div>';
+			html += '<div class="col-8 col-md-9 col-lg-8 col-xl-9 offer-company">';
+			html += '<h2>'+OFFER_POSITION+'</h2>';
+			html += '<h4>'+COMPANY_NAME+'</h4>';
+			html += '<h5 class="d-none d-sm-block description">'+OFFER_SUMMARY+'</h5>';
+			html += '</div>';
+			html += '<div class="col-lg-2 d-none d-lg-flex offer-reward-lg">';
+			html += '<div class="job-reward"><p class="reward">'+REWARD+' €</p><p>Recompensa</p></div>';
+			html += '</div>';
+			html += '<div class="col-12 offer-details">';
+			html += '<div class="job-data"><i class="la la-map-marker la-2x"></i>  '+OFFER_CITY+'</div>';
+			html += '<div class="job-data"><i class="la la-money la-2x"></i>  '+OFFER_SALARY_MIN+' - '+OFFER_SALARY_MAX+'</div>';
+			html += '<div class="job-data d-none d-sm-block"><i class="la la-calendar la-2x"></i>  Empezó hace <strong>'+OFFER_TIME_FROM_START+'</strong> días</div>';
+			html += '<div class="job-data d-none d-sm-block"><i class="la la-calendar la-2x"></i>  Caduca en <strong>'+OFFER_TIME_TO_END+'</strong> días</div>';
+			html += '</div>';
+			html += '<div class="col-12 d-block d-lg-none">';
+			html += '<div class="offer-reward"><p>'+REWARD+' €</p>Recompensa</div>';
+			html += '</div>';
+			html += '</a>';
+
+			$(".job-listings-sec").append(html);
+		});
+	}
 	$(document).ready(function () {
 		$(".range_value").each(function () {
 			$(this).html($(this).siblings("input").val());
@@ -346,9 +311,33 @@
 		$(".range_bar").on("change focus active click dragStart",function(){
 			$(this).siblings(".range_value").html($(this).val());
 		});
+
+		$("#experience, #salary, #experience, input[name='position'], input[name='city']").change(function () {
+			if(refresh)
+			{
+				clearTimeout(refresh);
+				refresh = null;
+			}
+			refresh = setTimeout(function(){getFilteredOffers();}, 2000);
+		});
+		$("#keywords").on("keyup click change", function () {
+			if(refresh)
+			{
+				clearTimeout(refresh);
+				refresh = null;
+			}
+			refresh = setTimeout(function(){getFilteredOffers();}, 2000);
+		})
+		$("#pagination, #order").change(function () {
+			if(refresh)
+			{
+				clearTimeout(refresh);
+				refresh = null;
+			}
+			getFilteredOffers();
+		})
 	});
 </script>
-<!--<script th:inline="javascript" src="js/search.js" type="text/javascript"></script>-->
 
 </body>
 </html>
