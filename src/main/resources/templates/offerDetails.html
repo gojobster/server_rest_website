@@ -20,7 +20,7 @@
 
 	<section>
 		<div class="block no-padding">
-			<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div data-velocity="-.1" style="background: url(../images/home_background.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
 			<div class="container fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -55,13 +55,13 @@
 							 					<ul class="tags-jobs">
 								 					<li><i class="la la-file-text"></i><a th:text="'Applications '+*{offer.applications}"></a></li>
 								 					<li><i class="la la-calendar-o"></i> Post Date: July 29, 2017</li>
-								 					<li><i class="la la-eye"></i><a th:text="'Views '+*{offer.displayed}"></a></li>
+								 					<!--<li><i class="la la-eye"></i><a th:text="'Views '+*{offer.displayed}"></a></li>-->
 								 				</ul>
 							 				</div>
 							 			</div><!-- Job Head -->
 				 					</div>
 				 					<div class="col-lg-4">
-										<a id="applyTo" th:if="${logged == true && userApplied == false && codeRef != null}" class="apply-thisjob"   th:data-iduser="${endorser.getIdUser()}" th:data-code="${codeRef}" th:data-token="${token}" th:onclick="apply('#applyTo')" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+										<a id="applyTo" th:if="${logged == true && userApplied == false && codeRef != null}" class="apply-thisjob"   th:data-iduser="${endorser.getIdUser()}" th:data-offer="${offer.idOffer}" th:data-code="${codeRef}" th:data-token="${token}" th:onclick="apply('#applyTo')" title=""><i class="la la-paper-plane"></i>Apply for job</a>
 <!--										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="'user_registration_temp('+ ${endorser.getIdUser()} +','+ ${offer.idOffer} + ',' + '&#34;talendorse@gmail.com&#34;' +')'" title=""><i class="la la-paper-plane"></i>Endorse</a>-->
 										<a th:if="${logged == true  && userApplied == false && codeRef == null}" class="apply-thisjob"  th:href="'/referral/'+${offer.idOffer}" title=""><i class="la la-paper-plane"></i>Endorse</a>
 										<a th:if="${logged == false && userApplied == false && codeRef == null}" class="apply-thisjob"  th:onclick="loginLinkedin()" title=""><i class="la la-paper-plane"></i>Log in to endorse</a>
@@ -81,9 +81,7 @@
 							 					<li th:text="*{offer.job_functions}"></li>
 							 				</ul>
 							 			</div>
-							 			<div class="share-bar">
-							 				<span>Share</span><a href="#" title="" class="share-fb"><i class="fa fa-facebook"></i></a><a href="#" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
-							 			</div>
+										<div th:replace="general.html :: share_social"></div>            
 							 			<div class="extra-job-info">
 											<span><i class="la la-clock-o"></i><strong th:text="*{offer.date_end_string}"></strong> fecha fin</span>
 								 			<span><i class="la la-file-text"></i><strong th:text="*{offer.applications}"></strong> candidatos</span>
@@ -98,8 +96,7 @@
 												<li><i class="la la-calendar-o"></i><h3>Tipo de jornada</h3><span th:text="*{offer.tipo_jornada}"></span></li>
 												<li><i class="la la-file-text-o"></i><h3>Tipo de contrato</h3><span th:text="*{offer.tipo_contrato}"></span></li>
 								 				<li><i class="la la-shield"></i><h3>Experiencia</h3><span th:text="*{offer.experience_years}+' años'"></span></li>
-								 				<li><i class="la la-group"></i><h3>Personas al cargo</h3><span th:text="*{offer.people_in_charge}"></span></li>
-
+								 				<li th:if="${offer.people_in_charge > 0}"><i class="la la-group"></i><h3>Personas al cargo</h3><span th:text="*{offer.people_in_charge}"></span></                                      li>
 								 			</ul>
 								 		</div><!-- Job Overview -->
 							 		</div>
@@ -109,7 +106,7 @@
 										<div class="heading">
 											<h3>Más ofertas</h3>
 										</div><!-- Heading -->
-										<a th:each="item: ${listOffers}" th:object="${item}" class="offer row" th:href="'offer/' + *{idOffer}">
+										<a th:each="item: ${listOffers}" th:object="${item}" class="offer row" th:href="'/offer/' + *{idOffer}">
 											<div class="col-4 col-md-3 col-lg-2 col-xl-1 offer-image">
 												<img th:src="*{path_image_company}" alt='' />
 											</div>

@@ -29,6 +29,7 @@ function apply (id) {
     var idcandidate, code, token;
     var applyTo = $(id);
     idcandidate = applyTo.attr("data-iduser");
+    id_offer = applyTo.attr("data-offer");
     code = applyTo.attr("data-code");
     token = applyTo.attr("data-token");
 
@@ -37,6 +38,7 @@ function apply (id) {
     var urlPost = url,
         str = {"token":token,
             "id_candidate":idcandidate,
+            "id_offer":id_offer,
             "code":code};
 
     var dataPost =$.param(str);

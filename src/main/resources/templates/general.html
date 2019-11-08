@@ -95,6 +95,16 @@
             </div>
         </header>
 
+        <!-- Share social -->
+        <section th:fragment="share_social">
+            <div class="share-bar">
+                <span>Share</span>
+                <a href="https://www.linkedin.com/company/talendorse" title="" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/talendorse" title="" class="share-fb"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/talendorse" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
+            </div>
+        </section>
+
         <!-- SIDEBAR -->
         <section class="sidebar" th:fragment="sidebar (islogged2, usrId, profileUrl2, userName, userSurname, userEmail, isAdmin)">
             <div th:if="${islogged2 == true}" class="profile-sidebar">
